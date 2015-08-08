@@ -110,6 +110,39 @@ img {
   max-width: 100%;
 }
 
+table {
+  box-shadow : 0 0 1rem 0 #aaa;
+  border-radius : 1rem;
+  background : #fff;
+  font-family : courier, fixed;
+}
+thead {
+  font-weight:800;
+}
+td,th {
+  padding: 0.2rem 0.5rem;
+  border : 1px solid #ccc;
+}
+tbody tr:nth-child(odd){
+  background : #eee;
+}
+tbody tr:last-child td:first-child {
+  border-bottom : 0;
+  border-left   : 0;
+}
+tbody tr:last-child td:last-child {
+  border-bottom : 0;
+  border-right  : 0;
+}
+thead tr:first-child th:first-child {
+  border-top : 0;
+  border-left: 0;
+}
+thead tr:first-child th:last-child {
+  border-top   : 0;
+  border-right : 0;
+}
+
 // Fixes images in popup boxes from Google Translate
 .gmnoprint img {
   max-width: none;
