@@ -4,7 +4,7 @@ title: The X-to-JavaScript Kraken
 ---
 ![The X-to-Javascript Kraken](/images/2015-06-15-the_kraken.jpg)
 
-I recently read a post that lamented the retirement of the [GWT](https://en.wikipedia.org/wiki/Google_Web_Toolkit) JavaScript compiler.  A nostalgic mood washed over me and I reminisced about those [hot summer nights and my radio](https://www.youtube.com/watch?v=lPUb4Wsi9kI). GWT was a good toolkit for its time, but that time has past.  In fact, if you are considering using an **X-to-Javascript Compiler** to convert another high-level language into JavaScript, you might want to think again.  Because all their promises, these tools usually require a major investment that rarely gets paid back.  This post explores why.
+I recently read a post that lamented the retirement of the [GWT](https://en.wikipedia.org/wiki/Google_Web_Toolkit) JavaScript compiler.  A nostalgic mood washed over me and I reminisced about those [hot summer nights and my radio](https://www.youtube.com/watch?v=lPUb4Wsi9kI). GWT was a good toolkit for its time, but that time has past.  In fact, if you are considering using an **X-to-Javascript Compiler** to convert another high-level language into JavaScript, you might want to think again.  Because despite all their allure, these tools usually require a major investment that rarely gets paid back. This post explores why.
 
 Let's get started by looking at what GWT was and how it's spirit lives on in X-to-JavaScript compilers.
 
