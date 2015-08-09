@@ -13,9 +13,9 @@ on the subject.  Check out the reviews on
 
 ## Get in touch
 Dear anomyous reader, I really care and want to know more about you. However, since I
-don't even know your name it's hard for me to pose a first question. If you'd
-like to rap, just drop me a line on via one of my numerous contact methods
-found [here](michaelmikowski.com)!
+don't even know your name it's hard for me open a conversation. If you'd
+like to rap, just drop me a line with the email link below or using one of the
+numerous contact methods found [here](michaelmikowski.com).
 
 ## Shameless self-promotion
 I currently have a [shameless self-promotion site](michaelmikowski.com) that has lots of 
