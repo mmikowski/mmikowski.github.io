@@ -18,6 +18,6 @@ like to rap, just drop me a line with the email link below or using one of the
 numerous contact methods found [here](michaelmikowski.com).
 
 ## Shameless self-promotion
-I currently have a [shameless self-promotion site](michaelmikowski.com) that has lots of 
+I currently have a [shameless self-promotion site](http://michaelmikowski.com) that has lots of 
 additional information if you're interested in that sort of thing.
 Stuff like recent projects, philosophy, shoe size, etc.
