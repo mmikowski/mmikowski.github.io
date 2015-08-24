@@ -112,19 +112,27 @@ to OSX or Windows.  Here are the desktops I recommend:
 
 ### Get the tools
 
-The good news for Linux is that the entire software world has evolved where
-platform-agnostic tools such as *Google for Work* or *Office 365* have replaced
-the legacy tools tied to a specific OS. Chrome works very on Linux, as does JetBrains IDEs,
-VPNs, GoToMeeting, Skype, Dropbox, Hangouts, Google Drive (Insync), and many more.
-While a few proprietary packages such as Office and PhotoShop remain unavailable
-for Linux, many find alternatives that are just as good for web graphics or
-complex documents.
+Getting developer and enterprise tools on Linux has never been easier.
 
-If we want to game on Linux, the best solution is Steam plus an Nvidia GPU.
-Steam now has over 1,250 titles available including Shadows of Modor,
-Counter Strike, Bioshock Infinite, Borderlands 2, and the Metro series.
-We can have a great development workstation *and* a pretty great home computer
-the kids can love.
+Software has evolved to where platform-agnostic tools such as *Google for Work* 
+or *Office 365* have replaced most tools tied to a specific OS.  At the same time,
+many applications available for OSX and Windows now work very well on 
+(K)ubuntu Linux: Chrome, Firefox, JetBrains IDEs, VPNs, GoToMeeting, Skype,
+Dropbox, Hangouts, Google Drive (Insync), and many more.  And many popular
+tools such as MongoDB and NodeJS are Linux-first, which means they work
+*best* on a Linux OS.
+
+Steam works very well with (K)ubuntu 15.04 and an Nvidia GPU.  There are now 
+over 1,250 titles available including Shadows of Modor, Counter Strike, Bioshock Infinite,
+Borderlands 2, and the Metro series.  We can have a great development workstation *and* 
+a pretty great home computer the kids can love too.
+
+Some proprietary packages such as Office and PhotoShop remain unavailable
+for Linux.  But I don't need those tools. I find Gimp is an excellent web graphics
+editor and LibreOffice 5 works just great for spreadsheets and presentations. Gimp can be used to
+edit PSD files and LibreOffice can edit Office documents with generally good fidelity.
+The minor inconvenience of occassional importing one of these documents - for me - is a small
+price to pay for the vast productivity benefit I see from using Kubuntu as my "daily driver."  As always, YMMV.
 
 ### Want to share?
 
