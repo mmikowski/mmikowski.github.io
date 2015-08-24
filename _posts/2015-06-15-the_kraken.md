@@ -2,7 +2,7 @@
 layout: post
 title: The X-to-JavaScript Kraken
 ---
-*The silver-bullet framework that shoots you in the foot*
+*The silver-bullet framework that shoots us in the foot*
 
 ![The X-to-Javascript Kraken](/images/2015-06-15-the_kraken.jpg)
 
