@@ -2,7 +2,7 @@
 layout: post
 title: (K)ubuntu Linux 15.04 for web dev
 ---
-*Who needs Mac or Windows for Linux development?*
+*Who needs Mac or Windows for web development?*
 
 ![(K)ubuntu Linux](/images/2015-08-23-kubuntu.png)
 
