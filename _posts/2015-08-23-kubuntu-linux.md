@@ -18,20 +18,20 @@ running sooner, faster, and better for web developers.
 ### The benefits of using Linux
 
 Web developers almost always deploy to Linux systems.
-But Linux doesn't have to be used just for servers.  Using
-Linux as our development OS provides us with multiple benefits:
+But Linux isn't just for servers.  Using Linux as our development OS 
+can provide multiple benefits:
 
-- Deployments almost always go smoother because the mistmatch between
+- Deployment is smoother because the mistmatches between
   development and deployment environments is greatly reduced.
-- Developers discover and use Linux tools in their daily workflow that
-  they would otherwise not consider in other OSes.  This increases
+- We discover and use Linux tools in our daily workflow that
+  we would otherwise not consider. This increases
   productivity.
 - The nightmare of having development systems that spans multiple OSes
   goes away.  Ever see a system that require OSX, Windows,
   *and* CentOS to complete a single build?  Trust me, they're out there.
 - Client set-up is often much faster.  Developer set-up for some
   systems and OSes can take multiple days due to all the manual steps required.
-  I've seen comparable Linux set-ups take less than an hour because the
+  Comparable Linux set-ups can take less than an hour because
   configuration is easily automated.
 - Most work setting up a Linux development environment is directly
   applicable for deployment.
@@ -47,21 +47,21 @@ Here are some of the most common:
 
 - Moving platforms can be a lot of work.
 - They are invested in the Mac or Windows interface.
-- They seen problems running Linux on certain hardware.
-- The OS supports tools and enterprise software they can't find on Linux.
+- They've seen problems running Linux on certain hardware.
+- Their OS supports tools and enterprise software that they are uncertain are supported by (K)ubuntu.
 
-Yet Linux **can** be used as a primary development platform by addressing
-these these downsides.  First, let's reduce the work.
+Yet (K)ubuntu Linux **can** be used as a primary development platform by addressing
+these these downsides.
 
 ### Reduce the work
 
 The [Kubuntu 15.04 Preferred Software and Hardware](https://docs.google.com/spreadsheets/d/1kLIYKYRsan_nvqGSZF-xJNxMkivH7uNdd6F-xY0hAUM/pubhtml)
 details lots of information that can be used to get (K)ubuntu Linux running sooner, faster,
-and better for web developers.  Now let's look at the hardware we might need.
+and better for web developers.
 
 ### Get compatible hardware
 
-#### Buy a pre-configured system?
+#### Buy a pre-configured system
 
 The best (K)ubuntu systems, just like the best Mac or Windows systems, are those built
 specifically to run the OS. The easiest approach is to get a system
@@ -70,10 +70,10 @@ or the [Dell XPS 13](http://www.dell.com/us/business/p/xps-13-linux/pd).
 Another approach for the system-builder hobbyists in the audience is to
 build their own systems with Linux compatible hardware.
 
-#### Or use one on-hand?
+#### Or use one on-hand
 
 Another approach to get a (K)ubuntu system is to install it on a computer
-we have on-hand.  Most desktops and many Dell and HP laptops work great with this OS,
+already on-hand.  Most desktops and many Dell and HP laptops work great with this OS,
 but it is always wise to check compatibility simply by searching for `Ubuntu
 computer_model`. If all looks well, then we can proceed to test the OS on
 a virtual machine (Virtual Box is recommended) or using a "Live CD".
@@ -90,18 +90,15 @@ We should be certain to test all aspects of the hardware including:
 - Other peripherals
 - GPU
 
-Currently Nvidia provides the best GPU support, with excellent first-day support
-and top-notch drivers. Intel iGPU support is pretty good, and is generally
-the least trouble for laptops. AMD GPUs tend to be troublesome, and I
+Currently Nvidia provides the best Linux GPUs, with excellent first-day support, 
+excellent performance, and stable OGL 4.5 drivers. Intel iGPU support is pretty good, 
+and is generally the least trouble for laptops. AMD GPUs tend to be troublesome, and I
 recommend they be avoided if possible.
 
 While many systems will work completely, some may require a configuration or
 hardware adjustment.  Some systems will be simply too incompatible to justify
 a (K)ubuntu install.  Most MacBooks, for example, are rarely worth the trouble,
 IMO.
-
-Once we have the hardware in place, it's time to select the desktop
-environment.
 
 ### Get the desktop
 
@@ -112,8 +109,6 @@ to OSX or Windows.  Here are the desktops I recommend:
 - **Windows:** Consider Kubuntu 15.04 with the KDE 5 desktop
 - **OSX:** Consider Ubuntu 15.04 with either the Unity or Gnome
   interface.
-
-Now we need to consider the tools we will run on our desktop environment.
 
 ### Get the tools
 
