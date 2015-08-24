@@ -57,15 +57,11 @@ these these downsides.  First, let's reduce the work.
 
 The [Kubuntu 15.04 Preferred Software and Hardware](https://docs.google.com/spreadsheets/d/1kLIYKYRsan_nvqGSZF-xJNxMkivH7uNdd6F-xY0hAUM/pubhtml)
 details lots of information that can be used to get (K)ubuntu Linux running sooner, faster,
-and better for web developers.  Whenever I adjust any of my many (K)ubuntu
-systems, I update this spreadsheet.  It saves me time and effort, and it
-certainly helps a few others too!
+and better for web developers.  Now let's look at the hardware we might need.
 
-Now that we've taken the hard work out of the equation, we have to get the right hardware.
+### Get compatible hardware
 
-### Get Linux compatible hardware
-
-#### Pre-configured systems
+#### Buy a pre-configured system?
 
 The best (K)ubuntu systems, just like the best Mac or Windows systems, are those built
 specifically to run the OS. The easiest approach is to get a system
@@ -74,7 +70,7 @@ or the [Dell XPS 13](http://www.dell.com/us/business/p/xps-13-linux/pd).
 Another approach for the system-builder hobbyists in the audience is to 
 build their own systems with Linux compatible hardware.
 
-#### On-hand systems
+#### Or use one on-hand?
 
 Another approach to get a (K)ubuntu system is to install it on a computer
 we have on-hand.  Most desktops and many Dell and HP laptops work great with this OS,
@@ -101,12 +97,12 @@ Once we've confirmed the hardware is compatible, we can try the OS out for a
 few days or weeks. If we decide to commit, I advocate a clean wipe and install
 as with any OS.
 
-#### GPUs
+#### Get a compatible GPU
 
 Currently Nvidia provides the best GPU support, with excellent first-day support
-and top-notch drivers. Intel iGPU support is pretty good, and Intel is generally
+and top-notch drivers. Intel iGPU support is pretty good, and is generally
 the least trouble for laptops. AMD GPUs tend to be troublesome, and I
-recommend you avoid them if possible.
+recommend they be avoided if possible.
 
 Once we have the hardware in place, it's time to select the desktop
 environment.
