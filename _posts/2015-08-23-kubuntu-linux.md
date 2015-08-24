@@ -9,10 +9,10 @@ title: (K)ubuntu Linux 15.04 for web dev
 
 ### TL;DR
 
-Are you a web developer?  Are you interested in running Ubuntu or 
+Are you a web developer?  Are you interested in running Ubuntu or
 Kubuntu as as your development OS? Then you may want to check out the
 [Kubuntu 15.04 Preferred Software and Hardware](https://docs.google.com/spreadsheets/d/1kLIYKYRsan_nvqGSZF-xJNxMkivH7uNdd6F-xY0hAUM/pubhtml)
-which provides lots of information that can be used to get (K)ubuntu Linux 
+which provides lots of information that can be used to get (K)ubuntu Linux
 running sooner, faster, and better for web developers.
 
 ### The benefits of using Linux
@@ -32,8 +32,8 @@ Linux as our development OS provides us with multiple benefits:
 - Client set-up is often much faster.  Developer set-up for some
   systems and OSes can take multiple days due to all the manual steps required.
   I've seen comparable Linux set-ups take less than an hour because the
-  configuration is easily automated.  
-- Most work setting up a Linux development environment is directly 
+  configuration is easily automated.
+- Most work setting up a Linux development environment is directly
   applicable for deployment.
 
 Unfortunately Linux use also comes with some pain points, which we will
@@ -41,7 +41,7 @@ explore next.
 
 ### ... And the downsides
 
-Many web developers have good reasons to prefer to use Macs or Windows as 
+Many web developers have good reasons to prefer to use Macs or Windows as
 their development platform despite all the benefits of using Linux.
 Here are some of the most common:
 
@@ -67,7 +67,7 @@ The best (K)ubuntu systems, just like the best Mac or Windows systems, are those
 specifically to run the OS. The easiest approach is to get a system
 pre-configured with Linux. I recommend [System76](https://system76.com/)
 or the [Dell XPS 13](http://www.dell.com/us/business/p/xps-13-linux/pd).
-Another approach for the system-builder hobbyists in the audience is to 
+Another approach for the system-builder hobbyists in the audience is to
 build their own systems with Linux compatible hardware.
 
 #### Or use one on-hand?
@@ -88,21 +88,17 @@ We should be certain to test all aspects of the hardware including:
 - Keyboard and mouse
 - Printer, NAS, Router
 - Other peripherals
-
-While many systems will work completely, some may require a configuration or
-hardware adjustment. Some systems will be simply too incompatible to justify
-a (K)ubuntu install.  MacBooks, for example, are rarely worth the trouble.
-
-Once we've confirmed the hardware is compatible, we can try the OS out for a
-few days or weeks. If we decide to commit, I advocate a clean wipe and install
-as with any OS.
-
-#### Get a compatible GPU
+- GPU
 
 Currently Nvidia provides the best GPU support, with excellent first-day support
 and top-notch drivers. Intel iGPU support is pretty good, and is generally
 the least trouble for laptops. AMD GPUs tend to be troublesome, and I
 recommend they be avoided if possible.
+
+While many systems will work completely, some may require a configuration or
+hardware adjustment.  Some systems will be simply too incompatible to justify
+a (K)ubuntu install.  Most MacBooks, for example, are rarely worth the trouble,
+IMO.
 
 Once we have the hardware in place, it's time to select the desktop
 environment.
@@ -126,7 +122,7 @@ platform-agnostic tools such as *Google for Work* or *Office 365* have replaced
 the legacy tools tied to a specific OS. Chrome works very on Linux, as does JetBrains IDEs,
 VPNs, GoToMeeting, Skype, Dropbox, Hangouts, Google Drive (Insync), and many more.
 While a few proprietary packages such as Office and PhotoShop remain unavailable
-for Linux, many find alternatives that are just as good for web graphics or 
+for Linux, many find alternatives that are just as good for web graphics or
 complex documents.
 
 If we want to game on Linux, the best solution is Steam plus an Nvidia GPU.
@@ -139,7 +135,8 @@ the kids can love.
 
 If you decide to give (K)ubuntu a go, you can always use the comments or email me at
 the link below to ask a question or share an experience.  You can also add
-comments to the 
+comments to the
 [spreadsheet](https://docs.google.com/spreadsheets/d/1kLIYKYRsan_nvqGSZF-xJNxMkivH7uNdd6F-xY0hAUM/pubhtml)
 which I could then incorporate into later revisions.  Any help would be greatly appreciated!
 
+Cheers, Mike

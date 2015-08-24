@@ -2,7 +2,6 @@
 layout: post
 title: RESTful follow-up coming soon
 ---
-
 *Currently designing a Websocket API*
 
 You may have come to this blog looking for a follow-up post about the
@@ -12,4 +11,5 @@ developing a WebSocket API and I don't have the time to work on that
 and the detailed follow-up I had planned for this week.  However, I should
 have it available before the end of the month.
 
+Cheers, Mike
 

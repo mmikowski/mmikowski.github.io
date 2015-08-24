@@ -59,3 +59,5 @@ Someday JavaScript will no longer the default browser language.  It will probabl
 But that day isn't here.  JavaScript is the native language of the browser.  And every minute we spend working with, working around, and maintaining an X-to-JavaScript compiler takes away from the core technologies we use in our web application.  It's like avoiding-the-door by using a hand-saw to cut-an-opening in a wall. 
 
 This post was originally published on [Linked-in](https://www.linkedin.com/pulse/web-application-kraken-x-to-javascript-compilers-michael-mikowski)
+
+Cheers, Mike
