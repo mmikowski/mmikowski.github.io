@@ -50,18 +50,14 @@ Here are some of the most common:
 - They've seen problems running Linux on certain hardware.
 - Their OS supports tools and enterprise software that they are uncertain are supported by (K)ubuntu.
 
-Yet (K)ubuntu Linux **can** be used as a primary development platform by addressing
-these these downsides.
+Yet for those who can overcome these issues, (K)ubuntu Linux can a great developer platform.  Let's address these issues one-by-one.
 
 ### Reduce the work
 
 The [Kubuntu 15.04 Preferred Software and Hardware](https://docs.google.com/spreadsheets/d/1kLIYKYRsan_nvqGSZF-xJNxMkivH7uNdd6F-xY0hAUM/pubhtml)
-details lots of information that can be used to get (K)ubuntu Linux running sooner, faster,
-and better for web developers.
+details lots of information.  While this resource won't configure a (K)ubuntu system for us, it certainly can get it running sooner, faster,and better.  
 
 ### Get compatible hardware
-
-#### Buy a pre-configured system
 
 The best (K)ubuntu systems, just like the best Mac or Windows systems, are those built
 specifically to run the OS. The easiest approach is to get a system
@@ -69,8 +65,6 @@ pre-configured with Linux. I recommend [System76](https://system76.com/)
 or the [Dell XPS 13](http://www.dell.com/us/business/p/xps-13-linux/pd).
 Another approach for the system-builder hobbyists in the audience is to
 build their own systems with Linux compatible hardware.
-
-#### Or use one on-hand
 
 Another approach to get a (K)ubuntu system is to install it on a computer
 already on-hand.  Most desktops and many Dell and HP laptops work great with this OS,
@@ -113,14 +107,13 @@ to OSX or Windows.  Here are the desktops I recommend:
 ### Get the tools
 
 Getting developer and enterprise tools on Linux has never been easier.
-
 Software has evolved to where platform-agnostic tools such as *Google for Work* 
 or *Office 365* have replaced most tools tied to a specific OS.  At the same time,
 many applications available for OSX and Windows now work very well on 
 (K)ubuntu Linux: Chrome, Firefox, JetBrains IDEs, VPNs, GoToMeeting, Skype,
-Dropbox, Hangouts, Google Drive (Insync), and many more.  And many popular
+Dropbox, Hipchat, Hangouts, Google Drive (Insync), and many more.  And many popular
 tools such as MongoDB and NodeJS are Linux-first, which means they work
-*best* on a Linux OS.
+*best* on Linux.
 
 Steam works very well with (K)ubuntu 15.04 and an Nvidia GPU.  There are now 
 over 1,250 titles available including Shadows of Modor, Counter Strike, Bioshock Infinite,
@@ -128,11 +121,12 @@ Borderlands 2, and the Metro series.  We can have a great development workstatio
 a pretty great home computer the kids can love too.
 
 Some proprietary packages such as Office and PhotoShop remain unavailable
-for Linux.  But I don't need those tools. I find Gimp is an excellent web graphics
+for Linux.  But do we really need those tools? I find Gimp is an excellent web graphics
 editor and LibreOffice 5 works just great for spreadsheets and presentations. Gimp can be used to
 edit PSD files and LibreOffice can edit Office documents with generally good fidelity.
 The minor inconvenience of occassional importing one of these documents - for me - is a small
-price to pay for the vast productivity benefit I see from using Kubuntu as my "daily driver."  As always, YMMV.
+price to pay for the numerous productivity benefits I see from using Kubuntu as my "daily driver."  
+As always, YMMV.
 
 ### Want to share?
 
