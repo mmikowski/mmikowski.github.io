@@ -13,7 +13,7 @@ Are you a web developer?  Are you interested in running Ubuntu or
 Kubuntu as as your development OS? Then you may want to check out the
 [Kubuntu 15.04 Preferred Software and Hardware](https://docs.google.com/spreadsheets/d/1kLIYKYRsan_nvqGSZF-xJNxMkivH7uNdd6F-xY0hAUM/pubhtml)
 which provides lots of information that can be used to get (K)ubuntu Linux
-running sooner, faster, and better for web developers.
+running sooner, faster, and better.
 
 ### The benefits of using Linux
 
