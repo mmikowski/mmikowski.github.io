@@ -125,8 +125,8 @@ for Linux.  But do we really need those tools? I find Gimp is an excellent web g
 editor and LibreOffice 5 works just great for spreadsheets and presentations. Gimp can be used to
 edit PSD files and LibreOffice can edit Office documents with generally good fidelity.
 The minor inconvenience of occassional importing one of these documents - for me - is a small
-price to pay for the numerous productivity benefits I see from using Kubuntu as my "daily driver."  
-As always, YMMV.
+price to pay for the numerous productivity benefits I see from using Kubuntu as my "daily driver."
+Only you can decide if it's a good choice for you.
 
 ### Want to share?
 
