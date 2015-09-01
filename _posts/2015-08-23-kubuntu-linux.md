@@ -10,7 +10,7 @@ title: (K)ubuntu Linux 15.04 for web dev
 ### TL;DR
 
 Are you a web developer?  Are you interested in running Ubuntu or
-Kubuntu as as your development OS? Then you may want to check out the
+Kubuntu as your development OS? Then you may want to check out the
 [Kubuntu 15.04 Preferred Software and Hardware](https://docs.google.com/spreadsheets/d/1kLIYKYRsan_nvqGSZF-xJNxMkivH7uNdd6F-xY0hAUM/pubhtml)
 which provides lots of information that can be used to get (K)ubuntu Linux
 running sooner, faster, and better.
@@ -21,7 +21,7 @@ Web developers almost always deploy to Linux systems.
 But Linux isn't just for servers.  Using Linux as our development OS 
 can provide multiple benefits:
 
-- Deployment is smoother because the mistmatches between
+- Deployment is smoother because the mismatches between
   development and deployment environments is greatly reduced.
 - We discover and use Linux tools in our daily workflow that
   we would otherwise not consider. This increases
@@ -124,7 +124,7 @@ Some proprietary packages such as Office and PhotoShop remain unavailable
 for Linux.  But do we really need those tools? I find Gimp is an excellent web graphics
 editor and LibreOffice 5 works just great for spreadsheets and presentations. Gimp can be used to
 edit PSD files and LibreOffice can edit Office documents with generally good fidelity.
-The minor inconvenience of occassional importing one of these documents - for me - is a small
+The minor inconvenience of occasional importing one of these documents - for me - is a small
 price to pay for the numerous productivity benefits I see from using Kubuntu as my "daily driver."
 Only you can decide if it's a good choice for you.
 
