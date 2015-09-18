@@ -12,19 +12,20 @@ pieces of flair?* - [Office Space](http://www.methodshop.com/2001/02/office-spac
 
 ### Cutting-edge SPA development
 We are looking for experienced full-stack JavaScript developers.
-We would work together as peers in the next-generation product team.
+We would work together *as peers* in the next-generation product team.
 We plan to grow this team significantly over the next 12 months, 
 so those who join now would be get in on the ground floor.  We are replacing a
-Flash/Flex interface with a Single Page Web Application using the 
-techniques illustrated in the book [of the same name](http://www.amazon.com/Single-Page-Applications-end---end/dp/1617290750).
+Flash/Flex interface with a [Single Page Web Application](http://www.amazon.com/Single-Page-Applications-end---end/dp/1617290750). 
+You might have noticed that I'm co-author of that book, so if you dig the
+techniques presented there, we would get along just fine!
 
 We have excellent benefits, compensation, and working environment. Important
 infrastructure such as complete code standards, style guides, and commit hooks
 are already in place, yet we always strive to improve our conventions and
-employ the best.  We are strong proponents of TDD, static quality analysis,
+employ the best. We are strong proponents of TDD, static quality analysis,
 code reviews, and pair programming.
 
-Below is the 
+Below is the the job description.  Let me know what you think!
 
 ### Senior Web Developer
 
@@ -57,6 +58,6 @@ presentations to optimally communicate copious large data sets to end users.
 ### Interested?
 
 If you are interested or would like to simply know more, please hit the email
-link at the bottom of the page.
+link at the bottom of the page and send me a note.
 
 Cheers! Mike
