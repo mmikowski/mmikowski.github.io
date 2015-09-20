@@ -25,7 +25,7 @@ of TDD, static quality analysis, code reviews, and pair programming.
 
 Below is the the job description.  If you are interested, just hit the email 
 button at the bottom of the page to send me a note.  Relocation assistance is
-feasible.
+available for qualified candidates!
 
 ### Senior Web Developer
 
