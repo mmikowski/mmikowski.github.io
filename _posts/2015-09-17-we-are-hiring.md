@@ -14,7 +14,7 @@ pieces of flair?* - [Office Space](http://www.methodshop.com/2001/02/office-spac
 We are looking for experienced full-stack JavaScript developers.
 We would work together in the next-generation product team which we plan to
 grow significantly over the next 18 months. Those who join now would be get 
-in on the ground floor.  We are replacing a Flash-flex interface with a [Single Page Web Application](http://www.amazon.com/Single-Page-Applications-end---end/dp/1617290750). 
+in on the ground floor.  We are replacing a Flash-Flex interface with a [Single Page Web Application](http://www.amazon.com/Single-Page-Applications-end---end/dp/1617290750). 
 If you dig the techniques presented there, we would get along just fine!
 
 We have excellent benefits, compensation, and working environment. 
