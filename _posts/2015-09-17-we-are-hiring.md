@@ -34,7 +34,7 @@ You will be responsible for the development of next the generation user
 interface for a highly successful and award-winning product.  This includes
 design, development, testing and enhancement of new and existing user
 interfaces for external customer use. You will create rich interactive visual
-presentations to optimally communicate copious large data sets to end users.
+presentations to creatively communicate large data sets to our customers.
 
 #### Responsibilities
 - Collaborate with managment to set goals and objectives.
