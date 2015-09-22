@@ -17,7 +17,7 @@ When we first saw the laggy performance and overheating, we performed a factory 
 ### The solution
 Our initial intent was to download the OTA 3.0 GSM recovery image from [Nvidia downloads page](https://developer.nvidia.com/gameworksdownload) and install it. Unfortunately, the OTA 3.0 link *is broken*.  Instead we decided to load the 2.5 GSM recovery image and then try updating to Lollipop using the OTA process.
 
-Once we had finished the tablet runs **much** better than the previous Lollipop install.  As an added bonus, if we want to revert to OTA 2.5 (KitKat 4.4) - which is an excellent ROM - we can do so in 10 minutes or so. The entire procedure took less than a half hour.  Here are the individual steps we took:
+Once we had finished the tablet runs **much** better than the previous Lollipop install.  As an added bonus, if we want to revert to OTA 2.5 (KitKat 4.4) - which is an excellent ROM - we can do so in 10 minutes or so. The entire procedure took less than a half hour.  Here are the steps we took:
 
 1. We unlocked the boot loader and installed the NVIDIA Tegra NOTE7 GMS Recovery OS Image from the [Nvidia downloads page](https://developer.nvidia.com/gameworksdownload). While there *is* a link to the 5.1 OTA ROM, the link *is broken*.  If Nvidia makes the 5.1 image available again, we might try that later.
 
