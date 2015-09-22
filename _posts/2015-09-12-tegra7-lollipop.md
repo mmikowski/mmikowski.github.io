@@ -14,7 +14,7 @@ We found this odd because we own the Shield Portable with the same SoC and 5.1 L
 ### Reset didn't fix it
 When we first saw the laggy performance and overheating, we performed a factory reset. This did not resolve any of the problems.
 
-### The solution?
+### The solution
 Our initial intent was to download the OTA 3.0 GSM recovery image from [Nvidia downloads page](https://developer.nvidia.com/gameworksdownload) and install it. Unfortunately, the OTA 3.0 link *is broken*.  Instead we decided to load the 2.5 GSM recovery image and then try updating to Lollipop using the OTA process.
 
 Once we had finished the tablet runs **much** better than the previous Lollipop install.  As an added bonus, if we want to revert to OTA 2.5 (KitKat 4.4) - which is an excellent ROM - we can do so in 10 minutes or so. The entire procedure took less than a half hour.  Here are the individual steps we took:
