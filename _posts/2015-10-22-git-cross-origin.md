@@ -58,7 +58,7 @@ At this point, we have an ltullman-master that uses the ltullman
 upstream repository. Let's add another:
     
     git checkout -b mmikowski-master 
-    git remote add mmikowski git@github:mmikowski/taffydb.git 
+    git remote add mmikowski git@github.com:mmikowski/taffydb.git 
     git fetch mmikowski master
     git branch --set-upstream-to=mmikowski/master
 
@@ -68,19 +68,19 @@ And confirm again:
       # mmikowski/master
 
     git remote -v
-      # origin     git@github.com:typicaljoe/taffydb.git (fetch)
-      # origin     git@github.com:typicaljoe/taffydb.git (push)
       # ltullman   git@github.com/ltullman/taffydb.git (fetch)
       # ltullman   git@github.com/ltullman/taffydb.git (push)
       # mmikowski  git@github.com/mmikowski/taffydb.git (fetch)
       # mmikowski  git@github.com/mmikowski/taffydb.git (push)
+      # origin     git@github.com:typicaljoe/taffydb.git (fetch)
+      # origin     git@github.com:typicaljoe/taffydb.git (push)
 
 Now we have all the sources we want.  Now let's explore what we can do!
 
 ### What can we do with this?
 
 I'm still working my way through how to use this and will update this
-post as I progress.
+post as I progress :)
 
 Cheers! Mike
 
