@@ -6,7 +6,7 @@ title: Using git with multiple remote repositories
 
 ### Purpose
 
-Recently I was honored to be added to the (taffydb)[http://www.taffydb.org]
+Recently I was honored to be added to the [taffydb](http://www.taffydb.org)
 maintainer list.  This means I now need to merge changes from multiple
 remote repositories.  Yes, this can be done using the GitHub visual interface,
 however, often times this simply is not flexible enough.  Luckily, it's rather
