@@ -34,46 +34,46 @@ Let's add our upstream branch to ltullman.
     git checkout -b ltullman-master 
 
     # add remote repository
-    git remote add origin-ltullman git@github.com:ltullman/taffydb.git
+    git remote add ltullman git@github.com:ltullman/taffydb.git
 
     # fetch the master branch contents
-    git fetch origin-ltullman master
+    git fetch ltullman master
 
     # and now set upstream
-    git branch --set-upstream-to=origin-ltullman/master
+    git branch --set-upstream-to=ltullman/master
 
     # confirm upstream branch
     git rev-parse --abbrev-ref --symbolic-full-name @{u}
-      # origin-ltullman/master
+      # ltullman/master
 
     # confirm origin
     git remote -v
-      # origin            git@github.com:typicaljoe/taffydb.git (fetch)
-      # origin            git@github.com:typicaljoe/taffydb.git (push)
-      # origin-ltullman   git@github.com/ltullman/taffydb.git (fetch)
-      # origin-ltullman   git@github.com/ltullman/taffydb.git (push)
+      # origin     git@github.com:typicaljoe/taffydb.git (fetch)
+      # origin     git@github.com:typicaljoe/taffydb.git (push)
+      # ltullman   git@github.com/ltullman/taffydb.git (fetch)
+      # ltullman   git@github.com/ltullman/taffydb.git (push)
 
 
-At this point, we have an ltullman-master that uses the origin-ltullman
+At this point, we have an ltullman-master that uses the ltullman
 upstream repository. Let's add another:
     
     git checkout -b mmikowski-master 
-    git remote add origin-mmikowski git@github:mmikowski/taffydb.git 
-    git fetch origin-mmikowski master
-    git branch --set-upstream-to=origin-mmikowski/master
+    git remote add mmikowski git@github:mmikowski/taffydb.git 
+    git fetch mmikowski master
+    git branch --set-upstream-to=mmikowski/master
 
 And confirm again:
 
     git rev-parse --abbrev-ref --symbolic-full-name @{u}
-      # origin-mmikowski/master
+      # mmikowski/master
 
     git remote -v
-      # origin            git@github.com:typicaljoe/taffydb.git (fetch)
-      # origin            git@github.com:typicaljoe/taffydb.git (push)
-      # origin-ltullman   git@github.com/ltullman/taffydb.git (fetch)
-      # origin-ltullman   git@github.com/ltullman/taffydb.git (push)
-      # origin-mmikowski  git@github.com/mmikowski/taffydb.git (fetch)
-      # origin-mmikowski  git@github.com/mmikowski/taffydb.git (push)
+      # origin     git@github.com:typicaljoe/taffydb.git (fetch)
+      # origin     git@github.com:typicaljoe/taffydb.git (push)
+      # ltullman   git@github.com/ltullman/taffydb.git (fetch)
+      # ltullman   git@github.com/ltullman/taffydb.git (push)
+      # mmikowski  git@github.com/mmikowski/taffydb.git (fetch)
+      # mmikowski  git@github.com/mmikowski/taffydb.git (push)
 
 Now we have all the sources we want.  Now let's explore what we can do!
 
