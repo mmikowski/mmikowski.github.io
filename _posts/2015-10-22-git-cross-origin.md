@@ -79,8 +79,43 @@ Now we have all the sources we want.  Now let's explore what we can do!
 
 ### What can we do with this?
 
-I'm still working my way through how to use this and will update this
-post as I progress :)
+I found that when setting up multiple upstream sources like this, we need to
+do a little work to get the branch to be "pristine".  For example, I found a
+merge conflict in my local copy of mmikowski-master.  I wanted that fixed,
+and to match the upstream copy exactly.  So I cloned another local copy and
+then made sure my mmikowski-master branch matched it exactly:
 
-Cheers! Mike
+    git checkout master-mmikowski
+    cd ..
+    git clone git@github.com/mmikowski/taffydb.git taffydb-mmikowski
+
+    # visual diff tool to merge remote master to local - copy all files
+    #  from source (left)
+    kdiff3 taffydb-mmikowski taffydb
+
+    # resolve conflicts
+    cd taffdb
+    git add .
+    git commit -a
+
+    # And push 
+    git push mmikowski HEAD:master
+
+We can do the same check with ltullman.  Now we can cherry-pick 
+changes from a branch and merge them into master.  In the example below,
+I merged over my regression tests but left other changes alone as I didn't feel
+they were well-tested enough.
+
+    checkout master
+    git difftool mmikowski-master taffy-test.html
+
+
+### Why not just use pull-requests?
+
+Atomic pull-requests should always be preferred and used if possible.
+However, sometimes circumstances require more nuanced merging, and this is 
+where having remote repositories for each branch is very, very handy.
+
+Cheers, Mike
+
 
