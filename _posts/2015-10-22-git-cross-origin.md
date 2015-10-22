@@ -48,10 +48,10 @@ Let's add our upstream branch to ltullman.
 
     # confirm origin
     git remote -v
-      # origin     git@github.com:typicaljoe/taffydb.git (fetch)
-      # origin     git@github.com:typicaljoe/taffydb.git (push)
       # ltullman   git@github.com/ltullman/taffydb.git (fetch)
       # ltullman   git@github.com/ltullman/taffydb.git (push)
+      # origin     git@github.com:typicaljoe/taffydb.git (fetch)
+      # origin     git@github.com:typicaljoe/taffydb.git (push)
 
 
 At this point, we have an ltullman-master that uses the ltullman
