@@ -8,10 +8,11 @@ title: Using git with multiple remote repositories
 
 Recently I was honored to be added to the [taffydb](http://www.taffydb.org)
 maintainer list.  This means I now need to merge changes from multiple
-remote repositories.  Yes, this can be done using the **GitHub** web
-interface.  Sometimes, though, this simply is not flexible enough.  Luckily,
-it's rather easy to set up your `git` working directory to access all 
-three sources at once and merge between them.
+remote repositories.  Usually this can be done using the **GitHub** web
+interface but sometimes this is not flexible enough.  Luckily, it's rather
+easy to set up your `git` working directory to have a different remote
+repository for different branches and then merge between them.  This 
+post shows how.
 
 ### Getting set up
 
@@ -112,9 +113,9 @@ they were well-tested enough.
     git difftool mmikowski-master taffy-test.html
 
 
-### Why not just use pull-requests?
+### When to use this
 
-Atomic pull-requests that can be resolved from the **GitHub** web interface
+Pull-requests that can be resolved from the **GitHub** web interface
 are always preferred if possible.  However, sometimes circumstances require
 more nuanced merging, and this is where having remote repositories for each
 branch is very, very handy.
