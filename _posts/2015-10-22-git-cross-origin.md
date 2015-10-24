@@ -9,8 +9,8 @@ title: Using git with multiple remote repositories
 Recently I was honored to be added to the [taffydb](http://www.taffydb.org)
 maintainer list.  This means I now need to merge changes from multiple
 remote repositories.  Yes, this can be done using the GitHub visual interface,
-however, often times this simply is not flexible enough.  Luckily, it's rather
-easy to set up your git configuration to access all three sources at once.
+however, at times this simply is not flexible enough.  Luckily, it's rather
+easy to set up your `git` configuration to access all three sources at once.
 
 ### Getting set up
 
@@ -56,7 +56,8 @@ Let's add our upstream branch to ltullman.
 
 At this point, we have an ltullman-master that uses the ltullman
 upstream repository. Let's add another:
-    
+   
+    git checkout master
     git checkout -b mmikowski-master 
     git remote add mmikowski git@github.com:mmikowski/taffydb.git 
     git fetch mmikowski master
@@ -112,9 +113,10 @@ they were well-tested enough.
 
 ### Why not just use pull-requests?
 
-Atomic pull-requests should always be preferred and used if possible.
-However, sometimes circumstances require more nuanced merging, and this is 
-where having remote repositories for each branch is very, very handy.
+Atomic **Github** pull-requests that can be resolved from the web interface
+are always preferred if possible.  However, sometimes circumstances require
+more nuanced merging, and this is where having remote repositories for each
+branch is very, very handy.
 
 Cheers, Mike
 
