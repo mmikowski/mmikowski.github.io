@@ -68,7 +68,7 @@ on array-like objects such as a jQuery collection.  We use
 Do be aware that if you use these manipulations in-place on array-like 
 objects, you *are* forging into uncharted territory.  The jQuery object
 methods, for example, might get corrupted if it caches the list length
-or other properties, for example. Test thoroughly, Padawon.
+or other properties. Test thoroughly, Padawon.
 
 Stay tuned for a blog post on my favorite technique for keeping JavaScript
 object light and fast.
