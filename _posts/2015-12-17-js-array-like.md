@@ -49,7 +49,8 @@ This is especially handy for jQuery collections.
     // Used to rotate a list
     rotateByThree = function ( list ) {
       // The following is the same as list.unshift( list.pop() )
-      // but works on all list-like entities
+      // but works on many more array-like entities
+      //
       listUnshift.call( list, protoPop.call( list ));
       listUnshift.call( list, protoPop.call( list ));
       listUnshift.call( list, protoPop.call( list ));
