@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Using Array.prototype for jQuery and argument manipulation
+title: Manipulating jQuery and other array-like objects
 ---
-*Push, pop, shift, unshift?  Sure!*
+*Push, pop, slice, splice, shift, and unshift anyone?*
 
 ### Overview
 
@@ -60,15 +60,22 @@ The function, `rotateByThree` not only works on regular arrays, but also
 on array-like objects such as a jQuery collection.  We use 
 `Array.prototype` to do more things, like join two jQuery collections:
 
+    var
+      listPush = Array.prototype.push,
+      $h_list, $h2_list
+      ;
+
     $h_list = $( 'h1' ); $h2_list = $( 'h2' );
 
-    // Array.prototype.push.apply( $h1_list, $h2_list );
+    // The following is the same as 
+    //   Array.prototype.push.apply( $h1_list, $h2_list );
+    //
     listPush.apply( $h_list, $h2_list );
 
 Do be aware that if you use these manipulations in-place on array-like 
 objects, you *are* forging into uncharted territory.  The jQuery object
 methods, for example, might get corrupted if it caches the list length
-or other properties. Test thoroughly, Padawon.
+or other properties. Test thoroughly, Padawan.
 
 Stay tuned for a blog post on my favorite technique for keeping JavaScript
 object light and fast.
