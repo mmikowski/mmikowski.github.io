@@ -2,35 +2,41 @@
 layout: post
 title: Manipulating jQuery and other array-like objects
 ---
-*Push, pop, slice, splice, shift, and unshift anyone?*
+*Pop, push, slice, splice, shift, and unshift anyone?*
 
 ### Overview
 
-One of the more frustrating aspects of JavaScript are enumerable
-objects that look, smell, and feel like an array, but really are not.
-These objects frequently lack array methods (like `pop`,`shift`,`push`,
-`unshift`) and properties (like `length`).  Three great examples come
-to mind:
+JavaScript has a number of enumerable objects that look, smell, 
+and feel like an array, but unfortantely do not have `Array` in
+their prototype chain.  These objects often lack array methods
+(like `pop`, `push`, `shift`, `slice`, `splice', and `unshift`)
+and properties (like `length`).  These object can be frustrating to
+manipulate.  Three enumerable objects come immediately to mind:
 
 1. jQuery collections.
 2. The `document.styleSheets` enumerable list.
 3. The `arguments` enumerable list
 
-There are two options, discussed below.
+There are at least two options to manipulate these data like real
+arrays: either create a new data structure that **is** a *real array*,
+or manipulate the data in-place.  Both approaches use
+`Array.prototype` methods and `call` or `apply`.
 
 ### Option 1: Convert the list into an array
 
 This one is probably better for `document.styleSheets` and `arguments`, 
-because array manipulatuion of these in-place either is dangerous or
-simply does not work.  Conversion is simple:
+because direct manipulatuion is either dangerous or simply does not work.
+Conversion is simple:
 
-    arg_list = [];
+    var arg_list = [], stylesheet_list = [];
+
     Array.prototype.push.apply( arg_list, arguments );
+    Array.prototype.push.apply( stylesheet_list, document.styleSheets );
 
-And our work is done: `arg_list` is a *real array* and can be manipulated 
-as such.
+Both `arg\_list` and `stylesheet\_list` are *real arrays* that 
+can be maniplated as such.
 
-### Option 2: Use call to manipulate in-place.
+### Option 2: Use `Array.protype` to manipulate data in-place.
 
 This is especially handy for jQuery collections.
 
@@ -46,7 +52,6 @@ This is especially handy for jQuery collections.
       rotateByThree
       ;
 
-    // Used to rotate a list
     rotateByThree = function ( list ) {
       // The following is the same as list.unshift( list.pop() )
       // but works on many more array-like entities
@@ -72,10 +77,10 @@ on array-like objects such as a jQuery collection.  We use
     //
     listPush.apply( $h_list, $h2_list );
 
-Do be aware that if you use these manipulations in-place on array-like 
-objects, you *are* forging into uncharted territory.  The jQuery object
-methods, for example, might get corrupted if it caches the list length
-or other properties. Test thoroughly, Padawan.
+Do be aware that manipulating data in-place on array-like 
+objects can be dangerous.  The jQuery object methods, for example,
+might get corrupted they rely on a cached the list length
+or other properties. Tread lightly and test thoroughly, Padawan.
 
 Stay tuned for a blog post on my favorite technique for keeping JavaScript
 object light and fast.
