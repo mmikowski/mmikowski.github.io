@@ -7,11 +7,12 @@ title: Manipulating jQuery and other array-like objects
 ### Overview
 
 JavaScript has a number of enumerable objects that look, smell, 
-and feel like an array, but unfortunately do not have `Array` in
-their prototype chain.  These objects often lack array methods
-(like `pop`, `push`, `shift`, `slice`, `splice', and `unshift`)
-and properties (like `length`).  These object can be frustrating to
-manipulate.  Three enumerable objects come immediately to mind:
+and feel like arrays but unfortunately do not have `Array` in
+their prototype chain.  These objects usually lack the "true"
+array methods (like `pop`, `push`, `shift`, `slice`, `splice', 
+and `unshift`) and properties (like `length`).  These object 
+can be frustrating to manipulate because we *want* to use Array
+methods and properties.  Three enumerable objects come immediately to mind:
 
 1. jQuery collections.
 2. The `document.styleSheets` enumerable list.
@@ -34,11 +35,13 @@ Creating the new array is usually quite simple:
     Array.prototype.push.apply( stylesheet_list, document.styleSheets );
 
 Both `arg\_list` and `stylesheet\_list` are *real arrays* that 
-can be maniplated as such.
+can be maniplated as such.  Don't forget that there are many
+other handy array methods like `each` or `map` or `reduce`.
 
 ### Option 2: Use `Array.protype` to manipulate data in-place.
 
-This is especially handy for jQuery collections.
+I have found this useful to manipulate jQuery collections.
+Here's an example:
 
     // Module declarations
     var
@@ -49,7 +52,7 @@ This is especially handy for jQuery collections.
       listSplice  = Array.prototype.splice,
       listUnshift = Array.prototype.unshift,
 
-      rotateByThree
+      rotateByThree, $h1
       ;
 
     rotateByThree = function ( list ) {
@@ -60,6 +63,9 @@ This is especially handy for jQuery collections.
       listUnshift.call( list, protoPop.call( list ));
       listUnshift.call( list, protoPop.call( list ));
     };
+
+    $h1 = $( 'h1' );
+    rotateByThree( $h1 );
 
 The function, `rotateByThree` not only works on regular arrays, but also
 on array-like objects such as a jQuery collection.  We use 
@@ -79,8 +85,8 @@ on array-like objects such as a jQuery collection.  We use
 
 Do be aware that manipulating data in-place on array-like 
 objects can be dangerous.  The jQuery object methods, for example,
-might get corrupted they rely on a cached the list length
-or other properties. Tread lightly and test thoroughly, Padawan.
+might get corrupted if they rely on cached property values such
+as list length. Tread lightly and test thoroughly, Padawan.
 
 Stay tuned for a blog post on my favorite technique for keeping JavaScript
 object light and fast.
