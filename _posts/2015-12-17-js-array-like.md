@@ -7,7 +7,7 @@ title: Manipulating jQuery and other array-like objects
 ### Overview
 
 JavaScript has a number of enumerable objects that look, smell, 
-and feel like an array, but unfortantely do not have `Array` in
+and feel like an array, but unfortunately do not have `Array` in
 their prototype chain.  These objects often lack array methods
 (like `pop`, `push`, `shift`, `slice`, `splice', and `unshift`)
 and properties (like `length`).  These object can be frustrating to
@@ -25,8 +25,8 @@ or manipulate the data in-place.  Both approaches use
 ### Option 1: Convert the list into an array
 
 This one is probably better for `document.styleSheets` and `arguments`, 
-because direct manipulatuion is either dangerous or simply does not work.
-Conversion is simple:
+because direct manipulation is either dangerous or simply does not work.
+Creating the new array is usually quite simple:
 
     var arg_list = [], stylesheet_list = [];
 
