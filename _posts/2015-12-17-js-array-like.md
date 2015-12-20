@@ -16,13 +16,13 @@ properties.  Three enumerable objects come
 immediately to mind:
 
 1. jQuery collections
-2. The `document.styleSheets` enumerable list
-3. The `arguments` enumerable list
+2. `document.styleSheets`
+3. `arguments`
 
 There are at least two options to manipulate these objects like real
 arrays: either create a new data structure that **is** a real array,
 or manipulate the data in-place.  Both approaches use
-`Array.prototype` and `call` or `apply`.
+`Array.prototype`.
 
 ### Option 1: Convert the object into an array
 
@@ -49,19 +49,13 @@ Here's an example:
 
     // Module declarations
     var
-      listPop     = Array.prototype.pop,
-      listPush    = Array.prototype.push,
-      listShift   = Array.prototype.shift,
-      listSlice   = Array.prototype.slice,
-      listSplice  = Array.prototype.splice,
-      listUnshift = Array.prototype.unshift,
-
+      listPop = Array.prototype.pop,
       rotateByThree, $h1_list
       ;
 
     rotateByThree = function ( list ) {
-      // The following is the same as list.unshift( list.pop() )
-      // but works on many more array-like entities
+      // The following is the same as list.unshift( list.pop() ) 
+      // but also works on enumerable objects like jQuery collections
       //
       listUnshift.call( list, protoPop.call( list ));
       listUnshift.call( list, protoPop.call( list ));
@@ -72,7 +66,7 @@ Here's an example:
     rotateByThree( $h1_list );
 
 The function, `rotateByThree` not only works on regular arrays, but also
-on array-like objects such as a jQuery collection.  We use
+on array-like objects such as a jQuery collection.  We can use
 `Array.prototype` to do more things, like join two jQuery collections:
 
     var
@@ -88,7 +82,7 @@ on array-like objects such as a jQuery collection.  We use
     //
     listPush.apply( $h1_list, $h2_list );
 
-Do be aware that manipulating data in-place on array-like
+Remember that manipulating data in-place on array-like
 objects can be dangerous.  jQuery methods, for example,
 might get corrupted if they rely on cached property values such
 as list length. Tread lightly and test thoroughly, Padawan.
