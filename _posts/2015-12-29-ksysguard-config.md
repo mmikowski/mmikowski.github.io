@@ -1,24 +1,24 @@
 ---
 layout: post
-title: Using KSysGuard to monitor just about anything
+title: Using KSysGuard
 ---
-*The all-in-one system monitor tool for KDE*
+*System monitor tool for KDE*
 
 ### Overview
 
 **KSysGuard** is a very flexible tool that ships with the
 KDE 5<sup id="a1">[\*](#f1)</sup> desktop for monitoring and managing your
-workstation and I highly recommend it.
+workstation using available sensors.
 
 This post intends to replace the already-very-gentle learning curve
-with a very-*very*-gentle "just look at the pictures, *man*!" guide.
-I will walk you through opening KSysGuard and adding a new monitoring tab
-as I recently did to monitor my CPU and GPU temperatures laptop system.
+with a "just look at the pictures, man!" guide.  I will walk you through
+adding a new monitoring tab as I recently did to monitor my CPU and GPU
+temperatures on my laptop.
 
 ### The use-case
 
 Recently I bought a new [System76 laptop][2] for development work.
-And while it does a great job as a mobile development lab, it
+And while it does a great job as a mobile development workstation, it
 also has caught the attention and admiration of both [Gabe Newell's][3]
 closest friend and advisor - my 9-year-old son - and my 17-year-old nephew.
 The interest may be due to the 100% sRGB IPS panel, GSYNC, the Nvidia GTX 970M
@@ -33,12 +33,12 @@ wasn't being pushed to thermal limits.
 ### Installation
 
 **KSysGuard** has been around for a very long time and is very mature,
-yet I had the RonCo Rotisserie mentality of [set it and forget it][4].
+yet I always have had the RonCo Rotisserie mentality of [set it and forget it][4].
 This time, I decided to document my steps for posterity.
 
-First, let's review the [Kubuntu guide][5].  At the very
-least, we should ensure that we are using Kubuntu backports so that we
-have the latest KDE bug fixes and features.  If **KSysGuard** isn't already
+Before I started I reviewed the [Kubuntu guide][5].  I made sure that the 
+Kubuntu backports repository was enabled so we would have the latest KDE bug
+fixes and features.  If you want to use **KSysGuard** and it isn't already
 installed, `sudo apt-get install ksysguard` should do the trick.
 
 ### Configuration
@@ -56,7 +56,7 @@ information about CPU, memory, and network load:
 
 ![label](/images/2015-12-29/m02.jpg)
 
-But but we want a new tab that shows temperature information.  Luckily, we can
+If we want a new tab that shows temperature information, we can
 add one by selecting `File -> New Tab...`:
 
 ![label](/images/2015-12-29/m03.jpg)
@@ -68,8 +68,8 @@ The image below shows the default configuration for our new tab.
 
 ![label](/images/2015-12-29/m04.jpg)
 
-We modify our tab configuration to give it a more meaningful name, `Temps`,
-and specify a 2-row, 1-column layout.
+We modify our tab configuration to give it a more meaningful name, `Temps`;
+and we specify a 2-row, 1-column layout.
 
 ![label](/images/2015-12-29/m05.jpg)
 
