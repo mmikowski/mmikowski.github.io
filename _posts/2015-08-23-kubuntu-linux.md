@@ -1,6 +1,6 @@
 ---
 layout: post
-title: (K)ubuntu Linux 15.04 for web dev
+title: (K)ubuntu Linux 15.10 for web dev
 ---
 *Who needs Mac or Windows for web development?*
 
@@ -11,9 +11,11 @@ title: (K)ubuntu Linux 15.04 for web dev
 
 Are you a web developer?  Are you interested in running Ubuntu or
 Kubuntu as your development OS? Then you may want to check out the
-[Kubuntu 15.04 Preferred Software and Hardware](https://docs.google.com/spreadsheets/d/1kLIYKYRsan_nvqGSZF-xJNxMkivH7uNdd6F-xY0hAUM/pubhtml)
+[Kubuntu 15.10 Preferred Software and Hardware][1]
 which provides lots of information that can be used to get (K)ubuntu Linux
 running sooner, faster, and better.
+
+**Updated 2015-12-29** from Kubuntu 15.04 to 15.10.
 
 ### The benefits of using Linux
 
@@ -50,19 +52,20 @@ Here are some of the most common:
 - They've seen problems running Linux on certain hardware.
 - Their OS supports tools and enterprise software that they are uncertain are supported by (K)ubuntu.
 
-Yet for those who can overcome these issues, (K)ubuntu Linux can a great developer platform.  Let's address these issues one-by-one.
+Yet for those who can overcome these issues, (K)ubuntu Linux can a great developer platform.
+Let's address these issues one-by-one.
 
 ### Reduce the work
 
-The [Kubuntu 15.04 Preferred Software and Hardware](https://docs.google.com/spreadsheets/d/1kLIYKYRsan_nvqGSZF-xJNxMkivH7uNdd6F-xY0hAUM/pubhtml)
-details lots of information.  While this resource won't configure a (K)ubuntu system for us, it certainly can get it running sooner, faster,and better.  
+The [Kubuntu 15.10 Preferred Software and Hardware][1] details lots of information. 
+While this resource won't configure a (K)ubuntu system for us, it certainly can get it running sooner, faster,and better.  
 
 ### Get compatible hardware
 
 The best (K)ubuntu systems, just like the best Mac or Windows systems, are those built
 specifically to run the OS. The easiest approach is to get a system
-pre-configured with Linux. I recommend [System76](https://system76.com/)
-or the [Dell XPS 13](http://www.dell.com/us/business/p/xps-13-linux/pd).
+pre-configured with Linux. I recommend any [System76][2] system
+or the [Dell XPS 13][3].
 Another approach for the system-builder hobbyists in the audience is to
 build their own systems with Linux compatible hardware.
 
@@ -100,8 +103,10 @@ Changing desktop environments for most people isn't fun.
 We can select a Linux desktop that is similar - but not identical -
 to OSX or Windows.  Here are the desktops I recommend:
 
-- **Windows:** Consider Kubuntu 15.04 with the KDE 5 desktop
-- **OSX:** Consider Ubuntu 15.04 with either the Unity or Gnome
+- **Windows:** Consider Kubuntu 15.10 with the KDE 5 desktop.
+  Remember to use the backports repository!
+
+- **OSX:** Consider Ubuntu 15.10 with either the Unity or Gnome
   interface.
 
 ### Get the tools
@@ -115,25 +120,31 @@ Dropbox, Hipchat, Hangouts, Google Drive (Insync), and many more.  And many popu
 tools such as MongoDB and NodeJS are Linux-first, which means they work
 *best* on Linux.
 
-Steam works very well with (K)ubuntu 15.04 and an Nvidia GPU.  There are now 
-over 1,250 titles available including Shadows of Modor, Counter Strike, Bioshock Infinite,
-Borderlands 2, and the Metro series.  We can have a great development workstation *and* 
-a pretty great home computer the kids can love too.
+Steam works very well with (K)ubuntu 15.10 and an Nvidia GPU.  There are now 
+over 1,500 titles available including Shadows of Modor, Counter Strike G.O.,
+Bioshock Infinite, Borderlands 2, and the Metro series.  We have a great 
+development workstation *and* a great home computer the kids can love too.
 
 Some proprietary packages such as Office and PhotoShop remain unavailable
-for Linux.  But do we really need those tools? I find Gimp is an excellent web graphics
-editor and LibreOffice 5 works just great for spreadsheets and presentations. Gimp can be used to
-edit PSD files and LibreOffice can edit Office documents with generally good fidelity.
-The minor inconvenience of occasional importing one of these documents - for me - is a small
-price to pay for the numerous productivity benefits I see from using Kubuntu as my "daily driver."
-Only you can decide if it's a good choice for you.
+for Linux.  But do we really need those tools? I find Gimp is an excellent
+web graphics editor and LibreOffice 5 works just great for spreadsheets
+and presentations. Gimp can be used to edit PSD files and LibreOffice can
+edit Office documents with generally good fidelity.  The minor 
+inconvenience of occasional importing one of these documents - for me
+- is a small price to pay for the numerous productivity benefits I see 
+from using Kubuntu as my "daily driver." Only you can decide if it's a
+good choice for you.
 
 ### Want to share?
 
-If you decide to give (K)ubuntu a go, you can always use the comments or email me at
-the link below to ask a question or share an experience.  You can also add
-comments to the
-[spreadsheet](https://docs.google.com/spreadsheets/d/1kLIYKYRsan_nvqGSZF-xJNxMkivH7uNdd6F-xY0hAUM/pubhtml)
-which I could then incorporate into later revisions.  Any help would be greatly appreciated!
+If you decide to give (K)ubuntu a go, you can always use the comments 
+on the [spreadsheet][4] or email me at the link below to provide suggestions
+for future revisions.  Any help would be greatly appreciated!
 
 Cheers, Mike
+
+
+[1]:https://docs.google.com/spreadsheets/d/1kLIYKYRsan_nvqGSZF-xJNxMkivH7uNdd6F-xY0hAUM/pubhtml
+[2]:https://system76.com/
+[3]:http://www.dell.com/us/business/p/xps-13-linux/pd
+[4]:https://docs.google.com/spreadsheets/d/1kLIYKYRsan_nvqGSZF-xJNxMkivH7uNdd6F-xY0hAUM
