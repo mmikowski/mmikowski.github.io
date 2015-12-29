@@ -44,39 +44,38 @@ installed, `sudo apt-get install ksysguard` should do the trick.
 ### Configuration
 
 We may either type `ksysguard` at the command line, or use the application
-menu to launch **KSysGuard**` under `Applications > System > System Monitor`.
-Once launched, we should see the default tab similar to the image
-below, showing the process table.  This is a nice graphical process manager,
+menu to launch **KSysGuard** under `Applications > System > System Monitor`.  When the application opens, we should see a `Process Table` tab 
+similar to the image below.  This is a nice graphical process manager,
 but not the focus of our work here today.
 
-![Default tab 0: Process table](/images/2015-12-29/m01.jpg)
+![Process table](/images/2015-12-29/m01.jpg)
 
 The other default tab is the system load.  Here we see usefull
 information about CPU, memory, and network load:
 
-![label](/images/2015-12-29/m02.jpg)
+![System load](/images/2015-12-29/m02.jpg)
 
 If we want a new tab that shows temperature information, we can
 add one by selecting `File -> New Tab...`:
 
-![label](/images/2015-12-29/m03.jpg)
+![New tab](/images/2015-12-29/m03.jpg)
 
 Notice we could have downloaded or imported tabs.  This is handy for sharing
 configurations on many computers.  Something to keep in mind.
 
 The image below shows the default configuration for our new tab. 
 
-![label](/images/2015-12-29/m04.jpg)
+![Tab defaults](/images/2015-12-29/m04.jpg)
 
 We modify our tab configuration to give it a more meaningful name, `Temps`;
 and we specify a 2-row, 1-column layout.
 
-![label](/images/2015-12-29/m05.jpg)
+![Tab settings](/images/2015-12-29/m05.jpg)
 
 Once we enter our configuration, we are presented with our layout of graphs on
 the left, and an array of sensors on the right:
 
-![label](/images/2015-12-29/m06.jpg)
+![Initial layout](/images/2015-12-29/m06.jpg)
 
 The graphs are initially empty, with simply the words `Drop Sensor Here`.  We
 can do just that to get our first graph in place. 
@@ -88,65 +87,65 @@ our Physical CPU temperature sensor and drag it on the first `Drop Sensor
 Here` we see.  The available sensors will vary depending on the computer
 and the software we have installed.
 
-![label](/images/2015-12-29/m07.jpg)
+![Drop first sensor](/imagers/2015-12-29/m07.jpg)
 
-Once we've dragged a property onto the graph area, we can specify the type of
+Once we've dragged a sensor onto the graph area, we can specify the type of
 graph we'd like to see.  Generally, line graphs are best for temperature, as
 not only do we see current temperature, but we can also spot trends.
 
-![label](/images/2015-12-29/m08.jpg)
+![Select line graph](/images/2015-12-29/m08.jpg)
 
 Once we select `Line graph` we are presented with just that.
 
-![label](/images/2015-12-29/m09.jpg)
+![Show line graph](/images/2015-12-29/m09.jpg)
 
 However, we'd like to standardize this graph to work of our expected data.  We
 can select `Properties` from the right-click menu to adjust the graphing
 paramters:
 
-![label](/images/2015-12-29/m10.jpg)
+![Select properties](/images/2015-12-29/m10.jpg)
 
 Now we will adjust our graph.  The first image shows the default presentation.
 
-![label](/images/2015-12-29/m11.jpg)
+![Default graph properites](/images/2015-12-29/m11.jpg)
 
 Our first task is to rename this graph to something a little more useful:
 
-![label](/images/2015-12-29/m13.jpg)
+![Rename graph](/images/2015-12-29/m13.jpg)
 
 Now we specify a reasonable temperature range.  A fixed range is desirable to
 prevent human errors.
 
-![label](/images/2015-12-29/m14.jpg)
+![Adjust graph scale](/images/2015-12-29/m14.jpg)
 
 We leave the grid details as we found them:
 
-![label](/images/2015-12-29/m15.jpg)
+![Graph grid](/images/2015-12-29/m15.jpg)
 
 We also leave our first sensor as we find it.  However, if we wanted to change
 the color or change the precidence of this value, we would do it here:
 
-![label](/images/2015-12-29/m17.jpg)
+![List of sensors in a graph](/images/2015-12-29/m17.jpg)
 
-And here we are, our first CPU temperature monitor has been added.  I believe
+And here we are, our first CPU temperature monitor has been added.  It appears
 this sensor shows the overall CPU temperature. 
 
-![label](/images/2015-12-29/m18.jpg)
+![Graph of overall CPU temperature](/images/2015-12-29/m18.jpg)
 
 Now we can add the individual cores.  We start with Core 0 and drag it to the
 existing graph:
 
-![label](/images/2015-12-29/m19.jpg)
+![Add core 0](/images/2015-12-29/m19.jpg)
 
 And we follow up with the other cores:
 
-![label](/images/2015-12-29/m20.jpg)
-![label](/images/2015-12-29/m21.jpg)
+![Add more cores](/images/2015-12-29/m20.jpg)
+![And more ...](/images/2015-12-29/m21.jpg)
 
 When we are finished, we can see that we have added 5 sensors total to this
 graph, and it is quite useful!
 
-![label](/images/2015-12-29/m22.jpg)
+![All sensors in CPU temperature graph](/images/2015-12-29/m22.jpg)
 
 Now let's tackle the GPU and System graph.
 
@@ -157,34 +156,37 @@ a little more prone to error, as it's not always apparent what sensor applies
 to which.  I discovered which temperature correlated with actual GPU
 temperature by using the [Uningine Heaven][6] benchmark.
 
-![label](/images/2015-12-29/p01.jpg)
+First we drag the temperature sensor from thermal zone 0 to our other graph:
 
-Again we use a line graph:
+![Start the Sys + GPU graph](/images/2015-12-29/p01.jpg)
 
-![label](/images/2015-12-29/p02.jpg)
+Again select a line graph:
 
-As with the CPU graph, we'd like to adjust the scale and titles:
+![Select line graph](/images/2015-12-29/p02.jpg)
 
-![label](/images/2015-12-29/p03.jpg)
+And here is how it first looks:
 
-We again use the `properties` right-click menu to set the same temperature
-scale.
+![Show line graph](/images/2015-12-29/p03.jpg)
 
-![label](/images/2015-12-29/p04.jpg)
+As with the CPU graph, we'd like to adjust the scale and titles.
+We again use the `properties` right-click menu to set the temperature
+scale:
+
+![Adjust Sys + GPU scales](/images/2015-12-29/p04.jpg)
 
 After adjusting the setting, notice how comparisons between the two graphs are
 now much easier:
 
-![label](/images/2015-12-29/p05.jpg)
+![Compare scales](/images/2015-12-29/p05.jpg)
 
-And we can now drag and drop our second value into the graph:
+And we can now drag and drop our second sensor into the graph:
 
-![label](/images/2015-12-29/p06.jpg)
+![Drag second sensor](/images/2015-12-29/p06.jpg)
 
 And there you have it, a nice tab that provides a good summary of important
 system temperatures!
 
-![label](/images/2015-12-29/p07.jpg)
+![Task complete](/images/2015-12-29/p07.jpg)
 
 You can increase the number of available sensors by installing the lm-sensors
 package.  Oh, and there is good news about my laptop:  neither the CPU or the
