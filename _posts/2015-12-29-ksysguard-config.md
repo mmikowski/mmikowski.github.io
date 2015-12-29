@@ -87,7 +87,7 @@ our Physical CPU temperature sensor and drag it on the first `Drop Sensor
 Here` we see.  The available sensors will vary depending on the computer
 and the software we have installed.
 
-![Drop first sensor](/imagers/2015-12-29/m07.jpg)
+![Drop first sensor](/images/2015-12-29/m07.jpg)
 
 Once we've dragged a sensor onto the graph area, we can specify the type of
 graph we'd like to see.  Generally, line graphs are best for temperature, as
