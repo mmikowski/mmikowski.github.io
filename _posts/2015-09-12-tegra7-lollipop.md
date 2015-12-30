@@ -1,13 +1,13 @@
 ---
 layout: post
-title: Fixing Lollipop 5.1 on Tegra Note 7?
+title: Fixing Lollipop 5.1 on the EVGA Tegra Note 7?
 ---
 *OTA 3.0 Screwed the pooch*
 
-![Tegra Note 7 and stylus pimp for the camera](/images/NVIDIA-Tegra-Note-7-420x240.png)
+![Tegra Note 7 and stylus pimp for the camera][1]
 
 ### The problem
-When my wife and I first updated our [Tegra Note 7](http://www.nvidia.com/object/evga-tegra-note-tablet.html) to Lollipop we found this once very-fast, cool, and battery-sipping tablet became unbearably laggy, hot, and power-hungry.
+When my wife and I first updated our [EVGA Tegra Note 7][2] to Lollipop we found this once very-fast, cool, and battery-sipping tablet became unbearably laggy, hot, and power-hungry. 
 
 We found this odd because we own the Shield Portable with the same SoC and 5.1 Lollipop runs *great* on that device.  This is just a guess, but we think the problem of accumulated system or user data slows the little tablet down because the Note 7 only has half the RAM (1GB).
 
@@ -15,13 +15,15 @@ We found this odd because we own the Shield Portable with the same SoC and 5.1 L
 When we first saw the laggy performance and overheating, we performed a factory reset. This did not resolve any of the problems.
 
 ### The solution
-Our initial intent was to download the OTA 3.0 GSM recovery image from [Nvidia downloads page](https://developer.nvidia.com/gameworksdownload) and install it. Unfortunately, the OTA 3.0 link *is broken*.  Instead we decided to load the 2.5 GSM recovery image and then try updating to Lollipop using the OTA process.
+**Important**: This solution only works for the EVGA Tegra Note 7 WiFi model, **TegraNote-P1640**.  Attempting the same solution as I have on different models can brick your device. You can verify your model number by viewing `Settings > About tablet > Model number`. See the [XDA ROMS work][3] from William Rogers for other solutions.
 
-Once we had finished the tablet runs **much** better than the previous Lollipop install.  As an added bonus, if we want to revert to OTA 2.5 (KitKat 4.4) - which is an excellent ROM - we can do so in 10 minutes or so. The entire procedure took less than a half hour.  Here are the steps we took:
+Our initial intent was to download the OTA 3.0 GMS recovery image from [Nvidia downloads page][4] and install it.  While there is a link for the OTA 3.0.0 ROM, the link is broken, and it is for the P1988/P1988W model. Instead we decided to load the "OTA 2.5" image and then try updating to Lollipop using OTA.  And it worked!
 
-1. We unlocked the boot loader and installed the NVIDIA Tegra NOTE7 GMS Recovery OS Image from the [Nvidia downloads page](https://developer.nvidia.com/gameworksdownload). While there *is* a link to the 5.1 OTA ROM, the link *is broken*.  If Nvidia makes the 5.1 image available again, we might try that later.
+Once we had finished the tablet runs **much** better than the previous Lollipop install.  As an added bonus, if we want to revert to  KitKat 4.4 ("OTA 2.5") - which is an excellent ROM - we can do so in 10 minutes or so. The entire procedure took less than a half hour.  Here are the steps we took:
 
-2. We carefully read and followed the [instructions](https://developer.nvidia.com/sites/default/files/akamai/mobile/docs/HowTo-Flash-TN7-Recovery-Image.txt).  I used 'root' user account on Linux to avoid any access permissions issues.  Once we flashed all the images using the `flash-all.sh` script, we had to select `continue` on the tablet's bootloader menu and press the power button to continue with the update.
+1. We unlocked the boot loader using the [instructions][6] and installed the **NVIDIA Tegra NOTE7 GMS Recovery OS Image** (OTA 2.5) from the [Nvidia downloads page][5].
+
+2. We carefully read and followed the [instructions][6] using the `root` account on Linux to avoid any device access permissions issues.  Once we flashed all the images using the `flash-all.sh` script, we had to select `continue` on the tablet's bootloader menu and press the power button to continue with the update.
 
 3. When we signed-in for the first time we disabled `BACKUP & RESTORE` to minimize update time.  We also disabled the `For improved accuracy ...` option to maximize battery life.
 
@@ -29,7 +31,7 @@ Once we had finished the tablet runs **much** better than the previous Lollipop 
 
 5. Immediately after all updates were applied, we clicked on the OTA 3.0 update in the top-left corner of the screen and pressed `Restart and Install`.
 
-6. After the OTA was complete - in other words, Android 5.1 had been installed - we went to `Settings > Backup & Reset` and enabled `Back up my data` and `Automatic restore`.  We also created a power-control shortcut using [these instructions](http://forum.xda-developers.com/nvidia-tegra-note-7/general/attention-how-to-to-power-control-menu-t3164381). We optimized all apps, and we turned off WiFi during sleep. **This is important to maximize battery life and reduce heat**! 
+6. After the OTA was complete - in other words, Android 5.1 had been installed - we went to `Settings > Backup & Reset` and enabled `Back up my data` and `Automatic restore`.  We also created a power-control shortcut using [these instructions][7]. We optimized all apps, and we turned off WiFi during sleep. **This is important to maximize battery life and reduce heat**! 
 
 7. We found that **adding a second account** reduced performance noticeably.  This is probably due to the limited RAM.  Just to be safe, we repeated this procedure using my wife's account as the primary and only account.
 
@@ -41,4 +43,14 @@ One thing I really appreciate about Nvidia is that they *usually* provide some o
 
 So I was really jazzed about the Tegra Note 7 getting the Lollipop upgrade because it had been overlooked for the last year. It's too bad that we had to wrestle with the problem, which I suspect affects the early adopters more than recent purchasers.  I wish Nvidia would do a bit more to *own* this problem, because as the above experience shows, they are so close to having a really great update for almost everyone.
 
+I hope you found this helpful!
 
+Cheers, Mike
+
+[1]:/images/NVIDIA-Tegra-Note-7-420x240.png
+[2]:http://www.nvidia.com/object/evga-tegra-note-tablet.html
+[3]:http://forum.xda-developers.com/nvidia-tegra-note-7/general/nvidia-tegra-note-7-apx-images-t3149839
+[4]:https://developer.nvidia.com/gameworksdownload
+[5]:https://developer.nvidia.com/gameworksdownload
+[6]:https://developer.nvidia.com/sites/default/files/akamai/mobile/docs/HowTo-Flash-TN7-Recovery-Image.txt
+[7]:http://forum.xda-developers.com/nvidia-tegra-note-7/general/attention-how-to-to-power-control-menu-t3164381
