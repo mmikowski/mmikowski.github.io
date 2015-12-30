@@ -9,21 +9,23 @@ title: Fixing Lollipop 5.1 on the EVGA Tegra Note 7?
 ### The problem
 When my wife and I first updated our [EVGA Tegra Note 7][2] to Lollipop we found this once very-fast, cool, and battery-sipping tablet became unbearably laggy, hot, and power-hungry. 
 
-We found this odd because we own the Shield Portable with the same SoC and 5.1 Lollipop runs *great* on that device.  This is just a guess, but we think the problem of accumulated system or user data slows the little tablet down because the Note 7 only has half the RAM (1GB).
+We found this odd because we own the Shield Portable with the same SoC and 5.1 Lollipop runs *great* on that device.  This is just a guess, but we think the problem of accumulated system or user data slows the little tablet down because the Note 7 only has half the RAM (1GB).  
 
-### Reset didn't fix it
-When we first saw the laggy performance and overheating, we performed a factory reset. This did not resolve any of the problems.
+We tried to resolve our issues by performing a factory reset.  Unfortunately this did not work.  However, we were not beaten yet.  Read on to see how we got our little tablet to work well with Lollipop 5.1.
+
+## Disclaimers
+**Important**: This solution is only known to work for my EVGA Tegra Note 7 WiFi model, **TegraNote-P1640** as shown in `Settings > About tablet > Model number`.  **Attempting the solution on a different model could likely brick the device.** There's even a chance attempting the solution on devices *with the same model number* could get bricked.  Proceed at your own risk.
+
+I also encourage readers to review the excellent [XDA ROMS work][3] from William Rogers for alternate solutions that may be a better choice for their model or situation.
 
 ### The solution
-**Important**: This solution only works for the EVGA Tegra Note 7 WiFi model, **TegraNote-P1640**.  Attempting the same solution as I have on different models can brick your device. You can verify your model number by viewing `Settings > About tablet > Model number`. See the [XDA ROMS work][3] from William Rogers for other solutions.
-
 Our initial intent was to download the OTA 3.0 GMS recovery image from [Nvidia downloads page][4] and install it.  While there is a link for the OTA 3.0.0 ROM, the link is broken, and it is for the P1988/P1988W model. Instead we decided to load the "OTA 2.5" image and then try updating to Lollipop using OTA.  And it worked!
 
 Once we had finished the tablet runs **much** better than the previous Lollipop install.  As an added bonus, if we want to revert to  KitKat 4.4 ("OTA 2.5") - which is an excellent ROM - we can do so in 10 minutes or so. The entire procedure took less than a half hour.  Here are the steps we took:
 
-1. We unlocked the boot loader using the [instructions][6] and installed the **NVIDIA Tegra NOTE7 GMS Recovery OS Image** (OTA 2.5) from the [Nvidia downloads page][5].
+1. We unlocked the boot loader using the [instructions][6]
 
-2. We carefully read and followed the [instructions][6] using the `root` account on Linux to avoid any device access permissions issues.  Once we flashed all the images using the `flash-all.sh` script, we had to select `continue` on the tablet's bootloader menu and press the power button to continue with the update.
+2. We then installed the **NVIDIA Tegra NOTE7 GMS Recovery OS Image** (OTA 2.5) from the [Nvidia downloads page][5] per the [instructions][6].  We used the the `root` account on Linux to avoid any device access permissions issues.  Once we flashed all the images using the `flash-all.sh` script, we had to select `continue` on the tablet's bootloader menu and press the power button to continue with the update.
 
 3. When we signed-in for the first time we disabled `BACKUP & RESTORE` to minimize update time.  We also disabled the `For improved accuracy ...` option to maximize battery life.
 
@@ -39,11 +41,12 @@ We have found the upgrade to be very much improved.  The tablet is responsive an
 
 ### Parting thoughts
 
-One thing I really appreciate about Nvidia is that they *usually* provide some of the best Android support outside of the Google Nexus program and Motorola. Our family have no carrier contracts and we own all of our Android phones and tablets - Nvidia, Nexus, Moto, ASUS, and EVGA devices, in that order.
+One thing we really appreciate about Nvidia is that they *usually* provide some of the best Android support outside of the Google Nexus program and Motorola. Our family have no carrier contracts and we own all of our Android phones and tablets - Nvidia, Nexus, Moto, ASUS, and EVGA devices, in that order.
 
-So I was really jazzed about the Tegra Note 7 getting the Lollipop upgrade because it had been overlooked for the last year. It's too bad that we had to wrestle with the problem, which I suspect affects the early adopters more than recent purchasers.  I wish Nvidia would do a bit more to *own* this problem, because as the above experience shows, they are so close to having a really great update for almost everyone.
+So we were really jazzed about the Tegra Note 7 getting the Lollipop upgrade because it had been overlooked for the last year. It's too bad that we had to wrestle with the problem, which we suspect affects the early adopters more than recent purchasers - there is some evidence that more recent Tegra Notes perform very well after the OTA to Lollipop. We wish Nvidia would do a bit more to *own* this problem, because as the above experience shows, they are so close to having a really great update for everyone.
 
-I hope you found this helpful!
+
+I hope you found this useful, or at least interesting!
 
 Cheers, Mike
 
