@@ -47,40 +47,49 @@ other method supported by the Array prototype.
 I have found this useful to manipulate jQuery collections.
 Here's an example:
 
-    // Module declarations
     var
-      listPop = Array.prototype.pop,
-      rotateByThree, $h1_list
+      aryProtoPop     = Array.prototype.pop,
+      aryProtoUnshift = Array.prototype.unshift,
+
+      rotateList, $h1List
       ;
 
-    rotateByThree = function ( list ) {
-      // The following is the same as list.unshift( list.pop() ) 
-      // but also works on enumerable objects like jQuery collections
-      //
-      listUnshift.call( list, protoPop.call( list ));
-      listUnshift.call( list, protoPop.call( list ));
-      listUnshift.call( list, protoPop.call( list ));
+    // BEGIN utility /rotateList/
+    // Moves the last element of the /list/ to the first element.
+    // Will do so /count/ times.  If /count/ is not provided,
+    // will rotate once.
+    //
+    rotateList = function ( arg_list, arg_count ) {
+      var count = arg_count === undefined ? 1 : arg_count;
+
+      for ( i = 0; i < count; i++ ) {
+        aryProtoUnshift.call( arg_list, aryProtoPop.call( arg_list ));
+      }
     };
 
-    $h1_list = $( 'h1' );
-    rotateByThree( $h1_list );
+    $h1List = $( 'h1' );
+    rotateList( $h1List, 3 );
 
-The function, `rotateByThree` not only works on regular arrays, but also
+The function, `rotateList` not only works on regular arrays, but also
 on array-like objects such as a jQuery collection.  We can use
 `Array.prototype` to do more things, like join two jQuery collections:
 
     var
-      listPush = Array.prototype.push,
-      $h1_list, $h2_list
+      aryProtoPush = Array.prototype.push,
+
+      addToList, $h1List, $h2List
       ;
 
-    $h1_list = $( 'h1' );
-    $h2_list = $( 'h2' );
+    addToList = function ( tgt_list, src_list ) {
+      aryProtoPush.apply( tgt_list, src_list );
+    };
 
-    // The following is the same as
-    //   Array.prototype.push.apply( $h1_list, $h2_list );
-    //
-    listPush.apply( $h1_list, $h2_list );
+    $h1List = $( 'h1' );
+    $h2List = $( 'h2' );
+
+    addToList( $h1List, $h2List );
+
+    // $h1List now has $h2List added to it.
 
 Remember that manipulating data in-place on array-like
 objects can be dangerous.  jQuery methods, for example,
