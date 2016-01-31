@@ -17,9 +17,9 @@ Handbook](http://www.drdobbs.com/joltawards/jolt-awards-the-best-books/240169070
 for SPAs.  Yet I have never published an **framework** despite numerous requests.
 
 Why? Because frameworks suck. I respect my peers, and don't want
-to impose silly opinionated restrictions by locking them into an
-opinionated platform that hinders their ability to innovate 
-and build quality software.  Let's look at why.
+to impose silly restrictions by locking them into an opinionated platform 
+that hinders their ability to innovate and build quality software.
+Let's look at how frameworks do just that.
 
 Frameworks and the inversion of control
 ---------------------------------------
@@ -53,11 +53,27 @@ Frameworks these days are approaching or exceeding the complexity of
 [JavaScript-to-X compilers](http://mmikowski.github.io/the_kraken/)
 - with sadly similar results.  If we want to go all-in, we can get a two-fer
 by selecting Angular 2 + TypeScript.  That way we can shoot ourselves in both feet
-instead of one.  Who needs short iteration times anyway?
+instead of one.  Who needs short cycle times anyway?
 
-Been there, got the T-shirt, won't go back
-------------------------------------------
-I once used a framework and had to wait months for a new
+Oh, and don't forget - like JavaScript-to-X compilers - Frameworks DSLs
+aren't the most portable of life skills.  How many developers have moved from 
+YUI to Dojo to Ext to Backbone to Knockout to Knockback to Ember to Angular?
+How about sprinkling some Bootstrap, Sass, TypeScript, CoffeeScipt,
+Cappuccino, HAML, and a few more compile steps in there just for the fun of
+it?  Maybe one is better at learning HTML5, CSS3, JS really well and
+ignoring these tools if and until they need them?
+
+If our overhead for producing working development code is greater than, oh, 5 seconds,
+somebody out there is definitely kicking our ass on cycle times.  That person
+can fail 300 times in an hour.  If it takes 200 failures before success, that
+means that developer will take 40 minutes to resolve the issue.  If our cycle
+time is 5 minutes because of all the compile steps, resolution now will take
+nearly 17 hours, or two full working days, or 72 times as long. Long cycle
+times kill exploration and innovation.
+
+Been there, got the T-shirt, bombed the airport
+-----------------------------------------------
+I once used a framework (not my choice) and had to wait months for a new
 version to support a desired feature. Once the framework was updated,
 I discovered excruciating pain of trying to find and fix all the regressions.
 It wasn't easy, of course, because (a) some of the most dastardly bugs were 
