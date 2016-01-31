@@ -2,7 +2,7 @@
 layout: post
 title: Do you really want an SPA framework?
 ---
-*All you have to do is sell your soul to the framwork maintainer*
+*First, sell your soul to the framework maintainer...*
 
 What's wrong with a Framework?
 ------------------------------
