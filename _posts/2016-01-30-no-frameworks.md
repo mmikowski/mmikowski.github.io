@@ -11,33 +11,15 @@ All my code is available either in commercial applications,
 personal demonstration applications like
 [typebomb](http://michaelmikowski.com/typebomb/),
 [libraries](https://www.npmjs.com/~mikem), or [other shared
-repos](//https://github.com/mmikowski).  But I have never published an
-**framework** despite being the co-author what Dr. Dobb's calls
-the [Master
+repos](//https://github.com/mmikowski).  I am the co-author of 
+the book that Dr. Dobb's calls the [Master
 Handbook](http://www.drdobbs.com/joltawards/jolt-awards-the-best-books/240169070?pgno=5)
-for SPAs.
+for SPAs.  Yet I have never published an **framework** despite numerous requests.
 
-Why?  Because frameworks suck.  And because I respect my peers, and don't want
-to impose silly opinionated restrictions by locking them into a platform
-hinders their ability to innovate and build quality software.
-
-Frameworks these days are approaching the complexity or
-surpassing [JavaScript-to-X compilers](http://mmikowski.github.io/the_kraken/)
-- with sadly similar results.  If you want, you can get a two-fer if you 
-select Angular 2 and Typescript.  That way you can shoot yourself in both feet
-instead of one.  Who needs short iteration times anyway?
-
-Does this mean it is better to write everything from scratch?
--------------------------------------------------------------
-Absolutely not!  My experience is that jQuery and other best-in-class libraries
-are a much better foundation for building a modern SPA instead of the
-framework-of-the-month.  First we can start with a simple and clean
-[SPA architecture, p10][1] as detailed in 
-[Single page web applications, JavaScript end-to-end][2]
-(also available directly from [Manning][3]), and then add libraries
-that are best suited to our application.  Not only do we often
-get more and better capabilities, we also get something Frameworks
-don't offer: **control**.
+Why? Because frameworks suck. I respect my peers, and don't want
+to impose silly opinionated restrictions by locking them into an
+opinionated platform that hinders their ability to innovate 
+and build quality software.  Let's look at why.
 
 Frameworks and the inversion of control
 ---------------------------------------
@@ -52,6 +34,27 @@ a framework's mishmash of solutions of varying quality.  Why, for example, shoul
 need override Backbone's awful templating and sync mechanisms when just removing
 the framework results in simpler and easier to maintain code?
 
+Does this mean we need to write everything from scratch?
+--------------------------------------------------------
+Absolutely not!  My experience is that jQuery and other best-in-class libraries
+are a much better and more complete foundation for building a modern SPA
+compared to the framework-of-the-month.  We can start with a simple and clean
+[SPA architecture, p10][1] as detailed in 
+[Single page web applications, JavaScript end-to-end][2]
+(also available directly from [Manning][3]), and then add libraries
+that are best suited to our application.  We can **leverage** jQuery's maturity,
+performance, and excellent tools instead of **competing** with them.
+Not only do we often get more and better capabilities, we also get 
+something Frameworks don't offer: **control**.
+
+Frameworks and complexity === insanely long cycle times
+-------------------------------------------------------
+Frameworks these days are approaching or exceeding the complexity of
+[JavaScript-to-X compilers](http://mmikowski.github.io/the_kraken/)
+- with sadly similar results.  If we want to go all-in, we can get a two-fer
+by selecting Angular 2 + TypeScript.  That way we can shoot ourselves in both feet
+instead of one.  Who needs short iteration times anyway?
+
 Been there, got the T-shirt, won't go back
 ------------------------------------------
 I once used a framework and had to wait months for a new
@@ -59,8 +62,8 @@ version to support a desired feature. Once the framework was updated,
 I discovered excruciating pain of trying to find and fix all the regressions.
 It wasn't easy, of course, because (a) some of the most dastardly bugs were 
 within the framework itself, and (b) frameworks tend to intermingle display
-and business logic, so testing was tedious and difficult.  Which brings us to
-our next section...
+and business logic, so testing was tedious and difficult.  Which, of course,
+brings us to our next subject...
 
 What about testing?
 -------------------
@@ -70,18 +73,13 @@ simplest of logic. Selenium, ZombieJS, and other intricate solution
 requiring days to test basic logic that *shouldn't require display
 testing at all!*
 
-Ah, but if we avoid Framework and architect our applicaiton properly,
-we can [regression test our application in less than a second][5].
+Ah, but if we avoid the framework lock-in and use a good architecture, 
+we can easily decouple display and business logic so we can 
+[regression test our application in less than a second][5].
 My commit hook for this applicaiton ran the full regression 
-tests and JSLint for all changed files in less than 4 seconds.
-Sure, it's not the NYSE, but the code is certainly non-trivial.
-And I've since scaled it up to event larger applications with similar
-results.
-
-Without the framework lock-in, we control our application, we can easily decouple
-display and business logic and make use simple tools like `nodeunit` for headless testing.
-And we can **leverage** jQuery's maturity, performance, and excellent tools
-instead of **competing** with them.
+tests and JSLint for all changed files in less than 4 seconds
+with eventually over 600 assertions. And I can attest that the architecture
+and testing scales very nicely, both in performance and for distribution of work.
 
 But I want a boiler plate!
 --------------------------
