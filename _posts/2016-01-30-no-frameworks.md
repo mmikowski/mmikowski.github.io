@@ -113,7 +113,7 @@ Here is my current preferred list:
 | DOM + Util   | [jQuery][6]          | A powerful, stable, tight library |
 | AJAX         | [jQuery][6]          | ... but prefer WebSockets, see below |
 | Client Data  | [TaffyDB][7]         | A powerful and flexible SQL-like client data management tool |
-| DynamicCSS   | [PowerCSS][8]        | This package                      |
+| DynamicCSS   | [PowerCSS][8]        | Insanely fast and efficient JS-CSS engine |
 | Linting      | [JSLint][9]          | Avoid stupid mistakes with a commit hook |
 | Events, promises | [Global Events][10] | Use the same event and promise methods for both logical and browser events |
 | Routing      | [uriAnchor][11]      | A jQuery plugin for robust routing that includes support for dependent and independent query arguments |
