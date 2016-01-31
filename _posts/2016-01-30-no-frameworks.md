@@ -69,7 +69,8 @@ can fail 300 times in an hour.  If it takes 200 failures before success, that
 means that developer will take 40 minutes to resolve the issue.  If our cycle
 time is 5 minutes because of all the compile steps, resolution now will take
 nearly 17 hours, or two full working days, or 72 times as long. Long cycle
-times kill exploration and innovation.
+times not only kill productivity, but they also stifle innovation because
+only so many solutions can be tried within any given period of time.
 
 Been there, got the T-shirt, bombed the airport
 -----------------------------------------------
