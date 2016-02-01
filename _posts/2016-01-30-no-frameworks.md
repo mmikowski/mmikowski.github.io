@@ -23,13 +23,15 @@ and build quality software. Let's see why.
 
 Frameworks and the inversion of control
 ---------------------------------------
-When we use libraries **we** control the code instead of being at the mercy of the
-limitations and bugs in the framework-of-the month. This [inversion
+When we the framework-of-the-month, the quality and capabilities of our 
+application are strongly limited by it. This [inversion
 of control][4] is a major impediment in building a a nimble, flexible, testable,
 and maintainable application that can stand the test of time.
-We can swap libraries out when they are updated or better one becomes
-available - **or not** - based on the time and resource we have available.
-We can mix and match the **best-for-our-purpose** libraries instead of using
+
+When we use a sound architecture and libraries instead, however, we can swap 
+libraries out when they are updated or better one becomes
+available. **Or we can decide not to change a thing** if an update doesn't suit 
+our needs. We can mix and match the **best-for-our-purpose** libraries instead of using
 a framework's mishmash of solutions of varying quality.  Why, for example, should one
 need override Backbone's awful templating and sync mechanisms when just removing
 the framework results in simpler and easier to maintain code?
@@ -92,7 +94,7 @@ simplest of logic. Selenium, ZombieJS, and other intricate solution
 requiring days to test basic logic that *shouldn't require display
 testing at all!*
 
-If we *avoid* framework lock-in and use a good architecture, however, 
+When we use a sound architecture and libraries instead, however, 
 we can easily decouple display and business logic so we can 
 [regression test our application in less than a second][5].
 My commit hook for the above application eventually ran the full
