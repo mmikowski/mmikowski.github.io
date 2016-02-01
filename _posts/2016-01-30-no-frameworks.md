@@ -36,16 +36,16 @@ the framework results in simpler and easier to maintain code?
 
 Does this mean we need to write everything from scratch?
 --------------------------------------------------------
-Absolutely not!  My experience is that jQuery and other best-in-class libraries
-are a much better and more complete foundation for building a modern SPA
-compared to the framework-of-the-month.  We can start with a simple and clean
-[SPA architecture, p10][1] as detailed in 
+Absolutely not!  Experience shows that jQuery and other best-in-class
+libraries can be a much better and more complete foundation for building 
+a modern SPA compared to the framework-of-the-month.  We can start with
+a simple and clean [SPA architecture, p10][1] as detailed in 
 [Single page web applications, JavaScript end-to-end][2]
 (also available directly from [Manning][3]), and then add libraries
-that are best suited to our application.  We can **leverage** jQuery's maturity,
-performance, and excellent tools instead of **competing** with them.
-Not only do we often get more and better capabilities, we also get 
-something Frameworks don't offer: **control**.
+that are best suited to our application.  We can **leverage** jQuery's
+maturity, performance, excellent tools, and vast ecosystem instead
+of **competing** with them.  Not only do we often get more and better
+capabilities, we also get something Frameworks don't offer: **control**.
 
 Frameworks and complexity === insanely long cycle times
 -------------------------------------------------------
@@ -63,12 +63,13 @@ Cappuccino, HAML, and a few more compile steps in there just for the fun of
 it?  Maybe one is better at learning HTML5, CSS3, JS really well and
 ignoring these tools if and until they need them?
 
-If our overhead for producing working development code is greater than, oh, 5 seconds,
-somebody out there is definitely kicking our ass on cycle times.  That person
-can fail 300 times in an hour.  If it takes 200 failures before success, that
-means that developer will take 40 minutes to resolve the issue.  If our cycle
-time is 5 minutes because of all the compile steps, resolution now will take
-nearly 17 hours, or two full working days, or 72 times as long. Long cycle
+If our overhead for producing working development code is greater than say,
+oh, 5 seconds, then somebody out there is definitely kicking our ass on 
+cycle times.  That person can fail 300 times in an hour.  If it takes 
+200 failures before success, that developer will take a miniumum of 40 
+minutes to resolve an issue.  If our cycle time is 5 minutes because
+of all the compile overhead, our minimum resolution time for 200 failures
+will be 72x longer: 16.7 hours or over 2 full work-day. Long cycle
 times not only kill productivity, but they also stifle innovation because
 only so many solutions can be tried within any given period of time.
 
@@ -93,11 +94,13 @@ testing at all!*
 If we *avoid* framework lock-in and use a good architecture, however, 
 we can easily decouple display and business logic so we can 
 [regression test our application in less than a second][5].
-My commit hook for the above application eventually ran the full regression 
-suite *and* JSLint for all changed files in less than 4 seconds
-with over 600 assertions and ~95% coverage.  We could refactor and reorganize the code
-at-will because only the most obscure bugs could sneak past the regression tests.
-The architecture and method of testing has scaled very nicely on larger projects too.
+My commit hook for the above application eventually ran the full
+regression suite *and* JSLint for all changed files in less than
+4 seconds with over 600 assertions and ~95% coverage.  We could 
+refactor and reorganize the code *at-will* because only the most
+obscure bugs could sneak past the regression tests.  The 
+architecture and method of testing scales very well on larger 
+projects too.
 
 But I want a boiler plate!
 --------------------------
