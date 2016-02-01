@@ -23,7 +23,7 @@ and build quality software. Let's see why.
 
 Frameworks and the inversion of control
 ---------------------------------------
-When we the framework-of-the-month, the quality and capabilities of our 
+When we use the framework-of-the-month, the quality and capabilities of our 
 application are strongly limited by it. This [inversion
 of control][4] is a major impediment in building a a nimble, flexible, testable,
 and maintainable application that can stand the test of time.
