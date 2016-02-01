@@ -54,23 +54,25 @@ Frameworks these days are approaching or exceeding the complexity of
 by selecting Angular 2 + TypeScript.  That way we can shoot ourselves in both feet
 instead of one.  Who needs short cycle times anyway?
 
-Oh, and don't forget - like JavaScript-to-X compilers - Frameworks DSLs
-aren't the most portable of life skills.  How many developers have moved from 
-YUI to Dojo to Ext to Backbone to Knockout to Knockback to Ember to Angular?
-How about sprinkling some Bootstrap, Sass, TypeScript, CoffeeScipt,
-Cappuccino, HAML, and a few more compile steps in there just for the fun of
-it?  Maybe one is better at learning HTML5, CSS3, JS really well and
-ignoring these tools if and until they need them?
+Well, actually, we do.  If our overhead for producing working development
+code is greater than say, oh, 5 seconds, then somebody out there is
+definitely kicking our ass on cycle times.  That person can fail 300 times
+in an hour.  If it takes 200 failures before success, that developer will
+take a *miniumum* of 40 minutes to resolve an issue.  If *our* cycle time
+is 5 minutes because of all the multi-compile overhead, our minimum time 
+for success will be 72 *times* longer, requiring at least 16.7 hours or over
+two full work-day. Long cycle times not only kill productivity, but they
+also stifle innovation because only so many solutions can be tried within 
+any given period of time.  The key to success is to learning how to fail
+really fast.
 
-If our overhead for producing working development code is greater than say,
-oh, 5 seconds, then somebody out there is definitely kicking our ass on 
-cycle times.  That person can fail 300 times in an hour.  If it takes 
-200 failures before success, that developer will take a miniumum of 40 
-minutes to resolve an issue.  If our cycle time is 5 minutes because
-of all the compile overhead, our minimum resolution time for 200 failures
-will be 72x longer: 16.7 hours or over 2 full work-day. Long cycle
-times not only kill productivity, but they also stifle innovation because
-only so many solutions can be tried within any given period of time.
+Oh, and don't forget Frameworks DSLs aren't the most portable of life skills
+- again just like JavaScript-to-X compilers. How many developers have moved
+from YUI to Dojo to Ext to Backbone to Knockout to Knockback to Ember to 
+Angular?  How about sprinkling some Bootstrap, Sass, TypeScript, CoffeeScipt,
+Cappuccino, HAML, and a few more compile steps in there just for the fun of
+it?  Maybe one is better at learning HTML5, CSS3, JS really well and taking 
+all the noise about these "silver bullets" with a grain of salt.
 
 Been there, got the T-shirt, bombed the airport
 -----------------------------------------------
