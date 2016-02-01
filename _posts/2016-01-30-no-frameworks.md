@@ -16,10 +16,10 @@ the book that Dr. Dobb's calls the [Master
 Handbook](http://www.drdobbs.com/joltawards/jolt-awards-the-best-books/240169070?pgno=5)
 for SPAs.  Yet I have never published an **framework** despite numerous requests.
 
-Why? Because frameworks suck. I respect my peers, and don't want
-to impose silly restrictions by locking them into an opinionated platform 
-that hinders their ability to innovate and build quality software.
-Let's look at how frameworks do just that.
+Why? Because I don't want to impose silly restrictions
+on developers by locking them into a platform that must be opinionated
+and limited.  A framework hinders your ability to innovate
+and build quality software. Let's see why.
 
 Frameworks and the inversion of control
 ---------------------------------------
