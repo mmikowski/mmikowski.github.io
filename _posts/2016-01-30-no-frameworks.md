@@ -4,77 +4,82 @@ title: Do you really want an SPA framework?
 ---
 *First, sell your soul to the framework maintainer...*
 
-What's wrong with a Framework?
-------------------------------
-I author and maintain quite a bit of OSS.
-All my code is available either in commercial applications, 
-personal demonstration applications like
-[typebomb](http://michaelmikowski.com/typebomb/),
-[libraries](https://www.npmjs.com/~mikem), or [other shared
-repos](//https://github.com/mmikowski).  I am the co-author of 
-the book that Dr. Dobb's calls the [Master
-Handbook](http://www.drdobbs.com/joltawards/jolt-awards-the-best-books/240169070?pgno=5)
-for SPAs.  Yet I have never published an **framework** despite numerous requests.
+What's wrong with an SPA Framework?
+-----------------------------------
+I author and maintain quite a bit of software.  Much of my code is available
+in commercial applications (SnapLogic, Qualaroo), personal demonstration
+applications like [typebomb](http://michaelmikowski.com/typebomb/), [OSS libraries
+](https://www.npmjs.com/~mikem), or [other shared repos
+](//https://github.com/mmikowski).  I am the co-author of the book that
+Dr. Dobb's Journal calls the [Master Handbook
+](http://www.drdobbs.com/joltawards/jolt-awards-the-best-books/240169070?pgno=5)
+for SPAs.  Yet I have never published an **SPA framework** despite numerous
+requests.
 
-Why? Because I don't want to impose silly restrictions
-on developers by locking them into a platform that must be opinionated
-and limited.  A framework hinders your ability to innovate
-and build quality software. Let's see why.
+Why? Because I don't want to lock developers into a platform that must be,
+by definition, opinionated and limited.  An SPA framework, [like all
+frameworks](http://martinfowler.com/bliki/InversionOfControl.html),
+hinders our ability to innovate and build quality software. Let's see why.
 
 Frameworks and the inversion of control
 ---------------------------------------
-When we use the framework-of-the-month, the quality and capabilities of our 
-application are strongly limited by it. This [inversion
-of control][4] is a major impediment in building a a nimble, flexible, testable,
-and maintainable application that can stand the test of time.
+When we use the framework-of-the-month, the quality and capabilities of
+our application are [strongly limited by it][4]. This [inversion of
+control](http://martinfowler.com/bliki/InversionOfControl.html) is
+a major impediment in building a a nimble, flexible, testable, and
+maintainable application that can stand the test of time.
 
-When we use a sound architecture and libraries instead, however, we can swap 
-libraries out when they are updated or better one becomes
-available. **Or we can decide not to change a thing** if an update doesn't suit 
-our needs. We can mix and match the **best-for-our-purpose** libraries instead of using
-a framework's mishmash of solutions of varying quality.  Why, for example, should one
-need override Backbone's awful templating and sync mechanisms when just removing
-the framework results in simpler and easier to maintain code?
+When we use a sound architecture and libraries instead, however, we can
+swap libraries out when they are updated or better one becomes available.
+**Or we can decide not to change a thing** if an update doesn't suit our
+needs. We can mix and match the **best-for-our-purpose** libraries instead
+of using a framework's mishmash of solutions of varying quality.  Why,
+for example, should one bother *overriding* the mediocre mechanisms of
+a framework when just removing the framework can results in simpler
+and easier to maintain code?
 
 Does this mean we need to write everything from scratch?
 --------------------------------------------------------
 **Absolutely not.**  jQuery and other best-in-class libraries can provide a
 more capable and complete foundation for building a modern SPA compared
-to the framework-of-the-month.  We can start with
-a simple and clean [SPA architecture, p10][1] as detailed in 
+to the framework-of-the-month.  We can start with a simple and clean
+[SPA architecture, p10][1] as detailed in
 [Single page web applications, JavaScript end-to-end][2]
-(also available directly from [Manning][3]), and then add libraries
-that are best suited to our application.  We can **leverage** jQuery's
-maturity, performance, excellent tools, and vast ecosystem instead
-of **competing** with it.  We also avoid ceding control to a Framework.
+(also available directly from [Manning][3]), and then add libraries that
+are best suited to our application.  We can **leverage** jQuery's maturity,
+performance, excellent tools, and vast ecosystem instead of **competing**
+with it.  We also avoid ceding control of our application to a Framework.
 
 Frameworks and complexity === insanely long cycle times
 -------------------------------------------------------
 Frameworks these days are approaching or exceeding the complexity of
 [JavaScript-to-X compilers](http://mmikowski.github.io/the_kraken/)
-with sadly similar results.  If we want to go all-in, we can get a two-fer
-by selecting Angular 2 + TypeScript.  That way we can shoot ourselves in both feet
-instead of one.  Who needs short cycle times anyway?
+with sadly similar results.  If we want to go all-in, we can get a "two-fer"
+by selecting Angular 2 + TypeScript.  That way we can shoot ourselves in
+**both** feet instead of one and greatly increase our cycle times.
+Who needs short cycle times anyway?
 
-Well, actually, we do.  If our overhead for producing working development
+Well, actually, **we** do.  If our overhead for producing working development
 code is greater than say, oh, 5 seconds, then somebody out there is
-definitely kicking our ass on cycle times.  That person can fail 300 times
-in an hour.  If it takes 200 failures before success, that developer will
-take a *miniumum* of 40 minutes to resolve an issue.  If *our* cycle time
-is 5 minutes because of all the multi-compile overhead, our minimum time 
-for success will be 72 *times* longer, requiring at least 16.7 hours or over
-two full work-day. Long cycle times not only kill productivity, but they
-also stifle innovation because only so many solutions can be tried within 
-any given period of time.  The key to success is to learning how to fail
-really fast.
+definitely kicking our ass on cycle times.  That developer can fail 300 times
+in an hour.  If it takes 200 failures before success, it will take a *miniumum*
+of 40 minutes to resolve an issue with a 5s cycle time.  If *our* cycle time
+is 5 minutes because of all the multi-compile overhead, our minimum time
+for success will be 72 *times* longer, or over two full work-day.  So we can
+pick 40 minutes or 2.1 days to resolve an issue to the same level of
+completeness.  You make the call.
 
-Oh, and don't forget Frameworks DSLs **aren't** the most portable of life skills,
+Long cycle times not only kill productivity, but they also stifle innovation
+because only so many solutions can be tried within any given period of time.
+The key to success is to learning how to fail really fast.
+
+Oh, and don't forget, Frameworks DSLs **aren't** the most portable of life skills,
 just like [JavaScript-to-X compilers](http://mmikowski.github.io/the_kraken/)
 DSLs. How many developers have moved from GWT to YUI to Dojo to Ext to Backbone
 to Closure to Knockout to Knockback to Ember to Angular?  How about sprinkling
 some Bootstrap, Sass, TypeScript, CoffeeScipt,
 Cappuccino, HAML, and a few more compile steps in there just for the fun of
-it?  Maybe one is better at learning HTML5, CSS3, JS really well and taking 
+it?  Maybe one is better at learning HTML5, CSS3, JS really well and taking
 all the noise about these "silver bullets" with a grain of salt.  See [The fog
 of SPA](https://github.com/mmikowski/spa/raw/master/slides/2013-04-02-the_fog_of_spa.pdf).
 
@@ -83,37 +88,36 @@ Been there, got the T-shirt, bombed the airport
 I once used a framework (not my choice) and had to wait months for a new
 version to support a desired feature. Once the framework was updated,
 I discovered excruciating pain of trying to find and fix all the regressions.
-It wasn't easy, of course, because (a) some of the most dastardly bugs were 
+It wasn't easy, of course, because (a) some of the most dastardly bugs were
 within the framework itself, and (b) frameworks tend to intermingle display
 and business logic, so testing was tedious and difficult.  Which, of course,
 brings us to our next subject...
 
 What about testing?
 -------------------
-Testing Single Page-Framework Application
-(SPFA?) often requires an **additional** framework for testing the
-simplest of logic. Selenium, ZombieJS, and other intricate solution
-requiring days to test basic logic that *shouldn't require display
-testing at all.*  Yet there it is. Complexity breeds complexity.
+Testing a Single Page Framework Web Applications (SPFWA?) often requires
+an **additional** framework for testing the simplest of logic. Selenium,
+ZombieJS, and other intricate solutions are often employed to test the most
+basic model logic that *shouldn't require display testing at all.*
+Yet there it is. Complexity breeds complexity.
 
-When we use a sound architecture and libraries instead, however, 
-we can easily decouple display and business logic so we can 
+When we use a sound architecture and libraries instead, however, we can
+easily decouple display and business logic so we can
 [regression test our application in less than a second][5].
-My commit hook for the above application eventually ran the full
-regression suite *and* JSLint for all changed files in less than
-4 seconds with over 600 assertions and ~95% coverage.  We could 
-refactor and reorganize the code *at-will* because only the most
-obscure bugs could sneak past the regression tests.  The 
-architecture and method of testing scales very well on larger 
-projects too.
+My commit hook for the above application eventually ran the full regression
+suite *and* JSLint for all changed files in less than 4 seconds with over
+600 assertions and ~95% coverage.  We could refactor and reorganize the
+code *at-will* because only the most obscure bugs could sneak past the
+regression tests.  The architecture and method of testing scales very
+well on larger projects too.
 
 But I want the comfort of a Framework
 --------------------------------------
-Fear not, Padawan, I plan to release an `npm` module that includes an 
-architecture diagram, some example code, and dependencies to all the 
-libraries I currently favor so anyone can get started on a modern SPA 
+Fear not, Padawan, I plan to release an `npm` module that includes an
+architecture diagram, some example code, and dependencies to all the
+libraries I currently favor so anyone can get started on a modern SPA
 without the constraints of the framework-of-the-month.  If you are interested,
-**let me know** and I'll move faster.  And remember, if you don't like a 
+**let me know** and I'll move faster.  And remember, if you don't like a
 library I've chosen, **you can always swap it out!**
 
 Here is my current preferred list:
