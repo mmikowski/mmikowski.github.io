@@ -52,7 +52,7 @@ Frameworks and complexity === insanely long cycle times
 -------------------------------------------------------
 Frameworks these days are approaching or exceeding the complexity of
 [JavaScript-to-X compilers](http://mmikowski.github.io/the_kraken/)
-- with sadly similar results.  If we want to go all-in, we can get a two-fer
+with sadly similar results.  If we want to go all-in, we can get a two-fer
 by selecting Angular 2 + TypeScript.  That way we can shoot ourselves in both feet
 instead of one.  Who needs short cycle times anyway?
 
