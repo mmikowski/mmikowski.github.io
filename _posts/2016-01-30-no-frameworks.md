@@ -36,16 +36,15 @@ the framework results in simpler and easier to maintain code?
 
 Does this mean we need to write everything from scratch?
 --------------------------------------------------------
-Absolutely not!  Experience shows that jQuery and other best-in-class
-libraries can be a much better and more complete foundation for building 
-a modern SPA compared to the framework-of-the-month.  We can start with
+**Absolutely not.**  jQuery and other best-in-class libraries can provide a
+more capable and complete foundation for building a modern SPA compared
+to the framework-of-the-month.  We can start with
 a simple and clean [SPA architecture, p10][1] as detailed in 
 [Single page web applications, JavaScript end-to-end][2]
 (also available directly from [Manning][3]), and then add libraries
 that are best suited to our application.  We can **leverage** jQuery's
 maturity, performance, excellent tools, and vast ecosystem instead
-of **competing** with them.  Not only do we often get more and better
-capabilities, we also get something Frameworks don't offer: **control**.
+of **competing** with it.  We also avoid ceding control to a Framework.
 
 Frameworks and complexity === insanely long cycle times
 -------------------------------------------------------
