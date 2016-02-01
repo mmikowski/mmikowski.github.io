@@ -93,11 +93,11 @@ testing at all!*
 If we *avoid* framework lock-in and use a good architecture, however, 
 we can easily decouple display and business logic so we can 
 [regression test our application in less than a second][5].
-My commit hook for the linked applicaiton eventually ran the full regression 
-tests and JSLint for all changed files in less than 4 seconds
+My commit hook for the above application eventually ran the full regression 
+suite *and* JSLint for all changed files in less than 4 seconds
 with over 600 assertions and ~95% coverage.  We could refactor and reorganize the code
 at-will because only the most obscure bugs could sneak past the regression tests.
-The architecture and testing has scaled very nicely on larger projects too.
+The architecture and method of testing has scaled very nicely on larger projects too.
 
 But I want a boiler plate!
 --------------------------
