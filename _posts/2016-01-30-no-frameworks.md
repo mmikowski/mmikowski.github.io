@@ -68,13 +68,15 @@ also stifle innovation because only so many solutions can be tried within
 any given period of time.  The key to success is to learning how to fail
 really fast.
 
-Oh, and don't forget Frameworks DSLs aren't the most portable of life skills
-- again just like JavaScript-to-X compilers. How many developers have moved
-from YUI to Dojo to Ext to Backbone to Knockout to Knockback to Ember to 
-Angular?  How about sprinkling some Bootstrap, Sass, TypeScript, CoffeeScipt,
+Oh, and don't forget Frameworks DSLs **aren't** the most portable of life skills,
+just like [JavaScript-to-X compilers](http://mmikowski.github.io/the_kraken/)
+DSLs. How many developers have moved from GWT to YUI to Dojo to Ext to Backbone
+to Closure to Knockout to Knockback to Ember to Angular?  How about sprinkling
+some Bootstrap, Sass, TypeScript, CoffeeScipt,
 Cappuccino, HAML, and a few more compile steps in there just for the fun of
 it?  Maybe one is better at learning HTML5, CSS3, JS really well and taking 
-all the noise about these "silver bullets" with a grain of salt.
+all the noise about these "silver bullets" with a grain of salt.  See [The fog
+of SPA](https://github.com/mmikowski/spa/raw/master/slides/2013-04-02-the_fog_of_spa.pdf).
 
 Been there, got the T-shirt, bombed the airport
 -----------------------------------------------
@@ -92,7 +94,7 @@ Testing Single Page-Framework Application
 (SPFA?) often requires an **additional** framework for testing the
 simplest of logic. Selenium, ZombieJS, and other intricate solution
 requiring days to test basic logic that *shouldn't require display
-testing at all!*
+testing at all.*  Yet there it is. Complexity breeds complexity.
 
 When we use a sound architecture and libraries instead, however, 
 we can easily decouple display and business logic so we can 
@@ -105,8 +107,8 @@ obscure bugs could sneak past the regression tests.  The
 architecture and method of testing scales very well on larger 
 projects too.
 
-But I want a boiler plate!
---------------------------
+But I want the comfort of a Framework
+--------------------------------------
 Fear not, Padawan, I plan to release an `npm` module that includes an 
 architecture diagram, some example code, and dependencies to all the 
 libraries I currently favor so anyone can get started on a modern SPA 
