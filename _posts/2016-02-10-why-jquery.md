@@ -4,7 +4,8 @@ title: Why jQuery?
 ---
 *jQuery: the most useful library we love to hate*
 
-# Why don't people like jQuery?
+JS Stratification across the nation
+===================================
 Recently the JavaScript community appears to have striated into three
 distinct groups:
 
@@ -32,6 +33,8 @@ distinct groups:
 I'm a card-carrying member of **The library liberation front**. 
 Let me explain why.
 
+Vanilla vs. jQuery
+==================
 I have have had the pleasure of writing multiple commercial code bases both
 with and without jQuery and can give you the inside scoop. The first Vanilla
 JS SPA I wrote was the AMD comparison shopping site which went live in 2007.
@@ -46,7 +49,7 @@ released world-wide in 2014. The last I knew it was servicing 100m users per day
 I got to write *everything* in that codebase. Event queues and promises?
 *Wrote 'em*. DOM search mechanisms? *Wrote those too.* Object extend and
 numerous other utilities? *Yep.* And if I had to do it all over again, I
-would do the exact same thing, because *the needs of the client user
+would do the exact same thing, because *the desired user
 experience* determined how the code [was developed and
 deployed](https://www.youtube.com/watch?v=aoH0J6lL2w0).
 
@@ -102,12 +105,17 @@ Overall, jQuery is a wonderfully useful library for certain projects,
 and completely unnecessary in others. We don't ever *need* it, but when
 we *want* a toolkit with excellent quality, stability, familiarity,
 and extensability, jQuery is probably the best way to accelerate our development.
-
 Hopefully **The Vanilla JS gang** can understand my point.
-As for the **The framework country club**, I suggest you
-[spend some time outside of the clubhouse](no-frameworks).
 
-# Rant: Language snobs
+jQuery vs. the Frameworks
+=========================
+I wrote about this in depth a few weeks ago.  Let's just say
+I suggest framework users
+[spend some quality time outside of the clubhouse](no-frameworks).
+
+
+A side note about Language Snobs
+================================
 I find that people who deride jQuery usually aren't so upset with the library,
 but instead with the quality of developers that jQuery tends to attract.
 Because jQuery greatly lowers barriers that have traditionally prevented
@@ -116,14 +124,13 @@ is much lower than those who had to write our own DOM manipulations,
 client-side databases, event queues, etc. This is very similar to how PHP
 developers usually are less adept than C developers.
 
-However, there are great developers using PHP and jQuery and C. This
+However, there are great developers using PHP, jQuery *and* C. This
 language snobbery isn't unfounded but it is quite pronounced. I recently
 interviewed with a start-up CTO who dismissed everyone who wasn't using
-Python as a someone as a 'bad developer'. Of course, this near-sightedness
-only will hurt him, since he is openly hostile to any solution that doesn't 
-involve his beloved language. Until someone writes a web browser with Python
-as it's embedded language, and a Database with native Python data structures,
-nobody's going to write a web app in Python end-to-end.
+Python as a 'bad developer'. He was openly hostile to any solution to
+virtually anything non-Python. Unfortunately, until someone writes a web 
+browser with embedded Python and a Database with native Python data
+structures nobody's going to write a web app in Python end-to-end.
 
 I chose to adopt JavaScript because Node.JS was the natural successor to 
 mod\_perl for writing modular HP/HA web application servers.
@@ -138,6 +145,6 @@ But he could be a fantastic developer that simply started at a company that
 required code written in a framework. Remember, we ultimately don't develop
 *code*, we develop *products* that people use, sometimes millions of times
 a day. We should use the best language and tools for the job, and let the
-snobs titter themselves to irrelevance.
+language snobs titter themselves to irrelevance.
 
 Cheers, Mike
