@@ -48,17 +48,19 @@ but it was big limitation with SPAs back at that time.
 
 My second commercial Vanilla JS product was the Qualaroo universal client,
 released world-wide in 2014. The last I knew it was servicing 100m users per day.
-I got to write *everything* in that codebase. Event queues and promises?
+I got to write *everything*. Event queues and promises?
 *Wrote 'em*. DOM search mechanisms? *Wrote those too.* Object extend and
 numerous other utilities? *Yep.* And if I had to do it all over again, I
-would do the exact same thing, because *the desired user
-experience* determined how the code [was developed and
-deployed](https://www.youtube.com/watch?v=aoH0J6lL2w0).
+would do the exact same thing, because *the desired user experience* 
+determined how the code [was developed and deployed
+](https://www.youtube.com/watch?v=aoH0J6lL2w0).
 
 I am currently working on a Vanilla JS library (PowerCSS), *and* 
 using jQuery for another project. Why? Because one benefits from jQuery,
 and one doesn't. It's as simple as that.
 
+When should we AVOID jQuery?
+============================
 We should *avoid* jQuery when it is very important that the code be as
 light-weight and performant as possible, as with the Qualaroo universal client.
 In that deployment, a *single file smaller than the compressed jQuery library*
@@ -67,6 +69,8 @@ refactor *everything* from the ground up, which provided highly optimized
 code at the expense of time. And we also write regression tests for
 *every* level of the application.
 
+When should we USE jQuery?
+==========================
 We should *use* jQuery when we value development time, a common API, and
 a stable DSL, and a vast, stable ecosystem (plugins). jQuery routines 
 will often be more correct and almost certainly much better tested than any 
@@ -99,21 +103,20 @@ issue than one might think:
    a hover effect took *15 seconds* to show. But the problem wasn't with jQuery 
    selector or manipulation time. If those times had dropped to zero, the
    performance problems wouldn't have budged. Both problems were because
-   the `draggable` algorithm that forced a very costly reflows that we
-   couldn't accept. Also, instead of attaching a click handler to 3,000
+   the `draggable` algorithms forced very costly reflows that we
+   could not accept. Also, instead of attaching a click handler to 3,000
    elements, we attached one to the body and delegated *everything*.
 
 Overall, jQuery is a wonderfully useful library for certain projects, 
 and completely unnecessary in others. We don't ever *need* it, but when
 we *want* a toolkit with excellent quality, stability, familiarity,
-and extensability, jQuery is probably the best way to accelerate our development.
+and extensibility, jQuery is probably the best way to accelerate our development.
 Hopefully **The Vanilla JS gang** can understand my point.
 
 jQuery vs. the Frameworks
 =========================
-I wrote about this in depth a few weeks ago.  Let's just say
-I suggest framework users
-[spend some quality time outside of the clubhouse](no-frameworks).
+I wrote about this in depth a few weeks ago.  Let's just say I suggest framework
+users [spend some quality time outside of the clubhouse](no-frameworks).
 
 
 A side note about Language Snobs
@@ -131,10 +134,10 @@ language snobbery isn't unfounded but it is quite pronounced. I recently
 interviewed with a start-up CTO who dismissed everyone who wasn't using
 Python as a 'bad developer'. He was openly hostile to virtual any solution
 that was non-Python. Unfortunately for him, there is no popular web browser
-that grandma can use on her iPhone that commpiles to Python byte-code.
+that grandma can use on her iPhone that has an embedded Python compiler.
 And there are no popular HP/HA database clusters with native Python data 
-structures of which I am aware.  Apparent his dream of writing
-a web application in Python end-to-end is still at least a few weeks off.
+structures of which I am aware. Apparently his dream of writing
+web applications in Python end-to-end is still at least a few weeks off.
 
 I chose to adopt JavaScript because Node.JS was the natural successor to 
 mod\_perl for writing modular HP/HA web application servers.
