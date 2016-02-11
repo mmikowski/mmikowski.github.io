@@ -6,7 +6,7 @@ title: Why jQuery?
 
 JS Stratification across the nation
 ===================================
-Recently the JavaScript community appears to have striated into three
+Recently the JavaScript community appears to have stratified into three
 distinct groups:
 
 1. **The Vanilla JS Gang** believes all JS code should use only native
