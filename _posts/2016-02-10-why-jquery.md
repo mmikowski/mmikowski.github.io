@@ -37,14 +37,14 @@ Let me explain why.
 
 Vanilla vs. jQuery
 ==================
-I have have had the pleasure of writing multiple commercial code bases both
+I have had the pleasure of writing multiple commercial code bases both
 with and without jQuery and can give you the inside scoop. The first Vanilla
 JS SPA I wrote was the AMD comparison shopping site which went live in 2007.
 Although jQuery 1.0 had been released in August 2006, it was still far from
 a popular or even stable library. And I didn't even know it existed until
 after I finished the project. The site was replaced by a much slower
 but much-more-SEO-friendly site in 2010. Today, the SEO issue is minimal,
-but it was big limitation with SPAs back at that time.
+but it was a big limitation with SPAs back at that time.
 
 My second commercial Vanilla JS product was the Qualaroo universal client,
 released world-wide in 2014. The last I knew it was servicing 100m users per day.
@@ -82,19 +82,21 @@ JQuery routines are highly generic and flexible, and they *can* be much
 slower than Vanilla JS. But there are three reasons why this is less an 
 issue than one might think:
 
-1. Often times, performance is 'good enough'. While we may feel proud that
-   using vanilla JS we can toggle a CSS attribute faster, that doesn't mean
+1. Performance is 'good enough'. While we may feel proud that
+   using Vanilla JS we can toggle a CSS attribute faster, that doesn't mean
    the performance delta is worth worrying about. Also, when you compare jQuery
    to Vanilla JS,
    [make sure you compare the same thing
    ](https://jsperf.com/vanilla-js-v-jquery-hide/11).
+
 2. Since jQuery is a library, not a framework, we can easily write our own
    plugins or routines to provide performance optimized for our situation
    *when it is important*. jQuery routines are general, and therefore
    have to consider many issues that are not present in our situation. For
    example, when you `show` an element in jQuery, it checks things like
-   `z-index` and `opacity` of an element. Perhaps that those aren't condition
+   `z-index` and `opacity` of an element. Perhaps those aren't conditions
    our optimized routines have to worry about.
+
 3. DOM access speed often isn't the problem. For example,
    I once wrote a photo management application that would show 3,000
    thumbnails on screen in multiple scrolling areas. I tried to use jQuery UI
@@ -125,14 +127,14 @@ I find that people who deride jQuery usually aren't so upset with the library,
 but instead with the quality of developers that jQuery tends to attract.
 Because jQuery greatly lowers barriers that have traditionally prevented
 people from developing web applications, their experience and quality as a whole
-is much lower than those who had to write our own DOM manipulations,
+is much lower than those of us who had to write our own DOM manipulations,
 client-side databases, event queues, etc. This is very similar to how PHP
 developers usually are less adept than C developers.
 
 However, there are great developers using PHP, jQuery *and* C. This
 language snobbery isn't unfounded but it is quite pronounced. I recently
 interviewed with a start-up CTO who dismissed everyone who wasn't using
-Python as a 'bad developer'. He was openly hostile to virtual any solution
+Python as a 'bad developer'. He was openly hostile to virtually any solution
 that was non-Python. Unfortunately for him, there is no popular web browser
 that grandma can use on her iPhone that has an embedded Python compiler.
 And there are no popular HP/HA database clusters with native Python data 
