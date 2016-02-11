@@ -129,10 +129,12 @@ developers usually are less adept than C developers.
 However, there are great developers using PHP, jQuery *and* C. This
 language snobbery isn't unfounded but it is quite pronounced. I recently
 interviewed with a start-up CTO who dismissed everyone who wasn't using
-Python as a 'bad developer'. He was openly hostile to any solution to
-virtually anything non-Python. Unfortunately, until someone writes a web 
-browser with embedded Python and a Database with native Python data
-structures nobody's going to write a web app in Python end-to-end.
+Python as a 'bad developer'. He was openly hostile to virtual any solution
+that was non-Python. Unfortunately for him, there is no popular web browser
+that grandma can use on her iPhone that commpiles to Python byte-code.
+And there are no popular HP/HA database clusters with native Python data 
+structures of which I am aware.  Apparent his dream of writing
+a web application in Python end-to-end is still at least a few weeks off.
 
 I chose to adopt JavaScript because Node.JS was the natural successor to 
 mod\_perl for writing modular HP/HA web application servers.
