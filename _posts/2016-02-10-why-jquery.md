@@ -9,31 +9,31 @@ JS Stratification across the nation
 Recently the JavaScript community appears to have striated into three
 distinct groups:
 
-1. **The Vanilla JS gang** believes all JS code should use only native
+1. **The Vanilla JS Gang** believes all JS code should use only native
    constructs. jQuery is avoided because this group thinks it is too slow.
    This group tends to attract experienced developers.
 
-2. **The library liberation front** believe much of their utility code should
+2. **The Library Liberation Front** believe much of their utility code should
    come from popular, well-tested libraries. However, if a desired capability
-   isn't available from existing libraries, a member of **the front** will 
+   isn't available from existing libraries, a member of **The Front** will 
    often *collaborate* with an existing library team to add it.  More
-   radical members of **the front** have been known to publish entire
-   libraries themselves.  Members of **the front** will sometimes avoid library
+   radical members of **The Front** have been known to publish entire
+   libraries themselves.  Members of **The Front** will sometimes avoid library
    calls and write a faster custom solution as needed. 
    This group tends to attract experience developers and, 
    especially since jQuery's arrival, a fair number of neophytes.
 
-3. **The framework country club** believe JS or GUI development is too scary
-   to approach unarmed. Native JS takes a back-seat to an
-  ["it's-our-way-or-the-highway" domain specific language
-  ](2016_2016-01-30-no-framework) which guides the developer into 
-  what the framework creator thinks is best practice. One only has to 
-  consider the Closure framework to see how far off the mark
-  the framework creator can get.  This group tends to attract 
-  less-experienced developers and lots of neophytes.
+3. **The Framework Country Club** believe web client development is 
+   too scary to approach unarmed. Native JS takes a back-seat to an
+   ["it's-our-way-or-the-highway" domain specific language
+   ](2016_2016-01-30-no-framework) which guides the developer into 
+   *what the framework creator thinks* is best practice. One only has to 
+   consider the Closure framework to see how far off the mark
+   the framework creator can get. This group tends to attract 
+   less-experienced developers and lots of neophytes.
 
-I'm a card-carrying member of **The library liberation front**. 
-Let me explain why.
+I'm a card-carrying member of **The Library Liberation Front**,
+and this post explains why.
 
 Vanilla vs. jQuery
 ==================
@@ -114,16 +114,17 @@ Overall, jQuery is a wonderfully useful library for certain projects,
 and completely unnecessary in others. We don't ever *need* it, but when
 we *want* a toolkit with excellent quality, stability, familiarity,
 and extensibility, jQuery is probably the best way to accelerate our development.
-Hopefully **The Vanilla JS gang** can understand my point.
+Hopefully **The Vanilla JS Gang** can understand my point.
 
 jQuery vs. the Frameworks
 =========================
-I wrote about this in depth a few weeks ago.  Let's just say I suggest framework
-users [spend some quality time outside of the clubhouse](no-frameworks).
+I wrote about this in depth a few weeks ago.  I suggest 
+**The framework country club** members [spend some quality time outside of
+the clubhouse](no-frameworks). Sometimes it's very useful to be practiced
+in driving and parking your own car, metaphorically speaking.
 
-
-A side rant about Language Snobs
-================================
+Stop the language snobbery!
+===========================
 I find that people who deride jQuery usually aren't so upset with the library,
 but instead with the quality of developers that jQuery tends to attract.
 Because jQuery greatly lowers barriers that have traditionally prevented
@@ -132,14 +133,18 @@ is much lower than those of us who had to write our own DOM manipulations,
 client-side databases, event queues, etc. This is very similar to how PHP
 developers usually are less adept than C developers.
 
-However, there are great developers using PHP, jQuery *and* C. This
-language snobbery isn't unfounded but it is quite pronounced. I recently
-interviewed with a start-up CTO who dismissed everyone who wasn't using
-Python as a 'bad developer'. He was openly hostile to virtually any solution
-that was non-Python. Unfortunately for him, there is no popular web browser
-that grandma can use on her iPhone that has an embedded Python compiler.
-And there are no popular HP/HA database clusters with native Python data 
-structures of which I am aware. Apparently his dream of writing
+There *are*, however, great developers using PHP. And jQuery. *And* C.
+This language snobbery isn't unfounded - If a JS developer prefers an SPA 
+framework, there is a good chance that he is a JS neophyte. But he could 
+*alternately* be a fantastic developer that simply worked at a company
+where all JS code had to be written to a specific framework.
+
+I recently spoke with a start-up co-founder who dismissed everyone who wasn't using
+Python as a 'bad developer'. Unfortunately for him, there is no popular web browser
+with an embedded Python compiler that Grandma can use on her iPhone.  Python's 
+integration to the browser DOM appears, shall we say, weak at best.
+And I am not aware of any HP/HA database clusters with native Python data 
+structure support or command-line interface. Apparently his dream of writing
 web applications in Python end-to-end is still at least a few weeks off.
 
 I chose to adopt JavaScript because Node.JS was the natural successor to 
@@ -149,12 +154,9 @@ I probably wouldn't have to deal with titters from some Python-snob
 that doesn't know about all my other language experience and considers 
 all JavaScript "disposable."
 
-So can we all grow up just a little and not be language snobs? If a developer
-prefers an SPA framework, chances *are* higher that he is a neophyte.
-But he could be a fantastic developer that simply started at a company that
-required code written in a framework. Remember, we ultimately don't develop
-*code*, we develop *products* that people use, sometimes millions of times
-a day. We should use the best language and tools for the job, and let the
-language snobs titter themselves to irrelevance.
+So can we all grow up just a little and not be language snobs?
+Remember, we ultimately don't develop *code*, we develop *products*
+that people *use*, sometimes millions of times a day. We should use the
+best language for the job and let the snobs titter away into irrelevance.
 
 Cheers, Mike
