@@ -8,24 +8,29 @@ title: Why jQuery?
 Recently the JavaScript community appears to have striated into three
 distinct groups:
 
-1. **The vanilla JS gang** believes all JS code should use only native
+1. **The Vanilla JS gang** believes all JS code should use only native
    constructs. jQuery is avoided because this group thinks it is too slow.
    This group tends to attract experienced developers.
 2. **The library liberation front** believe much of their utility code should
-   come from popular, well-tested libraries. However, if a library providing 
-   doesn't the required capability exist, a member of **the front** will 
-   collaborate with an existing library team to add it, or publish a new
-   library on `npm`. A member of **the front** will sometimes avoid library
+   come from popular, well-tested libraries. However, if a desired capability
+   isn't available from existing libraries, a member of **the front** will 
+   often *collaborate* with an existing library team to add it.  More
+   radical members of **the front** have been known to publish entire
+   libraries themselves.  Members of **the front** will sometimes avoid library
    calls and write a faster custom solution as needed. 
    This group tends to attract experience developers and, 
    especially since jQuery's arrival, a fair number of neophytes.
 3. **The framework country club** believe JS or GUI development is too scary
-   to approach unarmed. Navite JS takes a back-seat to an
+   to approach unarmed. Native JS takes a back-seat to an
   ["it's-our-way-or-the-highway" domain specific language
-  ](2016_2016-01-30-no-framework). This group tends to attract 
+  ](2016_2016-01-30-no-framework) which guides the developer into 
+  what the framework creator thinks is best practice.  
+  One only has to consider the Closure framework to see how far off the mark
+  the framework creator can get.  This group tends to attract 
   less-experienced developers and lots of neophytes.
 
-I'm in group 2 - the Library User. Let me explain why.
+I'm a card-carrying member of **The library liberation front**. 
+Let me explain why.
 
 I have have had the pleasure of writing multiple commercial code bases both
 with and without jQuery and can give you the inside scoop. The first Vanilla
@@ -65,13 +70,13 @@ methods we "hand-roll". Have you ever written the equivalent to
 especially if you want to support anything before IE 10.
 
 JQuery routines are highly generic and flexible, and they *can* be much 
-slower than vanilla JS. But there are three reasons why this is less an 
+slower than Vanilla JS. But there are three reasons why this is less an 
 issue than one might think:
 
 1. Often times, performance is 'good enough'. While we may feel proud that
-   using Vanilla JS we can toggle a CSS attribute faster, that doesn't mean
+   using vanilla JS we can toggle a CSS attribute faster, that doesn't mean
    the performance delta is worth worrying about. Also, when you compare jQuery
-   to vanilla JS,
+   to Vanilla JS,
    [make sure you compare the same thing
    ](https://jsperf.com/vanilla-js-v-jquery-hide/11).
 2. Since jQuery is a library, not a framework, we can easily write our own
@@ -100,7 +105,7 @@ and extensability, jQuery is probably the best way to accelerate our development
 
 Hopefully **The Vanilla JS gang** can understand my point.
 As for the **The framework country club**, I suggest you
-[spend some time outside the clubhouse](no-frameworks).
+[spend some time outside of the clubhouse](no-frameworks).
 
 # Rant: Language snobs
 I find that people who deride jQuery usually aren't so upset with the library,
