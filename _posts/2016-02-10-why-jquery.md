@@ -12,6 +12,7 @@ distinct groups:
 1. **The Vanilla JS gang** believes all JS code should use only native
    constructs. jQuery is avoided because this group thinks it is too slow.
    This group tends to attract experienced developers.
+
 2. **The library liberation front** believe much of their utility code should
    come from popular, well-tested libraries. However, if a desired capability
    isn't available from existing libraries, a member of **the front** will 
@@ -21,12 +22,13 @@ distinct groups:
    calls and write a faster custom solution as needed. 
    This group tends to attract experience developers and, 
    especially since jQuery's arrival, a fair number of neophytes.
+
 3. **The framework country club** believe JS or GUI development is too scary
    to approach unarmed. Native JS takes a back-seat to an
   ["it's-our-way-or-the-highway" domain specific language
   ](2016_2016-01-30-no-framework) which guides the developer into 
-  what the framework creator thinks is best practice.  
-  One only has to consider the Closure framework to see how far off the mark
+  what the framework creator thinks is best practice. One only has to 
+  consider the Closure framework to see how far off the mark
   the framework creator can get.  This group tends to attract 
   less-experienced developers and lots of neophytes.
 
