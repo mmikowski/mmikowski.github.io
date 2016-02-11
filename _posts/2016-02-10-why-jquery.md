@@ -153,7 +153,8 @@ mod\_perl for writing modular HP/HA web application servers.
 But if I had gone with Scala instead (which was a very near thing), 
 I probably wouldn't have to deal with titters from some Python-snob
 that doesn't know about all my other language experience and considers 
-all JavaScript "disposable."
+all JavaScript "disposable."  And yes, I have written a fair amount of 
+code in Python and it's a decent language.
 
 So can we all grow up just a little and not be language snobs?
 Remember, we ultimately don't develop *code*, we develop *products*
