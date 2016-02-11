@@ -20,8 +20,9 @@ distinct groups:
    radical members of **The Front** have been known to publish entire
    libraries themselves.  Members of **The Front** will sometimes avoid library
    calls and write a faster custom solution as needed. 
-   This group tends to attract experience developers and, 
-   especially since jQuery's arrival, a fair number of neophytes.
+   This group tends to attract experienced developers and, 
+   especially since jQuery's arrival, a fair number of less-experienced
+   developers and neophytes.
 
 3. **The Framework Country Club** believe web client development is 
    too scary to approach unarmed. Native JS takes a back-seat to an
@@ -30,7 +31,7 @@ distinct groups:
    *what the framework creator thinks* is best practice. One only has to 
    consider the Closure framework to see how far off the mark
    the framework creator can get. This group tends to attract 
-   less-experienced developers and lots of neophytes.
+   less-experienced developers and neophytes.
 
 I'm a card-carrying member of **The Library Liberation Front**,
 and this post explains why.
