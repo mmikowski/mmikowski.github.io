@@ -55,9 +55,9 @@ would do the exact same thing, because *the desired user experience*
 determined how the code [was developed and deployed
 ](https://www.youtube.com/watch?v=aoH0J6lL2w0).
 
-I am currently working on a Vanilla JS library (PowerCSS), *and* 
-using jQuery for another project. Why? Because one benefits from jQuery,
-and one doesn't. It's as simple as that.
+I am currently using jQuery for a stealth project, and *not* using
+it for an exciting new library called PowerCSS. Why? Because one benefits from
+jQuery, and the other doesn't. It's as simple as that.
 
 When should we AVOID jQuery?
 ============================
