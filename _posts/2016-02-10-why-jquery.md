@@ -100,14 +100,15 @@ issue than one might think:
 3. DOM access speed often isn't the problem. For example,
    I once wrote a photo management application that would show 3,000
    thumbnails on screen in multiple scrolling areas. I tried to use jQuery UI
-   `draggable` to drag and drop between these windows, and *it took 45 seconds
+   `draggable` to drag and drop between the scroll areas, and *it took 45 seconds
    to process*. A very similar issue arose when highlight a selected element:
    a hover effect took *15 seconds* to show. But the problem wasn't with jQuery 
    selector or manipulation time. If those times had dropped to zero, the
    performance problems would have barely budged. Both problems were because
    the `draggable` algorithms forced very costly reflows that we
-   could not accept. Also, instead of attaching a click handler to 3,000
+   could not accept. Also, instead of adding a click handler each of 3,000
    elements, we attached one to the body and delegated *everything*.
+   This smarter approach got those times down to 1s and .1s respectively.
 
 Overall, jQuery is a wonderfully useful library for certain projects, 
 and completely unnecessary in others. We don't ever *need* it, but when
