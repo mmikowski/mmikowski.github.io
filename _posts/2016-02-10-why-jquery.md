@@ -66,15 +66,15 @@ light-weight and performant as possible, as with the Qualaroo universal client.
 In that deployment, a *single file smaller than the compressed jQuery library*
 provided the entire application, data, images, and CSS. We got to write or
 refactor *everything* from the ground up, which provided highly optimized
-code at the expense of time. And we also write regression tests for
+code at the expense of time. And we also got to write regression tests for
 *every* level of the application.
 
 When should we USE jQuery?
 ==========================
-We should *use* jQuery when we value development time, a common API, and
-a stable DSL, and a vast, stable ecosystem (plugins). jQuery routines 
-will often be more correct and almost certainly much better tested than any 
-methods we "hand-roll". Have you ever written the equivalent to 
+We should *use* jQuery when we value development time, a stable and well-known
+DSL, an extensible architecture, and a vast, stable ecosystem (plugins).
+jQuery routines will often be more correct and almost certainly much better 
+tested than any methods we "hand-roll". Have you ever written the equivalent to 
 `jQuery.ready()`? I have, and trust me, it's a lot easier just typing `$()`,
 especially if you want to support anything before IE 10.
 
@@ -95,14 +95,14 @@ issue than one might think:
    example, when you `show` an element in jQuery, it checks things like
    `z-index` and `opacity` of an element. Perhaps that those aren't condition
    our optimized routines have to worry about.
-3. Optimizing DOM manipulation is often solving the wrong problem. For example,
+3. DOM access speed often isn't the problem. For example,
    I once wrote a photo management application that would show 3,000
    thumbnails on screen in multiple scrolling areas. I tried to use jQuery UI
    `draggable` to drag and drop between these windows, and *it took 45 seconds
    to process*. A very similar issue arose when highlight a selected element:
    a hover effect took *15 seconds* to show. But the problem wasn't with jQuery 
    selector or manipulation time. If those times had dropped to zero, the
-   performance problems wouldn't have budged. Both problems were because
+   performance problems would have barely budged. Both problems were because
    the `draggable` algorithms forced very costly reflows that we
    could not accept. Also, instead of attaching a click handler to 3,000
    elements, we attached one to the body and delegated *everything*.
@@ -119,7 +119,7 @@ I wrote about this in depth a few weeks ago.  Let's just say I suggest framework
 users [spend some quality time outside of the clubhouse](no-frameworks).
 
 
-A side note about Language Snobs
+A side rant about Language Snobs
 ================================
 I find that people who deride jQuery usually aren't so upset with the library,
 but instead with the quality of developers that jQuery tends to attract.
