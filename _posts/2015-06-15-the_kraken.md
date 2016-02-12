@@ -61,3 +61,5 @@ But that day isn't here.  JavaScript is the native language of the browser.  And
 This post was originally published on [Linked-in](https://www.linkedin.com/pulse/web-application-kraken-x-to-javascript-compilers-michael-mikowski)
 
 Cheers, Mike
+
+
