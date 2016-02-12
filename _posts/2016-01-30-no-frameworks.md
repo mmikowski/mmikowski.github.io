@@ -138,6 +138,11 @@ Here is my current preferred list:
 | Touch        | [Unified events][16] | Unified desktop and touch events  |
 | WebSockets   | [Socket io][17]      | The WebSockets protocol is faster and more flexible than AJAX for most applications. Consider using [pure websockets][18] client with a [websocket][19] server on a NodeJs with modern browsers (IE10+) |
 
+Some final thoughts
+-------------------
+I recently saw [this article on AngularJS][20] which echo's many of the issues
+discussed above.
+
 Cheers, Mike
 
 
@@ -162,5 +167,4 @@ END
 [17]:http://socket.io
 [18]:https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API/Writing_WebSocket_client_applications
 [19]:https://www.npmjs.com/package/websocket
-[20]:http://absurdjs.com/
-[21]:http://www.responsivejs.com/
+[20]:https://medium.com/@mnemon1ck/why-you-should-not-use-angularjs-1df5ddf6fc99#.wivhdcf4g
