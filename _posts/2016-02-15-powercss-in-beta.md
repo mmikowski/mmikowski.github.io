@@ -13,7 +13,7 @@ PowerCSS uses merging, caching, compression, and double-buffering to exceed
 the speed and flexibility of static CSS.
 
 The code is approaching Beta as most features are now implemented.
-The quite thorough documentation and code are available from [npm
+The code and core documentation are available from [npm
 ](https://www.npmjs.com/package/powercss). We recommend you
 clone the [GitHub repository](https://github.com/mmikowski/powercss)
 repo and browse through the examples.
