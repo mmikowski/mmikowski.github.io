@@ -1,8 +1,8 @@
 ---
 layout: post
-title: PowerCSS now approaching beta code
+title: PowerCSS approaching Beta
 ---
-*Adjust application style for every user*
+*Dump {less} and Sass and create custom styles for every user*
 
 Today I am taking the wraps off of PowerCSS, an all-new OSS JS
 library that provides dynamic CSS techniques that [I've advocated
@@ -20,6 +20,7 @@ examples too.
 
 I'd write more, but honestly, I'm pooped!  There's lot of documentation and
 four examples already on the site, and I'm hoping to complete the features
-Feedback and help are always welcome!
+in the following week.  As always, constructive feedback, question, and 
+help are always welcome!
 
 Cheers, Mike
