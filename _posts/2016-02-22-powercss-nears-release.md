@@ -46,7 +46,7 @@ all-new code with many new capabilities and optimizations:
 - **Familiar workflow** - Virtual stylesheets and virtual cascades are used
   to minimize the effort for CSS experts.
 - **Highly optimized CSS** - Only **one single stylesheet** is used
-  for all application styling *and* umerous redundancies are removed
+  for all application styling *and* numerous redundancies are removed
   during the preparation of the CSS. As a result the browser rendering
   engine can work much more efficiently.
 - **Highly compressible** - PowerCSS can be compressed to a fraction of static CSS.
