@@ -29,15 +29,20 @@ updates, example implementations, and regression tests. We hope to complete
 those tasks this week.
 
 For those that came in late, PowerCSS provides a fresh approach to create
-dynamic CSS on demand. [I advocated CSS double-buffering years ago
-](https://www.youtube.com/watch?v=rnkMjzhxw4s). PowerCSS, however, is
-all-new code with many new capabilities and optimizations:
+dynamic CSS on demand. [I advocated CSS double-buffering 
+](https://www.youtube.com/watch?v=rnkMjzhxw4s) years ago, but PowerCSS is
+all-new code with many additional capabilities and optimizations:
 
+- **MIT license**
+- **No dependencies**
+- **Namespaced** - PowerCSS plays well with jQuery, other libraries,
+  and third-party JavaScript.
 - **Pure JS** - Remove the need for **any** static CSS files.
 - **Real-time styling** - Application control of CSS enables custom 
   styling for every user of your application. For example, adjust
-  application styling based on device capabilities,
-  device orientation, GPS coordinates, ambient lightr, and temperature.
+  application styling based on device (capabilities, orientation and size),
+  GPS coordinates, and ambient conditions (light, temperature, time of day,
+  heart rate).
 - **Double-buffering** is automatic and minimizes page re-flows. It can speed up
   some styling changes by more than 10x.
 - **Merging and caching** - Intelligent time-based minimal processing
@@ -45,17 +50,14 @@ all-new code with many new capabilities and optimizations:
 - **Mixins** at multiple levels - virtual stylesheet, virtual cascade, and global.
 - **Familiar workflow** - Virtual stylesheets and virtual cascades are used
   to minimize the effort for CSS experts.
-- **Highly optimized CSS** - Only **one single stylesheet** is used
-  for all application styling *and* numerous redundancies are removed
-  during the preparation of the CSS. As a result the browser rendering
-  engine can work much more efficiently.
+- **Highly optimized CSS** - PowerCSS presents only **one stylesheet**
+  for the browser rendering engine to use, and numerous redundancies are removed
+  during its preparation. As a result the browser rendering engine can work much
+  more efficiently.
 - **Highly compressible** - PowerCSS can be compressed to a fraction of static CSS.
 - **Quality code** - Expertly written and documented.  Passes JSLint as a
   commit hook.  We plan to include regression tests as a commit hook 
   prior to 1.x release.
-- **No dependencies**
-- **MIT license**
-- **Namespaced** to play well with others.
 
 Constructive feedback, question, and help are always welcome!
 
