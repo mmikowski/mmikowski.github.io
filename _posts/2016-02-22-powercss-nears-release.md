@@ -29,7 +29,7 @@ updates, example implementations, and regression tests. We hope to complete
 those tasks this week.
 
 For those that came in late, PowerCSS provides a fresh approach to create
-dynamic CSS on demand. [I advocated the CSS double-buffering years ago
+dynamic CSS on demand. [I advocated CSS double-buffering years ago
 ](https://www.youtube.com/watch?v=rnkMjzhxw4s). PowerCSS, however, is
 all-new code with many new capabilities and optimizations:
 
