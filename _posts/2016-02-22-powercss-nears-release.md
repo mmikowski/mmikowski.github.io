@@ -24,7 +24,7 @@ in half while adding many additional capabilities.  The documentation and exampl
 have also been expanded and updated. We are especially proud of
 **The PowerCSS Cookbook** section.
 
-The work remaining between 0.5.x and 1.0.x release is some documentation 
+The work remaining between 0.5.x and 1.0.x release includes documentation 
 updates, example implementations, and regression tests. We hope to complete
 those tasks this week.
 
