@@ -49,7 +49,7 @@ all-new code with many new capabilities and optimizations:
   for all application styling *and* umerous redundancies are removed
   during the preparation of the CSS. As a result the browser rendering
   engine can work much more efficiently.
-- **Highly compressable** - PowerCSS can be compressed to a fraction of static CSS.
+- **Highly compressible** - PowerCSS can be compressed to a fraction of static CSS.
 - **Quality code** - Expertly written and documented.  Passes JSLint as a
   commit hook.  We plan to include regression tests as a commit hook 
   prior to 1.x release.
