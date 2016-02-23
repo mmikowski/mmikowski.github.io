@@ -20,7 +20,7 @@ for a stable API, your wait is over.
 
 As of version 0.5.x, we consider the library feature complete.
 This version saw our last big API overhaul, where we cut the number of methods
-in half while adding many additional capabilities.  The documentation and examples
+in half while adding many additional capabilities. The documentation and examples
 have also been expanded and updated. We are especially proud of
 **The PowerCSS Cookbook** section.
 
@@ -49,14 +49,14 @@ all-new code with many additional capabilities and optimizations:
   only changes the virtual cascades that need it.
 - **Mixins** at multiple levels - virtual stylesheet, virtual cascade, and global.
 - **Familiar workflow** - Virtual stylesheets and virtual cascades are used
-  to minimize the effort for CSS experts.
+  to minimize the transition for CSS veterans.
 - **Highly optimized CSS** - PowerCSS presents only **one stylesheet**
   for the browser rendering engine to use, and numerous redundancies are removed
   during its preparation. As a result the browser rendering engine can work much
   more efficiently.
 - **Highly compressible** - PowerCSS can be compressed to a fraction of static CSS.
-- **Quality code** - Expertly written and documented.  Passes JSLint as a
-  commit hook.  We plan to include regression tests as a commit hook 
+- **Quality code** - Expertly written and documented. Passes JSLint as a
+  commit hook. We plan to include regression tests as a commit hook 
   prior to 1.x release.
 
 Constructive feedback, question, and help are always welcome!
