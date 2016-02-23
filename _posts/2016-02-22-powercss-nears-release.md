@@ -37,7 +37,7 @@ all-new code with many new capabilities and optimizations:
 - **Real-time styling** - Application control of CSS enables custom 
   styling for every user of your application. For example, adjust
   application styling based on device capabilities,
-  device orientation, GPS coordinates, ambient lightrand temperature.
+  device orientation, GPS coordinates, ambient lightr, and temperature.
 - **Double-buffering** is automatic and minimizes page re-flows. It can speed up
   some styling changes by more than 10x.
 - **Merging and caching** - Intelligent time-based minimal processing
