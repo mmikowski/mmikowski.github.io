@@ -59,6 +59,6 @@ all-new code with many additional capabilities and optimizations:
   commit hook. We plan to include regression tests as a commit hook 
   prior to 1.x release.
 
-Constructive feedback, question, and help are always welcome!
+Constructive feedback, question, and collaborators are always welcome!
 
 Cheers, Mike
