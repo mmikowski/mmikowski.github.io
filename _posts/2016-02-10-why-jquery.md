@@ -27,7 +27,7 @@ distinct groups:
 3. **The Framework Country Club** believe web client development is 
    too scary to approach unarmed. Native JS takes a back-seat to an
    ["it's-our-way-or-the-highway" domain specific language
-   ](2016_2016-01-30-no-framework) which guides the developer into 
+   ](../no-frameworks) which guides the developer into 
    *what the framework creator thinks* is best practice. One only has to 
    consider the Closure framework to see how far off the mark
    the framework creator can get. This group tends to attract 
@@ -121,7 +121,7 @@ jQuery vs. the Frameworks
 =========================
 I wrote about this in depth a few weeks ago.  I suggest 
 **The framework country club** members [spend some quality time outside of
-the clubhouse](no-frameworks). Sometimes it's very useful to be practiced
+the clubhouse](../no-frameworks). Sometimes it's very useful to be practiced
 in driving and parking your own car, metaphorically speaking.
 
 Stop the language snobbery!
