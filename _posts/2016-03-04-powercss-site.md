@@ -8,7 +8,7 @@ title: PowerCSS website now online
 
 PowerCSS is fast approaching 1.0.x release, and we've launched
 a dedicated site, [powercss.org][2]. It is styled with PowerCSS
-(what else?) and hase live links to five examples. It also links to 
+(what else?) and has live links to five examples. It also links to 
 both the [github][3] and [npm][4] sites.
 
 Check out all the advantages on [powercss.org][2].
