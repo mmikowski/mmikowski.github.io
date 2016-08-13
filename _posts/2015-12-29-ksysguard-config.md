@@ -199,7 +199,7 @@ Cheers, Mike
 
 #### Footnotes
 <a id="f1">\*</a> Yes, I know that technically there isn't a "KDE 5 desktop".
-For the pendandtic turds in the crowd, I'm running Plasma 5.5 / KDE Frameworks 5.15.0 / KDE applications 5.0.8.  There, happy now?[↩](#a1)
+For the pedandtic turds in the crowd, I'm running Plasma 5.5 / KDE Frameworks 5.15.0 / KDE applications 5.0.8.  There, happy now?[↩](#a1)
 
 [2]:https://system76.com/laptops/oryx
 [3]:https://en.wikipedia.org/wiki/Gabe_Newell
