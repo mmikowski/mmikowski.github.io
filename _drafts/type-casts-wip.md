@@ -1,22 +1,33 @@
----
+--
 layout: post
-title: TypeCasting in JavaScript
+title: TypeCasting in JavaScript, Part I
 
-![TypeCast in JS and keep your soul](/images/2016-11-14-typecast-01.jpg)
+![Typecast using native JavaScript, will it save your soul?][0]
 ---
 
-*TypeCast in JavaScript without losing your soul*
 
-# Overview
+
+
+[Hi_Score][1] is a library system that I've been constructing for a little
+while now that embodies many of the hard-won lessons I've accumulated from
+years of commercial SPA development.  It's not a framework, and its not
+complete, but I'm using it currently as the foundation of all my projects.
+[Installation][2] is simple: `npm install hi_score]`. The
+The
+README
+gives you the rest o
 *JSDoc vs. TypeScript vs. `hi_score` cast functions*
 
-We don't need cede control of our application to complex frameworks like
-TypeScript or Closure to ensure type safety.  Instead, we can solve most JS
-type issues in **two** simple steps that will actually accelerate development
-and enhance collaboration.
+Do we need to cede control of our application to complex frameworks like
+TypeScript or Closure to ensure type safety with JavaScript?  Well, I
+haven't. Instead I've solved most variable type challenges by using two
+simple rule that that accelerate and enhance collaboration:
 
-- Name your variables for type, and
-- Use `cast` methods to enforce type.
+1. Name your variables for type.
+2. Use `cast` methods to enforce type for function arguments and other
+external data.
+
+I will try to make this
 
 ### 1. Name your variables for type
 It's easy to name variables for type by adding a 2-4 character suffix.
@@ -127,10 +138,8 @@ same values as the W3Schools chart:
 | undefined    | -    | -  | -   | -  | -    | -   | -   | -   | -        |
 | {}           | -    | -  | -   | -  | -    | {}  | -   | -   | -        |
 
-
-Cheers, Mike
-[0]:https://github.com/mmikowski/hi_score
-[1]:https://www.npmjs.com/package/hi_score
-[2]:http://www.w3schools.com/js/js_type_conversion.asp
-
+[0]:/images/2016-11-14-typecast-02.jpg
+[1]:https://github.com/mmikowski/hi_score
+[2]:https://www.npmjs.com/package/hi_score
+[3]:http://www.w3schools.com/js/js_type_conversion.asp
 
