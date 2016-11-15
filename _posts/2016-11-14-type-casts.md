@@ -2,7 +2,7 @@
 layout: post
 title: Typecasting with native JavaScript
 
-![Typecasting with Native JavaScript][0]
+![Typecasting with Native JavaScript](/images/2016-11-14-typecast-02.jpg)
 ---
 *Why everybody wants type safety and how to get it*
 
@@ -420,8 +420,8 @@ API documentation is easy and recommended:
 ```
 
 Remember where we suggested you shouldn't copy our first code example because
-it was "awful"?  Now the code is well documented, readable, and maintainable.
-We recommend copying this code.
+it was "awful"?  Now the code is impervious to type errors, readable, maintainable,
+and well documented. This is copy-worthy code.
 
 ## Test the APIs
 Using tools like `Istanbul` and `nodeunit` we can now easily test to the API
@@ -453,7 +453,6 @@ in the comments.
 
 Cheers, Mike
 
-[0]:/images/2016-11-14-typecast-02.jpg
 [1]:https://github.com/mmikowski/hi_score
 [2]:https://www.npmjs.com/package/hi_score
 [3]:https://flowtype.org/
