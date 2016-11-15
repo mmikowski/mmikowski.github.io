@@ -65,7 +65,7 @@ definitely kicking our ass on cycle times.  That developer can fail 300 times
 in an hour.  If it takes 200 failures before success, it will take a *miniumum*
 of 40 minutes to resolve an issue with a 5s cycle time.  If *our* cycle time
 is 5 minutes because of all the multi-compile overhead, our minimum time
-for success will be 72 *times* longer, or over two full work-day.  So we can
+for success will be 72 *times* longer, or over two full work-days.  So we can
 pick 40 minutes or 2.1 days to resolve an issue to the same level of
 completeness.  You make the call.
 
@@ -140,7 +140,7 @@ Here is my current preferred list:
 
 Some final thoughts
 -------------------
-I recently saw [this article on AngularJS][20] which echo's many of the issues
+I recently saw [this article on AngularJS][20] which echoes many of the issues
 discussed above.
 
 Cheers, Mike
