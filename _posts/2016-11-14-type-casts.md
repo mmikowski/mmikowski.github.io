@@ -4,7 +4,7 @@ title: Type safety with native JavaScript
 ---
 *Why everybody wants type safety and how to get it*
 
-![Typecast example](/images/2016-11-14-typecast-02.jpg)
+![Typecast example](/images/2016-11-14-typecast-02.png)
 
 # Overview
 Many tools like IDEs, frameworks, libraries, and linters try to provide
@@ -44,14 +44,13 @@ code**, so please don't copy it. We'll fix it up as we go along.
     doStuff('-3', reports)
 ```
 
-Well that didn't take long. First, let's identify the initial **type error**:
-the first argument we provided to the `repeats` function invocation. This value
-should be an integer, but we instead provide a string. Then all hell breaks
-loose.
+That didn't take long! The initial **type error** occurs when we provide the
+first argument to the `repeats` function invocation. This value should be an
+integer, but we instead provide a string. Then all hell breaks loose.
 
-Thanks this initial type error, the `doStuff` invocation starts a
+Thanks this initial type error, the `doStuff` invocation starts an 'endless'
 loop that will rather quickly consume all available resources within its
-execution environment. Eventually this result in a force-kill of a of a
+execution environment. Eventually this results in a force-kill of a
 NodeJS process, or a browser tab, or a browser, or the host OS.
 
 If we watch the progression of the value of `counts` in the `while` loop we
