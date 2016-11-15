@@ -44,9 +44,9 @@ code**, so please don't copy it. We'll fix it up as we go along.
     doStuff('-3', reports)
 ```
 
-Well that didn't take long.  First, let's identify the initial **type error**:
+Well that didn't take long. First, let's identify the initial **type error**:
 the first argument we provided to the `repeats` function invocation. This value
-should be an integer, but we instead provide a string.  Then all hell breaks
+should be an integer, but we instead provide a string. Then all hell breaks
 loose.
 
 Thanks this initial type error, the `doStuff` invocation starts a
@@ -55,9 +55,9 @@ execution environment. Eventually this result in a force-kill of a of a
 NodeJS process, or a browser tab, or a browser, or the host OS.
 
 If we watch the progression of the value of `counts` in the `while` loop we
-see the following series: `'-3', '-31', '-311', '-3111', ...`.  The test
+see the following series: `'-3', '-31', '-311', '-3111', ...`. The test
 condition `counts < 0` *does* coerce the `counts` string into a number, but
-that value is always less than 0.  That's because the expression `counts+=1`
+that value is always less than 0. That's because the expression `counts+=1`
 always *appends* the string `'1'` to the `counts` string.
 
 # Why do we want type safety?
@@ -114,8 +114,8 @@ operators results get surprising and confusing fast:
 
 Other languages have less complex behaviors because have stricter type coercion
 rules, *sigals* to indicate type (like `$`, `@` , and `%` in Perl and PHP), and
-fewer polymorphic operators.  For example, Perl and PHP use the `.` operator to
-join strings.  Trying to `+` two strings always returns a number.
+fewer polymorphic operators. For example, Perl and PHP use the `.` operator to
+join strings. Trying to `+` two strings always returns a number.
 
 ### No static checking
 Many languages provide some level of static type checking at compile time.
@@ -141,7 +141,7 @@ application until we resolved these compile errors:
 The big advantage to static checking is it removes potential performance
 bottlenecks: every type check that can be resolved *once* at compile time
 removes a type check that would need to be invoked during *every* call of a
-function or method.  This can remove millions or billions of overhead of
+function or method. This can remove millions or billions of overhead of
 type-checking calls per hour in an application that is used intensely.
 
 ### Roll-your-own dynamic checking
@@ -159,23 +159,22 @@ cascade of errors.
 
 ## 3. Type errors are often serious
 As we have shown, type errors can result severe application failures and
-security holes.  Imagine where we might crash a web server farm by sending
-strings instead of number to a JSON API.  This stuff happens.
+security holes. Imagine where we might crash a web server farm by sending
+strings instead of number to a JSON API. This stuff happens.
 
 # How do we get type safety?
 
-Getting a near-complete type safety in native JavaScript isn't particularly
-hard. The simple answer is to use `cast` methods to ensure type.
+Getting type safety in native JavaScript isn't particularly
+hard. First recognize that the most likely cause of type errors occurs from
+function inputs and returned values. If we guarantee input types 
+using **typecasting** and track the intended types for our variables we
+can nearly eliminate JavaScript type errors.
 
 ## Typecasting
 
 Typecasting, for the purposes of this article, is the process of converting
 a value into the desired data type using a very strict set of rules. It
 is **guaranteed** to return the correct type **or** a failure failure value.
-
-We recognize that the most likely cause of type errors occurs from function
-inputs and returned values.  By simply typecasting function arguments, we can
-eliminate a large class of type errors.
 
 ### Use typecasting
 Let's rewrite our problem function from above using typecasting:
@@ -203,8 +202,8 @@ Let's rewrite our problem function from above using typecasting:
 After this update, the function is nearly impervious to type errors.
 
 ### Get typecast methods
-We can get typecast methods from the [hi_score][1] project.
-Installation is simple: `npm install hi_score`.  If you edit the
+We can get typecast methods from the [hi\_score][1] project.
+Installation is simple: `npm install hi_score`. If you edit the
 example application you can use all the `cast` methods from `xhi.util.js`.
 
 ```bash
@@ -232,7 +231,7 @@ All the `cast` methods take either one or two arguments. Only numbers, strings,
 and integers can be converted and only when the conversion is unambiguous.
 
 The first argument is always the value to cast; the second argument is the
-value to use if the `cast` fails.  If a second argument is omitted,
+value to use if the `cast` fails. If a second argument is omitted,
 `undefined` is returned instead. Let's update our example again to use an
 argument map and a default values.
 
@@ -259,7 +258,7 @@ argument map and a default values.
     doStuff({counts:'-3',run:reports});
 ```
 
-To be clear, this is dynamic type checking.  There is no native static
+To be clear, this is dynamic type checking. There is no native static
 checking in JavaScript in any real sense (one could make arguments about the
 JIT compiler, but at best such checking is *very* incomplete).
 
@@ -341,8 +340,8 @@ These are the steps we take to bring the code to the next level of Zen.
 ## Name variable to indicate type
 Our first step to update our example code is to fix the awful variable names.
 While they might make sense to one brain, they are inconsistent and
-misleading to another.  Let's apply this [full code standard][a] which names
-variables by type.  There's also a handy [reference cheat sheet][b].
+misleading to another. Let's apply this [full code standard][a] which names
+variables by type. There's also a handy [reference cheat sheet][b].
 
 
 ```js
@@ -367,12 +366,12 @@ variables by type.  There's also a handy [reference cheat sheet][b].
 
 We also fix up other details suggested by the guide such as formatting (tabs,
 spaces, alignment, K&R indenting) and replaced the `while` loop with a `for`
-loop.  This code will now pass JSLint. If this utility were 100 lines long,
+loop. This code will now pass JSLint. If this utility were 100 lines long,
 as long as we know the naming convention, we can easily spot that `fn` is a
 function and idx is an integer.
 
 The [full code standard][a] argues that a simple naming convention can can
-vastly reduce the need for comments.  We think it's an interesting read if you
+vastly reduce the need for comments. We think it's an interesting read if you
 enjoy philosophical discussions.
 
 ## Write consistent API definition
@@ -390,8 +389,8 @@ API documentation is easy and recommended:
   // Arguments  : (named)
   //   _fn_     : The function to execute. The current value of the
   //              index (idx) is provided as its sole argument.
-  //   _int_    : The initial value of idx.  Idx is incremented after
-  //              _fn_ is executed.  Thus a value of '-1' will result in a
+  //   _int_    : The initial value of idx. Idx is incremented after
+  //              _fn_ is executed. Thus a value of '-1' will result in a
   //              single execution of _fn_( idx );
   // Returns    : undefined
   // Throws     : none
@@ -417,12 +416,11 @@ API documentation is easy and recommended:
 ```
 
 Remember where we suggested you shouldn't copy our first code example because
-it was "awful"?  Now the code is significantly less awful.  It's impervious to type
-errors, readable, maintainable, and well documented. Go ahead and copy it if
-you want.
+it was "awful?" Now the code is impervious to type errors, readable, maintainable,
+and well documented. Go ahead and copy it if you want :)
 
 ## Test the APIs
-Using tools like `Istanbul` and `nodeunit` we can now easily test to the API
+We can use tools like `Istanbul` and `nodeunit` we can now easily test to the API
 we just documented for our shiny, new, and nearly bullet-proof `repeatFn`
 function. Check out the test suite for `hi_score` to see how its done:
 
@@ -438,7 +436,7 @@ function. Check out the test suite for `hi_score` to see how its done:
 
 # What about frameworks and libraries?
 This is an excellent question: how do native **typecasting** techniques
-compare with [Flow][3] and [TypeScript][4]?  I intend to publish a subsequent
+compare with [Flow][3] and [TypeScript][4]? I intend to publish a subsequent
 article that answers this question. In **theory** both these
 transpiled languages **should** be able to provide static type checking and
 eliminate many dynamic type checking calls. However, in **practice** however
