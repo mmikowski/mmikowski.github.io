@@ -7,6 +7,44 @@ title: TypeCasting in JavaScript, Part I
 
 
 
+# Strategies to improve JS type safety
+We have considered least five methods to improve JS type safety.
+They are ordered from least practical to most.
+
+## 1. Change the JS JIT compiler
+This strategy is almost certainly impractical in the near-term.
+JavaScript's compile stage occurs on the device owned by the end user and
+varies between engines such as Google's V8, Apple's Nitro, and Firefox's
+IonMonkey.  Even if these were all adjusted to meet the a static-type-check
+standard, there would be billions of legacy JIT compilers in the field for
+years to come.
+
+## 2. Provide a Linter
+A lint tool like JSLint with improved static type checking would be
+appealing.  JSLint does limited static type checking already.
+Linting would need to be paired with embedded hints like comments or
+variable names to intelligently trace intended types. The closest we've
+seen to this is [flow][1], although this is still a transpiler.
+
+## 3. Instrument development code
+One might instrument code to provide static type checking during
+development similar to test coverage tools like Istanbul.  It may
+work well with our fifth strategy. However, we reserve this for
+further study and not pursue it in this series.
+
+## 4. Transpile
+Transpile from a language designed for static type checking to Javascript.
+This approach has been taken by Google teams with the TypeScript and
+Closure frameworks as well as their own Dart language.  We explore
+the benefits and pitfalls of this strategy in Part 2 of this series.
+
+## 5. Type name and typecast
+We've employed this technique for many years.  We name variable to indicate
+type, name functions to indicate return type, and typecast on input to
+functions.  We look at this strategy in **Part 3** of this series, and show
+you the tools we use.  We also compare the results to transpiled
+language such as TypeScript and Flow.
+
 
 [Hi_Score][1] is a library system that I've been constructing for a little
 while now that embodies many of the hard-won lessons I've accumulated from
@@ -69,39 +107,32 @@ an additional layer of complexity to provide similar benefits.
 
 ## Overview
 
-## Recent changes
-We bumped the version to 1.1 because there was a significant API addition:
-support for arbitrary-depth nested conditional expressions. However, the
-API remains almost completely backward compatible with version 1.0.
-Media queries are now easily created and automatically optimized.
-We added numerous regression tests to check this capability, and
-currently have 106 assertions, which you can check like so:
-
-
 ## JavaScript default conversions
 
-| Value        | Number     | String            | Boolean |
-| ""           | 0          | ""                | false   |
-| "0"          | 0          | "0"               | true    |
-| "1"          | 1          | "1"               | true    |
-| "20"         | 20         | "20"              | true    |
-| "twenty"     | NaN        | "twenty"          | true    |
-| -Infinity    | -Infinity  | "-Infinity"       | true    |
-| 0            | 0          | "0"               | false   |
-| 1            | 1          | "1"               | true    |
-| Infinity     | Infinity   | "Infinity"        | true    |
-| NaN          | NaN        | "NaN"             | false   |
-| [ ]          | 0          | ""                | true    |
-| ["ten"]      | NaN        | "ten"             | true    |
-| ["ten","t"]  | NaN        | "ten,t"           | true    |
-| [10,20]      | NaN        | "10,20"           | true    |
-| [20]         | 20         | "20"              | true    |
-| false        | 0          | "false"           | false   |
-| function(){} | NaN        | "function(){}"    | true    |
-| null         | 0          | "null"            | false   |
-| true         | 1          | "true"            | true    |
-| undefined    | NaN        | "undefined"       | false   |
-| { }          | NaN        | "[object Object]" | true    |
+| Value        | Bool  | Fn  | Num | Ary  | Obj | Str        |
+| ---          | ---   | --- | --- | ---  | --- | ---        |
+| ''           | FALSE |     | 0   |      |     | ''         |
+| '0'          | t     |     | 0   |      |     | '0'        |
+| '1'          | t     |     | 1   |      |     | '1'        |
+| '20'         | t     |     | 20  |      |     | '20'       |
+| 'ten'        | t     |     | NaN |      |     | 'ten'      |
+| 0            | FALSE |     | 0   |      |     | '0'        |
+| 1            | t     |     | 1   |      |     | '1'        |
+| NaN          | FALSE |     | NaN |      |     | 'NaN'      |
+| []           | t     |     | 0   | []   | {}  | ''         |
+| ['ten']      | t | | NaN | ['ten']  | { 0: 'ten' } | 'ten' |
+| ['ten','t']  | t | | NaN | ['ten','t'] | { 0: 'ten', 1: 't'}  | 'ten,t' |
+| [10]         | t     |     | 10  | [10] | { 0 : 10 } | | '10' |
+| [10,20]      | t     |     | NaN | [10,20] | { 0: 10, 1:20 }  | '10,20' |
+| false        | FALSE |     | 0   |      |     | 'false'  |
+| function(){} | t     | function(){} | NaN | [] | {} | 'function(){}' |
+| null         | FALSE |     | 0   |      |     | 'null'      |
+| true         | t     |     | 1   |      |     | 'true'      |
+| undefined    | FALSE |     | NaN |      |     | 'undefined' |
+| {}           | t     |     | NaN | []   | {}  | '0'         |
+| -Infinity    | t     | -Infinity  | |   |     | '-Infinity' |
+| Infinity     | t     | Infinity   | |   |     | 'Infinity'  |
+
 
 Source: [W3schools JS conversion chart][2]
 
@@ -110,33 +141,33 @@ Source: [W3schools JS conversion chart][2]
 The `xhi` utility functions for casting values are as follows:
 castBool, castFn, castInt, castJQ, castList, castMap, castNum, castObj, and
 castStr.  The conversion is nowhere near as loose as typical JavaScript
-coersion.  Only numbers, strings, and integers can be coerced, and only when
-the conversion is unambigous.  Let's see how these cast functions handle the
-same values as the W3Schools chart:
+coercion.  Only numbers, strings, and integers can be coerced, and only when
+the conversion is unambiguous.  Let's see how these cast functions handle the
+same values compared to the W3Schools chart.
 
-
-| Value        | Bool | Fn | Int | JQ | List | Map | Num | Obj | Str      |
-| ""           | -    | -  | -   | -  | -    | -   | -   | -   | ""       |
-| "0"          | -    | -  | 0   | -  | -    | -   | 0   | -   | "0"      |
-| "1"          | -    | -  | 1   | -  | -    | -   | 1   | -   | "1"      |
-| "20"         | -    | -  | 20  | -  | -    | -   | 20  | -   | "20"     |
-| "ten"        | -    | -  | -   | -  | -    | -   | -   | -   | "ten" |
-| -Infinity | - | - | -Infinity  | -  | - | - | -Infinity | - | "-Infinity" |
-| 0            | -    | -  | 0   | -  | -    | -   | 0   | -   | "0"      |
-| 1            | -    | -  | 1   | -  | -    | -   | 1   | -   | "1"      |
-| Infinity     | -    | -  | -   | -  | - | - | Infinity | - | "Infinity" |
-| NaN          | -    | -  | -   | -  | -    | -   | -   | -   | -        |
-| [ ]          | -    | -  | -   | -  | []   | -   | -   | -   | -        |
-| ["ten"]      | -    | -  | -   | -  | ["ten"] | - | -  | -   | -        |
-| ["ten","t"]  | -    | -  | -   | -  | ["ten","t"] | -  | -   | -        |
-| [10]         | -    | -  | -   | -  | [10]    | - | -  | -   | -        |
-| [10,20]      | -    | -  | -   | -  | [10,20] | - | -  | -   | -        |
-| false        | false| -  | -   | -  | -    | -   | -   | -   | -        |
-| function(){} | -    | function(){} | - | - | - | - | - | -   | -        |
-| null         | -    | -  | -   | -  | -    | -   | -   | -   | -        |
-| true         | true | -  | -   | -  | -    | -   | -   | -   | -        |
-| undefined    | -    | -  | -   | -  | -    | -   | -   | -   | -        |
-| {}           | -    | -  | -   | -  | -    | {}  | -   | -   | -        |
+| Value        | Bool  | Fn  | Num | Ary  | Obj  | Str     |
+| ---          | ---   | --- | --- | ---  |      | ---     |
+| ''           |       |     |     |      |      | ''      |
+| '0'          |       |     | 0   |      |      | '0'     |
+| '1'          |       |     | 1   |      |      | '1'     |
+| '20'         |       |     | 20  |      |      | '20'    |
+| 'ten'        |       |     |     |      |      | 'ten'   |
+| 0            |       |     | 0   |      |      | '0'     |
+| 1            |       |     | 1   |      |      | '1'     |
+| NaN          |       |     |     |      |      |         |
+| []           |       |     |     | []   |      |         |
+| ['ten']      |       |     |     | ['ten']     | |       |
+| ['ten','t']  |       |     |     | ['ten','t'] | |       |
+| [10]         |       |     |     | [10]        | |       |
+| [10,20]      |       |     |     | [10,20]     | |       |
+| false        | FALSE |     |     |      |      |         |
+| function(){} |       | function(){} | | |      |         |
+| null         |       |     |     |      |      |         |
+| true         | true  |     |     |      |      |         |
+| undefined    |       |     |     |      |      |         |
+| {}           |       |     |     |      | {}   |         |
+| -Infinity    |       |     | -Infinity  | |    |         |
+| Infinity     |       |     |  Infinity  | |    |         |
 
 [0]:/images/2016-11-14-typecast-02.jpg
 [1]:https://github.com/mmikowski/hi_score
