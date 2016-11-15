@@ -13,10 +13,9 @@ safety, illustrates why we want it, and shows how we can get it using native
 JavaScript.
 
 Most **type errors** in JavaScript can be resolved using **typecasting**.
-We show you how to typecast using a set of utilities. It is a good idea to
-supplement typecasting a few additional best practices such as naming
-variables for type, consistent API documentation, and testing.  These topics
-are also discussed.
+We show you how to typecast using a set of utilities. Typecasting works very
+well with other best practices such as naming variables for type, consistent
+API documentation, and testing.
 
 # What is type safety?
 Type safety is the extent a programming language discourages or prevents
@@ -28,21 +27,21 @@ semantic style all the cool kids are using these days. **This is awful
 code**, so please don't copy it. We'll fix it up as we go along.
 
 ```js
-    function doStuff ( counts, run )
+    function doStuff(counts, run)
     {
-        while ( counts < 0 )
+        while(counts < 0)
         {
-            run( counts )
-            counts += 1
+            run(counts)
+            counts+=1
         }
     }
 
-    function reports ( info )
+    function reports(info)
     {
-        console.log( info )
+        console.log(info)
     }
 
-    doStuff( '-3', reports )
+    doStuff('-3', reports)
 ```
 
 Well that didn't take long.  First, let's identify the initial **type error**:
@@ -58,8 +57,8 @@ NodeJS process, or a browser tab, or a browser, or the host OS.
 If we watch the progression of the value of `counts` in the `while` loop we
 see the following series: `'-3', '-31', '-311', '-3111', ...`.  The test
 condition `counts < 0` *does* coerce the `counts` string into a number, but
-that value is always less than 0.  That's because the expression `idx += 1`
-always *appends* the string `'1'` to the `idx` string.
+that value is always less than 0.  That's because the expression `counts+=1`
+always *appends* the string `'1'` to the `counts` string.
 
 # Why do we want type safety?
 
@@ -182,28 +181,28 @@ eliminate a large class of type errors.
 Let's rewrite our problem function from above using typecasting:
 
 ```js
-    function doStuff ( arg_counts, arg_run )
+    function doStuff(arg_counts, arg_run)
     {
-        var counts = castInt( arg_counts )
-        var run = castFn( arg_run )
+        var counts = castInt(arg_counts)
+        var run = castFn(arg_run)
 
-        while ( counts < 0 )
+        while (counts < 0)
         {
             run( counts )
-            counts += 1
+            counts+=1
         }
     }
 
-    function reports ( info )
+    function reports(info)
     {
-        console.log( info )
+        console.log(info)
     }
 
-    doStuff( '-3', reports )
+    doStuff('-3', reports)
 ```
 After this update, the function is nearly impervious to type errors.
 
-### Get typecasting
+### Get typecast methods
 We can get typecast methods from the [hi_score][1] project.
 Installation is simple: `npm install hi_score`.  If you edit the
 example application you can use all the `cast` methods from `xhi.util.js`.
@@ -218,8 +217,8 @@ example application you can use all the `cast` methods from `xhi.util.js`.
   google-chrome ./index.html;
 ```
 
-We don't have to use the whole library set; we can just crib the methods from
-`xhi.util.js` we want. Go ahead, you won't hurt anyone's feelings.
+You don't have to use the whole library; you can just crib the methods from
+`xhi.util.js` if you want. Go ahead, you won't hurt anyone's feelings.
 
 ### More typecasting
 The `xhi` utility functions for casting values are as follows:
@@ -230,35 +229,34 @@ The `xhi` utility functions for casting values are as follows:
 ```
 
 All the `cast` methods take either one or two arguments. Only numbers, strings,
-and integers can be coerced, and only when the conversion is unambiguous.
+and integers can be converted and only when the conversion is unambiguous.
 
 The first argument is always the value to cast; the second argument is the
-value to use if the `cast` fails.  If a second argument is not provided,
+value to use if the `cast` fails.  If a second argument is omitted,
 `undefined` is returned instead. Let's update our example again to use an
 argument map and a default values.
 
-
 ```js
-    function doStuff ( arg_map ) {
-        var map = castMap( arg_map, {} )
-        var counts = castInt( map.counts, 0 )
-        var run = castFn( map.run )
+    function doStuff(arg_map) {
+        var map = castMap(arg_map, {})
+        var counts = castInt(map.counts, 0)
+        var run = castFn(map.run)
 
-        if ( run )
+        if (run)
         {
-            while ( counts < 0 )
+            while (counts < 0)
             {
-                run( counts )
-                counts += 1
+                run(counts)
+                counts+=1
             }
         }
     }
 
-    function reports ( info )
+    function reports (info)
     {
-        console.log( info )
+        console.log(info)
     }
-    doStuff({ counts : '-3', run : reports });
+    doStuff({counts:'-3',run:reports});
 ```
 
 To be clear, this is dynamic type checking.  There is no native static
@@ -363,8 +361,8 @@ variables by type.  There's also a handy [reference cheat sheet][b].
     }
   }
 
-  function logIdxToConsole ( idx ) { console.log( idx ); }
-  repeatFn({ _int_ : '-3', _fn_ : logIdxToConsole });
+  function printToConsole ( idx ) { console.log( idx ); }
+  repeatFn({ _int_ : '-3', _fn_ : printToConsole });
 ```
 
 We also fix up other details suggested by the guide such as formatting (tabs,
@@ -414,14 +412,14 @@ API documentation is easy and recommended:
   }
   // END utility method /repeatFn/
 
-  function logIdxToConsole ( idx ) { console.log( idx ); }
-  repeatFn({ _int_ : '-3', _fn_ : logIdxToConsole });
-
+  function printToConsole ( idx ) { console.log( idx ); }
+  repeatFn({ _int_ : '-3', _fn_ : printToConsole });
 ```
 
 Remember where we suggested you shouldn't copy our first code example because
-it was "awful"?  Now the code is impervious to type errors, readable, maintainable,
-and well documented. This is copy-worthy code.
+it was "awful"?  Now the code is significantly less awful.  It's impervious to type
+errors, readable, maintainable, and well documented. Go ahead and copy it if
+you want.
 
 ## Test the APIs
 Using tools like `Istanbul` and `nodeunit` we can now easily test to the API
