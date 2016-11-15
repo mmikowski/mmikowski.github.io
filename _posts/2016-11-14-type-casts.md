@@ -267,6 +267,7 @@ they are explicit, predictable, strict, and self-documenting.
 Let's compare the JavaScript coercion examples with the `cast` methods:
 
 #### JavaScript type coercion examples
+
 | Value        | Bool  | Fn   | Num  | Ary   | Obj  | Str        |
 | :---         | :---  | :--- | :--- | :---  | :--- | :---       |
 | ''           | FALSE |      | 0    |       |      | ''         |
@@ -294,6 +295,7 @@ Let's compare the JavaScript coercion examples with the `cast` methods:
 Blank cells are conditions where an exception is thrown.
 
 #### Cast method conversion examples
+
 | Value        | Bool  | Fn   | Num  | Ary   | Obj  | Str     |
 | :---         | :---  | :--- | :--- | :---  | :--- | :---    |
 | ''           |       |      |      |       |      | ''      |
