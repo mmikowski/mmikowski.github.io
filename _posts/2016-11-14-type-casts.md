@@ -265,7 +265,7 @@ To be clear, this is dynamic type checking.  There is no native static
 checking in JavaScript in any real sense (one could make arguments about the
 JIT compiler, but at best such checking is *very* incomplete).
 
-### The zen of typecasting
+### The Zen of typecasting
 The `cast` methods have four benefits over native JavaScript coercion:
 they are explicit, predictable, strict, and self-documenting.
 Let's compare the JavaScript coercion examples with the `cast` methods:
@@ -338,7 +338,7 @@ cycle that accelerates product development:
 3. Test the APIs
 
 Let's look at each of these and update our sample code as we go along.
-These are the steps we take to bring the code to the next level of zen.
+These are the steps we take to bring the code to the next level of Zen.
 
 ## Name variable to indicate type
 Our first step to update our example code is to fix the awful variable names.
