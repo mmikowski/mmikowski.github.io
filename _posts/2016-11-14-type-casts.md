@@ -8,9 +8,9 @@ title: Type safety with native JavaScript
 
 # Overview
 Many tools like IDEs, frameworks, libraries, and linters try to provide
-some level of type safety to JavaScript. This article defines types
-safety, illustrates why we want it, and shows how we can get it using native
-JavaScript.
+some level of **type safety** to JavaScript. This article explains what
+type safety is, describes why we want it, and show how we can get it
+using native JavaScript.
 
 Most **type errors** in JavaScript can be resolved using **typecasting**.
 We show you how to typecast using a set of utilities. Typecasting works very
@@ -19,10 +19,10 @@ API documentation, and testing.
 
 # What is type safety?
 Type safety is the extent a programming language discourages or prevents
-**type errors**. Type errors happen when a developer uses the wrong value
+type errors. These happen when a developer uses the wrong value
 type in an expression or when invoking a function.
 
-Let's see how easy it is to create a **type error** in Javascript using the
+Let's see how easy it is to create a type error in Javascript using the
 semantic style all the cool kids are using these days. **This is awful
 code**, so please don't copy it. We'll fix it up as we go along.
 
@@ -44,7 +44,7 @@ code**, so please don't copy it. We'll fix it up as we go along.
     doStuff('-3', reports)
 ```
 
-That didn't take long! The initial **type error** occurs when we provide the
+That didn't take long! The initial type error occurs when we provide the
 first argument to the `repeats` function invocation. This value should be an
 integer, but we instead provide a string. Then all hell breaks loose.
 
@@ -61,7 +61,7 @@ always *appends* the string `'1'` to the `counts` string.
 
 # Why do we want type safety?
 
-We want type safety with JavaScript because **type errors** can be quite
+We want type safety with JavaScript because type errors can be quite
 troublesome:
 
 1. They are easy to create
@@ -166,7 +166,7 @@ strings instead of number to a JSON API. This stuff happens.
 Getting type safety in native JavaScript isn't particularly
 hard. First recognize that the most likely cause of type errors occurs from
 function inputs and returned values. If we guarantee input types 
-using **typecasting** and track the intended types for our variables we
+using typecasting and track the intended types for our variables we
 can nearly eliminate JavaScript type errors.
 
 ## Typecasting
@@ -295,7 +295,7 @@ Blank cells are conditions where an exception is thrown.
 
 #### Cast method conversion examples
 | Value        | Bool  | Fn   | Num  | Ary   | Obj  | Str     |
-| :---         | :---  | :--- | :--- | :---  | ---  | ---     |
+| :---         | :---  | :--- | :--- | :---  | :--- | :---    |
 | ''           |       |      |      |       |      | ''      |
 | '0'          |       |      | 0    |       |      | '0'     |
 | '1'          |       |      | 1    |       |      | '1'     |
@@ -320,21 +320,21 @@ Blank cells are conditions where an exception is thrown.
 
 Blank cells are conditions where the default value will be returned.
 
-Typecasting makes writing **type safe** functions in JavaScript a breeze.
-And don't underestimate the value of self-documenting either.
-For example the `castFn` call to define the `run` variable clearly illustrates
-we expect a function despite the fact that `run` is an awful name for it.
+Typecasting makes writing type safe functions in JavaScript a breeze.
+And they also do a great job of self-documenting the code.
+The `castFn` call to define the `run` variable, for example, clearly
+illustrates we expect a function despite the fact that `run` is an 
+awful function name.
 
-As illustrated by the 'awful' name for the `run` function, there are a few
-practices that, when combined with typecasting, can result in a virtuous
-cycle that accelerates product development:
+There are a few best practices that work with typcasting to create 
+a virtuous cycle that accelerates product development:
 
 1. Name variable to indicate type
 2. Write consistent API definition
 3. Test the APIs
 
 Let's look at each of these and update our sample code as we go along.
-These are the steps we take to bring the code to the next level of Zen.
+These are the steps we take to bring the code to the next level.
 
 ## Name variable to indicate type
 Our first step to update our example code is to fix the awful variable names.
