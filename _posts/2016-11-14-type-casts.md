@@ -7,35 +7,42 @@ title: Typecasting with native JavaScript
 *Why everybody wants type safety and how to get it*
 
 # Overview
-
 Many tools like IDEs, frameworks, libraries, and linters try to provide
 some level of type safety to JavaScript. This article defines types
-safety, illustrates why we want it, and shows how we can get
-it using native JavaScript.
+safety, illustrates why we want it, and shows how we can get it using native
+JavaScript.
 
-Fundamentally, most **type errors** in JavaScript can be resolved using
-**typecasting**.  It is a good idea to supplement this practice with
-variable name conventions, consistent API documentation, and consistent
-testing.  We will work with some problem code through each of these stages.
+Most **type errors** in JavaScript can be resolved using **typecasting**.
+We show you how to typecast using a set of utilities. It is a good idea to
+supplement typecasting a few additional best practices such as naming
+variables for type, consistent API documentation, and testing.  These topics
+are also discussed.
 
 # What is type safety?
 Type safety is the extent a programming language discourages or prevents
-**type errors**. Type errors happen when a developer uses the wrong variable
+**type errors**. Type errors happen when a developer uses the wrong value
 type in an expression or when invoking a function.
 
 Let's see how easy it is to create a **type error** in Javascript using the
 semantic style all the cool kids are using these days. **This is awful
-code**, so please don't copy it's style. We'll fix it up as we go along.
+code**, so please don't copy it. We'll fix it up as we go along.
 
 ```js
-  function doStuff ( counts, run ) {
-    while ( counts < 0 ) {
-      run( counts )
-      counts += 1 }
-  }
+    function doStuff ( counts, run )
+    {
+        while ( counts < 0 )
+        {
+            run( counts )
+            counts += 1
+        }
+    }
 
-  function reports ( info ) { console.log( info ) }
-  doStuff( '-3', reports )
+    function reports ( info )
+    {
+        console.log( info )
+    }
+
+    doStuff( '-3', reports )
 ```
 
 Well that didn't take long.  First, let's identify the initial **type error**:
@@ -175,17 +182,24 @@ eliminate a large class of type errors.
 Let's rewrite our problem function from above using typecasting:
 
 ```js
-  function doStuff ( arg_counts, arg_run ) {
-    var counts = castInt( arg_counts )
-    var run = castFn( arg_run )
+    function doStuff ( arg_counts, arg_run )
+    {
+        var counts = castInt( arg_counts )
+        var run = castFn( arg_run )
 
-    while ( counts < 0 ) {
-      run( counts )
-      counts += 1 }
-  }
+        while ( counts < 0 )
+        {
+            run( counts )
+            counts += 1
+        }
+    }
 
-  function reports ( info ) { console.log( info ) }
-  doStuff( '-3', reports )
+    function reports ( info )
+    {
+        console.log( info )
+    }
+
+    doStuff( '-3', reports )
 ```
 After this update, the function is nearly impervious to type errors.
 
@@ -225,21 +239,26 @@ argument map and a default values.
 
 
 ```js
-  function doStuff ( arg_map ) {
-    var map = castMap( arg_map, {} )
-    var counts = castInt( map.counts, 0 )
-    var run = castFn( map.run )
-      ;
+    function doStuff ( arg_map ) {
+        var map = castMap( arg_map, {} )
+        var counts = castInt( map.counts, 0 )
+        var run = castFn( map.run )
 
-    if ( run ) {
-      while ( counts < 0 ) {
-        run( counts )
-        counts += 1 }
+        if ( run )
+        {
+            while ( counts < 0 )
+            {
+                run( counts )
+                counts += 1
+            }
+        }
     }
-  }
 
-  function reports ( info ) { console.log( info ) }
-  doStuff({ counts : '-3', run : reports });
+    function reports ( info )
+    {
+        console.log( info )
+    }
+    doStuff({ counts : '-3', run : reports });
 ```
 
 To be clear, this is dynamic type checking.  There is no native static
@@ -325,9 +344,8 @@ These are the steps we take to bring the code to the next level of zen.
 Our first step to update our example code is to fix the awful variable names.
 While they might make sense to one brain, they are inconsistent and
 misleading to another.  Let's apply this [full code standard][a] which names
-variables by type.  There's also a handy [reference cheat sheet][b]. We also
-fix up the formatting as provided by the guide.  This code will now pass
-JSLint:
+variables by type.  There's also a handy [reference cheat sheet][b].
+
 
 ```js
   function repeatFn ( arg_map ) {
@@ -349,15 +367,19 @@ JSLint:
   repeatFn({ _int_ : '-3', _fn_ : logIdxToConsole });
 ```
 
-The full standard has an excellent description of how a simple naming
-convention can can vastly reduce the need for comments.  We think it's an
-interesting read if you're interested.
+We also fix up other details suggested by the guide such as formatting (tabs,
+spaces, alignment, K&R indenting) and replaced the `while` loop with a `for`
+loop.  This code will now pass JSLint. If this utility were 100 lines long,
+as long as we know the naming convention, we can easily spot that `fn` is a
+function and idx is an integer.
 
-We also applied other aspects of the standard, like eliminating the `while`
-condition and formatting for readability and maintainability.
+The [full code standard][a] argues that a simple naming convention can can
+vastly reduce the need for comments.  We think it's an interesting read if you
+enjoy philosophical discussions.
 
 ## Write consistent API definition
-Now that we have a consistent naming, creating local API documentation is easy:
+Now that we have consistent naming that easily identifies type, creating in-line
+API documentation is easy and recommended:
 
 ```js
   // BEGIN utility method /repeatFn/
@@ -397,6 +419,10 @@ Now that we have a consistent naming, creating local API documentation is easy:
 
 ```
 
+Remember where we suggested you shouldn't copy our first code example because
+it was "awful"?  Now the code is well documented, readable, and maintainable.
+We recommend copying this code.
+
 ## Test the APIs
 Using tools like `Istanbul` and `nodeunit` we can now easily test to the API
 we just documented for our shiny, new, and nearly bullet-proof `repeatFn`
@@ -417,8 +443,8 @@ This is an excellent question: how do native **typecasting** techniques
 compare with [Flow][3] and [TypeScript][4]?  I intend to publish a subsequent
 article that answers this question. In **theory** both these
 transpiled languages **should** be able to provide static type checking and
-eliminate many dynamic type checking calls. However, in **practice** however 
-the results may be surprising since the real-world overhead of `cast` methods 
+eliminate many dynamic type checking calls. However, in **practice** however
+the results may be surprising since the real-world overhead of `cast` methods
 can be actually quite low.
 
 We hope you found this useful! Please share your thoughts and experiences
@@ -427,7 +453,7 @@ in the comments.
 
 Cheers, Mike
 
-[0]:../images/2016-11-14-typecast-02.jpg
+[0]:/images/2016-11-14-typecast-02.jpg
 [1]:https://github.com/mmikowski/hi_score
 [2]:https://www.npmjs.com/package/hi_score
 [3]:https://flowtype.org/
