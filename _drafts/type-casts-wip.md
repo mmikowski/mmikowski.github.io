@@ -107,67 +107,9 @@ an additional layer of complexity to provide similar benefits.
 
 ## Overview
 
-## JavaScript default conversions
-
-| Value        | Bool  | Fn  | Num | Ary  | Obj | Str        |
-| ---          | ---   | --- | --- | ---  | --- | ---        |
-| ''           | FALSE |     | 0   |      |     | ''         |
-| '0'          | t     |     | 0   |      |     | '0'        |
-| '1'          | t     |     | 1   |      |     | '1'        |
-| '20'         | t     |     | 20  |      |     | '20'       |
-| 'ten'        | t     |     | NaN |      |     | 'ten'      |
-| 0            | FALSE |     | 0   |      |     | '0'        |
-| 1            | t     |     | 1   |      |     | '1'        |
-| NaN          | FALSE |     | NaN |      |     | 'NaN'      |
-| []           | t     |     | 0   | []   | {}  | ''         |
-| ['ten']      | t | | NaN | ['ten']  | { 0: 'ten' } | 'ten' |
-| ['ten','t']  | t | | NaN | ['ten','t'] | { 0: 'ten', 1: 't'}  | 'ten,t' |
-| [10]         | t     |     | 10  | [10] | { 0 : 10 } | | '10' |
-| [10,20]      | t     |     | NaN | [10,20] | { 0: 10, 1:20 }  | '10,20' |
-| false        | FALSE |     | 0   |      |     | 'false'  |
-| function(){} | t     | function(){} | NaN | [] | {} | 'function(){}' |
-| null         | FALSE |     | 0   |      |     | 'null'      |
-| true         | t     |     | 1   |      |     | 'true'      |
-| undefined    | FALSE |     | NaN |      |     | 'undefined' |
-| {}           | t     |     | NaN | []   | {}  | '0'         |
-| -Infinity    | t     | -Infinity  | |   |     | '-Infinity' |
-| Infinity     | t     | Infinity   | |   |     | 'Infinity'  |
-
 
 Source: [W3schools JS conversion chart][2]
 
-## Cast function conversions
-
-The `xhi` utility functions for casting values are as follows:
-castBool, castFn, castInt, castJQ, castList, castMap, castNum, castObj, and
-castStr.  The conversion is nowhere near as loose as typical JavaScript
-coercion.  Only numbers, strings, and integers can be coerced, and only when
-the conversion is unambiguous.  Let's see how these cast functions handle the
-same values compared to the W3Schools chart.
-
-| Value        | Bool  | Fn  | Num | Ary  | Obj  | Str     |
-| ---          | ---   | --- | --- | ---  |      | ---     |
-| ''           |       |     |     |      |      | ''      |
-| '0'          |       |     | 0   |      |      | '0'     |
-| '1'          |       |     | 1   |      |      | '1'     |
-| '20'         |       |     | 20  |      |      | '20'    |
-| 'ten'        |       |     |     |      |      | 'ten'   |
-| 0            |       |     | 0   |      |      | '0'     |
-| 1            |       |     | 1   |      |      | '1'     |
-| NaN          |       |     |     |      |      |         |
-| []           |       |     |     | []   |      |         |
-| ['ten']      |       |     |     | ['ten']     | |       |
-| ['ten','t']  |       |     |     | ['ten','t'] | |       |
-| [10]         |       |     |     | [10]        | |       |
-| [10,20]      |       |     |     | [10,20]     | |       |
-| false        | FALSE |     |     |      |      |         |
-| function(){} |       | function(){} | | |      |         |
-| null         |       |     |     |      |      |         |
-| true         | true  |     |     |      |      |         |
-| undefined    |       |     |     |      |      |         |
-| {}           |       |     |     |      | {}   |         |
-| -Infinity    |       |     | -Infinity  | |    |         |
-| Infinity     |       |     |  Infinity  | |    |         |
 
 [0]:/images/2016-11-14-typecast-02.jpg
 [1]:https://github.com/mmikowski/hi_score
