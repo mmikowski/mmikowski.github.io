@@ -1,10 +1,10 @@
 ---
 layout: post
-title: Typecasting with native JavaScript
-
-![Typecasting with Native JavaScript](/images/2016-11-14-typecast-02.jpg)
+title: Type safety with native JavaScript
 ---
 *Why everybody wants type safety and how to get it*
+
+![Typecast example](/images/2016-11-14-typecast-02.jpg)
 
 # Overview
 Many tools like IDEs, frameworks, libraries, and linters try to provide
