@@ -328,7 +328,7 @@ Let's compare the JavaScript coercion examples with the `cast` methods:
 | []           | t     |      | 0    | []    | {}   | ''         |
 | ['ten']      | t | | NaN | ['ten']  | { 0: 'ten' } | 'ten' |
 | ['ten','t']  | t | | NaN | ['ten','t'] | { 0: 'ten', 1: 't'}  | 'ten,t' |
-| [10]         | t     |     | 10  | [10] | { 0 : 10 } | | '10' |
+| [10]         | t     |     | 10  | [10] | { 0 : 10 } | '10' |
 | [10,20]      | t     |     | NaN | [10,20] | { 0: 10, 1:20 }  | '10,20' |
 | false        | FALSE |     | 0   |      |     | 'false'  |
 | function(){} | t     | function(){} | NaN | [] | {} | 'function(){}' |
@@ -427,10 +427,9 @@ vastly reduce the need for comments. We think it's an interesting read if
 you're itching for reason.
 
 ## 4.4. Write consistent API definitions
-Now that we have consistent naming that easily identifies type and
-formatting that makes the code easy to read, creating in-line API
-documentation is simple and recommended. Using the guide from the
-code standard we get the following:
+Now that we have consistent named-by-type variables and better formatting,
+we can easily read the code to create in-line API documentation.
+Using the guide from the code standard we get the following:
 
 ```js
   // BEGIN utility method /repeatFn/
