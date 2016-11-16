@@ -7,20 +7,22 @@ title: Type safety with native JavaScript
 ![Typecast example](/images/2016-11-14-typecast-02.png)
 
 # Overview
-Many tools like IDEs, frameworks, libraries, and linters try to provide
-some level of **type safety** to JavaScript. This article explains what
-type safety is, describes why we want it, and show how we can get it
+Many developer tools like IDEs, frameworks, libraries, and linters try
+to provide some level of **type safety** to JavaScript.  This article 
+explains what type safety is, why we want it, and how we can get it
 using native JavaScript.
 
-Most **type errors** in JavaScript can be resolved using **typecasting**.
-We show you how to typecast using a set of utilities. Typecasting works very
-well with other best practices such as naming variables for type, consistent
-API documentation, and testing.
+The good news is most **type errors** in JavaScript can be resolved using
+**typecasting**.  We show you how to typecast using simple functions,
+and we show how it works well with other best practices such as naming
+variables by type, consistent API documentation, and testing.
 
 # What is type safety?
 Type safety is the extent a programming language discourages or prevents
-type errors. These happen when a developer uses the wrong value
-type in an expression or when invoking a function.
+**type errors**. These happen when an unintended type is provided to a
+function or expression. Dividing a number by an array is a perfect example.
+It doesn't make sense, yet JavaScript support this very operation.
+Sometimes.
 
 Let's see how easy it is to create a type error in Javascript using the
 semantic style all the cool kids are using these days. **This is awful
@@ -44,23 +46,23 @@ code**, so please don't copy it. We'll fix it up as we go along.
     doStuff('-3', reports)
 ```
 
-That didn't take long! The initial type error occurs when we provide the
-first argument to the `repeats` function invocation. This value should be an
+That didn't take long! The first type error occurs when we provide the
+'-3' argument to the `repeats` invocation. This value should be an
 integer, but we instead provide a string. Then all hell breaks loose.
 
-Thanks this initial type error, the `doStuff` invocation starts an 'endless'
-loop that will rather quickly consume all available resources within its
-execution environment. Eventually this results in a force-kill of a
+When `doStuff` is invoked it creates an 'endless' loop condition that
+will rather quickly consume all available resources within its execution 
+environment. Eventually this results in a force-kill of a
 NodeJS process, or a browser tab, or a browser, or the host OS.
 
 If we watch the progression of the value of `counts` in the `while` loop we
 see the following series: `'-3', '-31', '-311', '-3111', ...`. The test
-condition `counts < 0` *does* coerce the `counts` string into a number, but
-that value is always less than 0. That's because the expression `counts+=1`
+condition `counts < 0` *does* convert the `counts` string into a number,
+but by then it is too late: the value is always less than 0 and it only gets
+more negative as time passes.  That's because the expression `counts+=1`
 always *appends* the string `'1'` to the `counts` string.
 
 # Why do we want type safety?
-
 We want type safety with JavaScript because type errors can be quite
 troublesome:
 
@@ -78,14 +80,15 @@ exceedingly easy.
 ### No variable declarations
 JavaScript has no means to declare a variable a type. A variable may
 contain any type and that may be changed at any time during execution.
-There is are no *sigils* to identify type, and a variable name is
-unconstrained. We may have a JavaScript projects where a single symbol like
-'watches' is used as an object, a map, a list, a boolean flag, a string, an
-integer, and a floating point number.
+There are no *sigils* to identify type, and a variable name is
+unconstrained. We may have a JavaScript application where a single symbol
+like 'watches' is used as an object, a map, a list, a boolean flag,
+a string, an integer, and a floating point number.
 
 ### Coercion and polymorphism
 JavaScript expressions often intermingle **type coercion** and
-**polymorphic operators** which results in a very large numbers of conditions
+**polymorphic operators** which results in a very large numbers of
+conditions
 that provide inconsistent results.
 
 **Type coercion** occurs when the language "automatically" converts one type
@@ -111,10 +114,11 @@ operators results get surprising and confusing fast:
   x = y + '3';    // |    'undefined3'    | undef  => str  | +str
 ```
 
-Other languages have less complex behaviors because have stricter type coercion
-rules, *sigals* to indicate type (like `$`, `@` , and `%` in Perl and PHP), and
-fewer polymorphic operators. For example, Perl and PHP use the `.` operator to
-join strings. Trying to `+` two strings always returns a number.
+Other languages have less complex behaviors because they have stricter type
+coercion rules and fewer polymorphic operators. For example, Perl and PHP use
+the `.` operator to join strings. Trying to `+` two strings always returns
+a number, unlike with JavaScript.  These languages also use *sigals* (prefixes)
+like `$`, `@` , and `%` to indicate variable type.
 
 ### No static checking
 Many languages provide some level of static type checking at compile time.
@@ -145,24 +149,38 @@ type-checking calls per hour in an application that is used intensely.
 
 ### Roll-your-own dynamic checking
 Static type checking does not work in all situations, especially when
-dealing with data from unknown or untrusted sources. In those cases,
+dealing with data from unknown or untrusted sources. In those cases
 the application must resort to *dynamic type checking* at run-time.
-JavaScript again has limited native tools to assist with this compared to
-other languages. Even the `typeof` keyword provides disappointing result,
-failing to distinguish between an object and an array.
+With JavaScript, run-time checks are pretty much our only option, yet the
+language only has limited tools to help here. Even the `typeof` 
+built-in function fails to distinguish between an object and an array.
 
 ## 2. Type errors are challenging to resolve
 Type errors can be hard to identify and debug. Any one routine that fails to
-check for type can send bad results on in the call stack and result in a
-cascade of errors.
+check for type can send bad results up the call stack resulting in a
+cascade of errors.  These are especially hard if variable aren't named by
+type.  Consider the following:
+
+```js
+var total = watches / in_use;
+```
+
+Now if we simply appended a variable type suffix to each of these variables,
+the type misatches would become obvious:
+
+```js
+var total_str = watch_list / use_bool;
+```
+
+Yes, the intended variable type **is that important**.
 
 ## 3. Type errors are often serious
-As we have shown, type errors can result severe application failures and
-security holes. Imagine where we might crash a web server farm by sending
-strings instead of number to a JSON API. This stuff happens.
+As we have shown, type errors can result in severe application failures and
+security holes. Imagine some NodeJS code that didn't properly type-check
+requests to a JSON API. One could shut down an entire web server farm by sending
+strings instead of numbers API requests. This stuff happens.
 
 # How do we get type safety?
-
 Getting type safety in native JavaScript isn't particularly
 hard. First recognize that the most likely cause of type errors occurs from
 function inputs and returned values. If we guarantee input types 
@@ -331,14 +349,14 @@ awful function name.
 There are a few best practices that work with typcasting to create 
 a virtuous cycle that accelerates product development:
 
-1. Name variable to indicate type
+1. Name variables to indicate type
 2. Write consistent API definition
 3. Test the APIs
 
 Let's look at each of these and update our sample code as we go along.
 These are the steps we take to bring the code to the next level.
 
-## Name variable to indicate type
+## Name variables to indicate type
 Our first step to update our example code is to fix the awful variable names.
 While they might make sense to one brain, they are inconsistent and
 misleading to another. Let's apply this [full code standard][a] which names
@@ -421,7 +439,7 @@ it was "awful?" Now the code is impervious to type errors, readable, maintainabl
 and well documented. Go ahead and copy it if you want :)
 
 ## Test the APIs
-We can use tools like `Istanbul` and `nodeunit` we can now easily test to the API
+We can use tools like `Istanbul` and `nodeunit` to test the API
 we just documented for our shiny, new, and nearly bullet-proof `repeatFn`
 function. Check out the test suite for `hi_score` to see how its done:
 
@@ -440,12 +458,12 @@ This is an excellent question: how do native **typecasting** techniques
 compare with [Flow][3] and [TypeScript][4]? I intend to publish a subsequent
 article that answers this question. In **theory** both these
 transpiled languages **should** be able to provide static type checking and
-eliminate many dynamic type checking calls. However, in **practice** however
-the results may be surprising since the real-world overhead of `cast` methods
+eliminate many dynamic type checking calls. However, in **practice** the
+results may be surprising since the real-world overhead of `cast` methods
 can be actually quite low.
 
 We hope you found this useful! Please share your thoughts and experiences
-in the comments.
+in the comments below.
 
 
 Cheers, Mike
