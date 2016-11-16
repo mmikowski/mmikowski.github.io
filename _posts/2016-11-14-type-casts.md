@@ -143,6 +143,7 @@ Many languages provide some level of static type checking at compile time.
 **Java**, for example, resolves most variable types at compile time.
 If JavaScript had a similar mechanism we wouldn't be able to run our
 application until we resolved these compile errors:
+
 ```
 00: ok                           | x = 3;          |
 01: ok                           | x = 3 + 1;      |
@@ -188,6 +189,7 @@ obvious:
 ```js
   var total_str = watch_list / use_bool;
 ```
+
 Yes, the intended variable type **is that important**.
 We've had to maintain plenty of third-party modules which use an
 *if-it-sounds-good-use-it* convention with no hint of variable type or
@@ -213,7 +215,8 @@ eliminate JavaScript type errors.
 ## 4.1 Typecasting
 Typecasting, for the purposes of this article, is the process of converting
 a value into the desired data type using a very strict set of rules. It
-is **guaranteed** to return the correct type **or** a failure failure value.
+is **guaranteed** to return the correct type **or** a failure value which
+is `undefined` if not provided.
 
 ### 4.1.1 Use typecasting
 Let's rewrite our problem function from above using typecasting:
@@ -239,6 +242,7 @@ Let's rewrite our problem function from above using typecasting:
 
     repeats('-3', reports)
 ```
+
 This is much better. The function is now impervious to type errors.
 
 ### 4.1.2 Get typecast methods
@@ -274,7 +278,7 @@ unambiguous.
 The first argument is always the value to cast; the second argument is the
 value to use if the `cast` fails. If a second argument is omitted,
 `undefined` is returned instead. Let's update our example again to use an
-argument map and a default value for the `counts` variable:
+argument map and a failure value for the `counts` variable:
 
 ```js
     function repeats(arg_map) {
@@ -366,7 +370,7 @@ Blank cells are conditions where an exception is thrown.
 | -Infinity    |       |      | -Infinity  | |      |         |
 | Infinity     |       |      |  Infinity  | |      |         |
 
-Blank cells are conditions where the default value will be returned.
+Blank cells are conditions where the failure value will be returned.
 
 Typecasting makes writing type safe functions in JavaScript a breeze.
 And they also do a great job of self-documenting the code.
@@ -385,13 +389,13 @@ a virtuous cycle that accelerates product development:
 Let's look at each of these and update our sample code as we go along.
 
 ## 4.3 Name variables to indicate type
-Our first step to update our example code is to fix the awful variable names.
+Now let's improve our code again by fixing the awful variable names.
 While they might make sense to one brain, they are inconsistent and
 misleading to another. We've purposely used plural variable names to
-illustrate how bad a practice they can be. Let's fix this using our
-[JS Code Standard ][a] where we name variables by type. There's also a
+illustrate how bad a practice that can be. We use this
+[JS Code Standard ][a] and name our variables by type. There's also a
 handy [reference cheat sheet][b] if we want to just focus on
-the rules and not the reasons.
+the rules and not the reasons:
 
 ```js
   function repeatFn ( arg_map ) {
@@ -418,7 +422,7 @@ formatting (tabs, alignment, K&R indenting) and replaced the dangerous
 `while` loop with a `for` loop. This code will now pass JSLint.
 Thanks to the naming convention we can tell that tell that `fn` should be
 a function and and `idx` should be an integer *regardless if any other code
-is visible*.
+is visible*. Think about how much time can be saved by this fact alone!
 
 The [full code standard][a] discuss *why* a simple naming convention can
 vastly reduce the need for comments. We think it's an interesting read if
@@ -468,7 +472,7 @@ Using the guide from the code standard we get the following:
 
 Remember where we suggested you shouldn't copy our first code example
 because it was "awful?" Now the code is impervious to type errors, readable,
-testable, maintainable, and well documented. Please copy it if you want!
+testable, maintainable, and well documented. Please copy and will!
 
 ## 4.5 Test the Code
 We can use tools like `Istanbul` and `nodeunit` along with the in-line API
