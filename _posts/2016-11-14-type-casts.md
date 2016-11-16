@@ -472,7 +472,8 @@ Using the guide from the code standard we get the following:
 
 Remember where we suggested you shouldn't copy our first code example
 because it was "awful?" Now the code is impervious to type errors, readable,
-testable, maintainable, and well documented. Please copy and will!
+testable, maintainable, and well documented. If your going to copy any code,
+this is the example you want.
 
 ## 4.5 Test the Code
 We can use tools like `Istanbul` and `nodeunit` along with the in-line API
