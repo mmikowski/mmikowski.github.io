@@ -91,7 +91,7 @@ are not *intended* to change type *within* a context because doing so is
 needlessly confusing.
  
 Other languages provide a 'wild card' variables to reference any type of 
-value. These are usually easy to identify because they have a defining a
+value. These are usually easy to identify because they have a 
 unique syntax. Developers know they these 'wild cards' need to be 
 handled with care. In JavaScript, all variables are 'wild cards.'
 
@@ -128,11 +128,11 @@ guess what the returned value will be.
 
 Remember that there at least 4 major JavaScript engines on the
 market (V8, Jakarta, Nitro, and IonMonkey) and [at least another dozen minor 
-players][6]. We wouldn't be surprised to find that the behaviors show here 
+players][5]. We wouldn't be surprised to find that the behaviors show here 
 (using V8) vary from engine to engine and generation to generation.
 
 Other languages have less complex behaviors because they usually have
-stricter type checking, stricter coercion rules, and fewer polymorphic
+stricter type checking, stricter coercion rules, fewer polymorphic
 operators, and fewer vendors. **Perl**, for example, uses the dot (`.`) 
 operator to *join* strings and the plus (`+`) operator to add values.
 Perl also uses *sigals* (prefixes) like `$`, `@`, and `%` to denote variable
@@ -143,7 +143,6 @@ Many languages provide some level of static type checking at compile time.
 **Java**, for example, resolves most variable types at compile time.
 If JavaScript had a similar mechanism we wouldn't be able to run our
 application until we resolved these compile errors:
-
 ```
 00: ok                           | x = 3;          |
 01: ok                           | x = 3 + 1;      |
@@ -160,10 +159,10 @@ application until we resolved these compile errors:
 ```
 
 Perhaps the greates advantage of static (compile-time) type checking is
-that it can potential performance bottlenecks: every type check that can be
+that it can improve performance: every type check that can be
 resolved *once* at compile time removes a type check that would need to be
 invoked during *every* call of a function or method. This can remove a large
-number of calls during application run-time.
+number of calls during application run.
 
 ### 3.1.4 Roll-your-own dynamic checking
 Static type checking does not work in all situations, especially when
@@ -175,15 +174,15 @@ built-in function fails to distinguish between an object and an array.
 
 ## 3.2. Type errors are challenging to resolve
 Type errors can be hard to identify and debug. When one routine fails to
-check for type an incorrect result can propagate up the call stack resulting 
+check for type, an incorrect result can propagate up the call stack resulting 
 in a cascade of errors. The originating flaw can be hard to spot especially 
-hard if variable aren't named by their intended type, like so:
+hard if variable aren't named by their intended type:
 
 ```js
   var total = watches / in_use;
 ```
 
-If we simply name our variable by intended type the  mismatches become
+If we name our variable by intended type the mismatches become
 obvious:
 
 ```js
@@ -384,7 +383,6 @@ a virtuous cycle that accelerates product development:
 3. Test the APIs
 
 Let's look at each of these and update our sample code as we go along.
-These are the steps we take to bring the code to the next level.
 
 ## 4.3 Name variables to indicate type
 Our first step to update our example code is to fix the awful variable names.
@@ -393,7 +391,7 @@ misleading to another. We've purposely used plural variable names to
 illustrate how bad a practice they can be. Let's fix this using our
 [JS Code Standard ][a] where we name variables by type. There's also a
 handy [reference cheat sheet][b] if we want to just focus on
-the rules and not the reasons why the rules exist.
+the rules and not the reasons.
 
 ```js
   function repeatFn ( arg_map ) {
@@ -496,8 +494,8 @@ many dynamic type check calls. However, in **practice** the results may
 be surprising since the real-world overhead of `cast` methods can be
 actually quite low, and these languages introduce their own overhead.
 
-One thing to remember is don't go typcasting crazy. Use it where it makes
-sense, when processing external data and inputs of public
+One thing to remember is don't go typcasting crazy. Use when processing 
+external data and inputs of public
 methods. Private methods often don't benefit from typecasting since the
 the callers and data types will already be known.
 
