@@ -8,18 +8,18 @@ title: Type safety with native JavaScript
 
 # 1. Overview
 Many developer tools like IDEs, frameworks, libraries, and linters try
-to provide some level of **type safety** to JavaScript.  This article 
+to provide some level of **type safety** to JavaScript.  This article
 explains what type safety is, why we want it, and how we can get it
 using native JavaScript.
 
 The good news is most **type errors** in JavaScript can be resolved using
 **typecasting**.  We show you how to typecast using simple functions, and
-then we show how other integrates with other best practices such as naming
+then we show how it integrates with other best practices such as naming
 variables by type, consistent API documentation, and testing.
 
 # 2. What is type safety?
 Type safety is the extent a programming language discourages or prevents
-**type errors**. A type error occurs an unintended or incompatible type 
+**type errors**. A type error occurs when an unintended or incompatible type
 value is provided to a function or expression, usually as an argument
 or context. Dividing a number by an array is a perfect example.
 Usually this doesn't make sense, yet JavaScript support this very operation,
@@ -30,7 +30,7 @@ semantic style all the cool kids are using these days. **This is awful
 code**, so please don't copy it. We'll improve it as we go along.
 
 ```js
-    function repeaats(counts, run)
+    function repeats(counts, run)
     {
         while(counts < 0)
         {
@@ -52,7 +52,7 @@ That didn't take long! The first type error occurs when we provide the
 integer, but we instead provide a string. Then all hell breaks loose.
 
 When `repeats` is invoked it creates an 'endless' loop condition that
-will rather quickly consume all available resources within its execution 
+will rather quickly consume all available resources within its execution
 environment. This results in a force-kill of a NodeJS process, or a browser
 tab, or the entire browser process, or the host OS.
 
@@ -60,8 +60,9 @@ If we watch the progression of the value of `counts` in the `while` loop we
 see the following series: `'-3', '-31', '-311', '-3111', ...`. The test
 condition `counts < 0` *does* convert the `counts` string into a number,
 but by then it is too late: the value is always less than 0 and it only gets
-more negative as time passes.  That's because the expression `counts+=1`
-always *appends* the string `'1'` to the `counts` string.
+more negative with each iteration. That's because the expression `counts+=1`
+always converts the number `1` into a string `'1'` and *appends* it to the
+`counts` variable.
 
 # 3. Why do we want type safety?
 We want type safety with JavaScript because type errors can be quite
@@ -71,7 +72,7 @@ troublesome:
 2. They are challenging to resolve
 3. They are often serious
 
-Let's look at the each of these issues in turn:
+Let's look at each of these issues in turn.
 
 ## 3.1. JS type errors are easy to create
 JavaScript is missing almost all type controls because it was not originally
@@ -79,24 +80,27 @@ intended to run large-scale applications. This makes creating type errors
 exceedingly easy.
 
 ### 3.1.1 No variable declarations
-JavaScript has no means to declare a variable a type. A variable may
+JavaScript has no means to formally declare a variable type. A variable may
 contain any type and that may be changed at any time during execution.
 There are no *sigils* to identify type, and a variable name is
 unconstrained. We may have a JavaScript application where a single symbol
-like 'watches' is used as an object, a map, a list, a boolean flag,
+like `watches` is used as an object, a map, a list, a boolean flag,
 a string, an integer, and a floating point number.
 
 ### 3.1.2 Coercion and polymorphism
 JavaScript expressions often intermingle **type coercion** and
-**polymorphic operators** which results in a very large numbers of
-conditions
-that provide inconsistent results.
+**polymorphic operators** which result in a large number of behaviors that
+provide surprising and undesirable results.
 
-**Type coercion** occurs when the language "automatically" converts one type
-to another. **Polymorphic operators** are symbols like `+` which in
-JavaScript either concatenates a string *or* adds two numbers *or* converts a
-string to a number. When an expression includes type coercion and polymorphic
-operators results get surprising and confusing fast:
+Type coercion occurs when the language "automatically" converts one type
+to another. Polymorphic operators are symbols like `+` which in
+JavaScript either concatenates strings *or* adds two numbers *or* converts a
+string to a number.
+
+Let's look at a few expressions. If you're playing along at home, you might
+want to cover the right-hand side of the table below to see if you can
+guess what the results will be.  If you get them all correct let us know
+and we can send you a gold star.
 
 ```js
   var x, y;
@@ -115,11 +119,16 @@ operators results get surprising and confusing fast:
   x = y + '3';    // |    'undefined3'    | undef  => str  | +str
 ```
 
-Other languages have less complex behaviors because they have stricter type
-coercion rules and fewer polymorphic operators. For example, Perl and PHP use
-the `.` operator to join strings. Trying to `+` two strings always returns
-a number, unlike with JavaScript.  These languages also use *sigals* (prefixes)
-like `$`, `@` , and `%` to indicate variable type.
+Other languages have less complex behaviors because they usually have
+stricter type checking, stricter coercion rules, and fewer polymorphic
+operators. Perl, for example, uses the dot (`.`) operator to join strings.
+When you try to add two strings (`+`) the result is always a number.  With
+JavaScript the result can be a string, a number, or a special value like
+`NaN`. A number of languages also use *sigals* (prefixes) like `$`, `@`,
+and `%` to denote variable type.
+
+Add into this mix that there at least 4 major JavaScript engines on the
+market (V8, Jakarta, Nitro, and IonMonkey)
 
 ### 3.1.3 No static checking
 Many languages provide some level of static type checking at compile time.
@@ -153,7 +162,7 @@ Static type checking does not work in all situations, especially when
 dealing with data from unknown or untrusted sources. In those cases
 the application must resort to *dynamic type checking* at run-time.
 With JavaScript, run-time checks are pretty much our only option, yet the
-language only has limited tools to help here. Even the `typeof` 
+language only has limited tools to help here. Even the `typeof`
 built-in function fails to distinguish between an object and an array.
 
 ## 3.2. Type errors are challenging to resolve
@@ -166,30 +175,33 @@ type.  Consider the following:
 var total = watches / in_use;
 ```
 
-If we simply appended expected type suffixes to the variables the type 
+If we simply appended expected type suffixes to the variables the type
 mismatches become obvious:
 
 ```js
 var total_str = watch_list / use_bool;
 ```
-
 Yes, the intended variable type **is that important**.
+
+We've had to maintain plenty of third-party code which use an
+*if-it-sounds-good-use-it* convention with no hint of variable type or
+purpose in the name, and we can't count the time we've wasted trying
+to deduce the *intended* variable type for many symbols.
 
 ## 3.3. Type errors are often serious
 As we have shown, type errors can result in severe application failures and
-security holes. Imagine some NodeJS code that didn't properly type-check
-requests to a JSON API. One could shut down an entire web server farm by sending
-strings instead of numbers API requests. This stuff happens.
+security holes. Imagine some NodeJS code that doesn't properly type-check
+its JSON API. One could shut down an entire web farm by sending
+strings instead of numbers in API requests. This stuff happens.
 
 # 4. How do we get type safety?
 Getting type safety in native JavaScript isn't particularly
-hard. First recognize that the most likely cause of type errors occurs from
-function inputs and returned values. If we guarantee input types 
-using typecasting and track the intended types for our variables we
-can nearly eliminate JavaScript type errors.
+hard. First recognize that the key values we need to worry about are inputs
+to public methods. When we guarantee input types using typecasting and
+track the intended types for our variables we can nearly eliminate
+JavaScript type errors.
 
 ## 4.1 Typecasting
-
 Typecasting, for the purposes of this article, is the process of converting
 a value into the desired data type using a very strict set of rules. It
 is **guaranteed** to return the correct type **or** a failure failure value.
@@ -202,10 +214,11 @@ Let's rewrite our problem function from above using typecasting:
     {
         var counts = castInt(arg_counts)
         var run = castFn(arg_run)
+        if (!(counts && run)){return}
 
         while (counts < 0)
         {
-            run( counts )
+            run(counts)
             counts+=1
         }
     }
@@ -217,10 +230,10 @@ Let's rewrite our problem function from above using typecasting:
 
     repeats('-3', reports)
 ```
-After this update, the function is nearly impervious to type errors.
+This is much better.  The function is now nearly impervious to type errors.
 
 ### 4.1.2 Get typecast methods
-We can get typecast methods from the [hi\_score][1] project.
+We can get typecast methods from the [hi_score][1] project.
 Installation is simple: `npm install hi_score`. If you edit the
 example application you can use all the `cast` methods from `xhi.util.js`.
 
@@ -246,7 +259,7 @@ The `xhi` utility library provides the following typecast methods:
 ```
 
 All these methods take either one or two arguments. Only numbers, strings,
-and integers are converted between types and only when the conversion is 
+and integers are converted between types and only when the conversion is
 unambiguous.
 
 The first argument is always the value to cast; the second argument is the
@@ -279,10 +292,10 @@ argument map and a default value for the `counts` variable:
 
 This is run-time (dynamic) type checking. There is no native static
 checking in JavaScript in any real sense (one could make arguments about the
-JIT compiler, but at best such checking is *very* incomplete). One could 
+JIT compiler, but at best such checking is *very* incomplete). One could
 use a typecasting library like [Flow][3] or a framework like [TypeScript][4]
 which in theory can perform static type analysis.  However, it is not clear
-that this provides a performance benefit worth the overhead.  We will compare 
+that this provides a performance benefit worth the overhead.  We will compare
 native typecasting with these solutions in an upcoming article.
 
 ### 4.1.3 The Zen of typecasting
@@ -349,11 +362,11 @@ Blank cells are conditions where the default value will be returned.
 Typecasting makes writing type safe functions in JavaScript a breeze.
 And they also do a great job of self-documenting the code.
 The `castFn` call to define the `run` variable, for example, clearly
-illustrates we expect a function despite the fact that `run` is an 
+illustrates we expect a function despite the fact that `run` is an
 awful function name.
 
 ## 4.2 Best practices that work well with typecasting
-There are a few best practices that work with typcasting to create 
+There are a few best practices that work with typcasting to create
 a virtuous cycle that accelerates product development:
 
 1. Name variables to indicate type
@@ -366,7 +379,7 @@ These are the steps we take to bring the code to the next level.
 ## 4.3 Name variables to indicate type
 Our first step to update our example code is to fix the awful variable names.
 While they might make sense to one brain, they are inconsistent and
-misleading to another. We've purposely used plural variable names to 
+misleading to another. We've purposely used plural variable names to
 illustrate how bad a practice they can be.  Let's fix this using our
 [JS Code Standard ][a] where we name variables by type. There's also a
 handy [reference cheat sheet][b] if we want to just focus on
@@ -392,23 +405,21 @@ the rules and not the reasons why the rules exist.
   repeatFn({ _int_ : '-3', _fn_ : printToConsole });
 ```
 
-We employed additional best practices suggested by the guide such as 
+We employed additional best practices suggested by the guide such as
 formatting (tabs, alignment, K&R indenting) and replaced the dangerous
-`while` loop with a `for` loop. This code will now pass JSLint. 
+`while` loop with a `for` loop. This code will now pass JSLint.
 Thanks to the naming convention we can tell that tell that `fn` should be
 a function and and `idx` should be an integer *regardless if any other code
-is visible*.  Those in the audience who enjoy playing *try to trace the 
-variable type over multiple files* may be disappointed that this pretty much 
-puts an end to that game.
+is visible*.
 
 The [full code standard][a] discuss *why* a simple naming convention can
-vastly reduce the need for comments. We think it's an interesting read if 
+vastly reduce the need for comments. We think it's an interesting read if
 you're itching for reason.
 
 ## 4.4. Write consistent API definitions
-Now that we have consistent naming that easily identifies type and 
-formatting that makes the code easy to read, creating in-line API 
-documentation is simple and recommended.  Using the guide from the 
+Now that we have consistent naming that easily identifies type and
+formatting that makes the code easy to read, creating in-line API
+documentation is simple and recommended.  Using the guide from the
 code standard we get the following:
 
 ```js
@@ -453,7 +464,7 @@ because it was "awful?" Now the code is impervious to type errors, readable,
 testable, maintainable, and well documented. Please copy it if you want!
 
 ## 4.5 Test the Code
-We can use tools like `Istanbul` and `nodeunit` along with the in-line API 
+We can use tools like `Istanbul` and `nodeunit` along with the in-line API
 documentation to test our our shiny new type-safe `repeatFn`
 function. Check out the test suite for `hi_score` to see how this is done:
 
@@ -469,15 +480,15 @@ function. Check out the test suite for `hi_score` to see how this is done:
 
 # 5. What about frameworks and libraries?
 An excellent question is how does this native **typecasting** technique
-compare with [Flow][3] and [TypeScript][4]? We intend to publish a sequel 
-that will answer this question. In **theory** both these transpiled 
+compare with [Flow][3] and [TypeScript][4]? We intend to publish a sequel
+that will answer this question. In **theory** both these transpiled
 languages **should** be able to provide static type checking and eliminate
 many dynamic type check calls. However, in **practice** the results may
-be surprising since the real-world overhead of `cast` methods can be 
+be surprising since the real-world overhead of `cast` methods can be
 actually quite low, and these languages introduce their own overhead.
 
-One thing to remember is don't go typcasting crazy. Use it where it makes 
-sense, like processing external data and to process inputs of public 
+One thing to remember is don't go typcasting crazy. Use it where it makes
+sense, when processing external data and inputs of public
 methods.  Private methods often don't benefit from typecasting since the
 the callers and data types will already be known.
 
