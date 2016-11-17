@@ -44,7 +44,7 @@ code**, so please don't copy it. We'll improve it as we go along.
       console.log(info)
   }
 
-    repeats('-3', reports)
+  repeats('-3', reports)
 ```
 
 That didn't take long! The first type error occurs when we provide the
@@ -83,16 +83,16 @@ exceedingly easy.
 JavaScript has no means to formally declare a variable type. A variable may
 contain any type which may be changed at any time during execution.
 There are no *sigils* to identify type, and a variable name is
-unconstrained. We probably all have seen a JavaScript application 
+unconstrained. We probably all have seen a JavaScript application
 or two where a single symbol like `watches` is used as an object, a map,
 a list, a boolean flag, a string, an integer, and a floating point number
 all in different contexts. Yet in practice most variables used in JavaScript
-are not *intended* to change type *within* a context because doing so is 
+are not *intended* to change type *within* a context because doing so is
 needlessly confusing.
- 
-Other languages provide a 'wild card' variables to reference any type of 
-value. These are usually easy to identify because they have a defining a
-unique syntax. Developers know they these 'wild cards' need to be 
+
+Other languages provide a 'wild card' variables to reference any type of
+value. These are usually easy to identify because they have a
+unique syntax. Developers know they these 'wild cards' need to be
 handled with care. In JavaScript, all variables are 'wild cards.'
 
 ### 3.1.2 Coercion and polymorphism
@@ -101,13 +101,13 @@ JavaScript expressions often intermingle **type coercion** and
 provide surprising and undesirable results.
 
 Type coercion occurs when the language "automatically" converts one type
-to another. Polymorphic operators are symbols like the plus sign (`+`) 
+to another. Polymorphic operators are symbols like the plus sign (`+`)
 which in JavaScript either concatenates strings *or* adds two numbers
 *or* converts a string to a number.
 
 Let's look at a few examples. If you're playing along at home, you might
 want to cover the right-hand side of the table below to see if you can
-guess what the returned value will be. 
+guess what the returned value will be.
 
 ```js
   var x, y;
@@ -127,22 +127,23 @@ guess what the returned value will be.
 ```
 
 Remember that there at least 4 major JavaScript engines on the
-market (V8, Jakarta, Nitro, and IonMonkey) and [at least another dozen minor 
-players][6]. We wouldn't be surprised to find that the behaviors show here 
+market (V8, Jakarta, Nitro, and IonMonkey) and [at least another dozen minor
+players][5]. We wouldn't be surprised to find that the behaviors show here
 (using V8) vary from engine to engine and generation to generation.
 
 Other languages have less complex behaviors because they usually have
-stricter type checking, stricter coercion rules, and fewer polymorphic
-operators, and fewer vendors. **Perl**, for example, uses the dot (`.`) 
+stricter type checking, stricter coercion rules, fewer polymorphic
+operators, and fewer vendors. **Perl**, for example, uses the dot (`.`)
 operator to *join* strings and the plus (`+`) operator to add values.
 Perl also uses *sigals* (prefixes) like `$`, `@`, and `%` to denote variable
 types and a special syntax to identify 'wild-card' references.
 
 ### 3.1.3 No static checking
-Many languages provide some level of static type checking at compile time.
-**Java**, for example, resolves most variable types at compile time.
+Many languages provide some level of static type checking.
+**Java**, for example, resolves most variable types during compilation.
 If JavaScript had a similar mechanism we wouldn't be able to run our
-application until we resolved these compile errors:
+application until we resolved the compile errors.  In this imaginary world,
+our JavaScript compile output might look like this:
 
 ```
 00: ok                           | x = 3;          |
@@ -159,11 +160,12 @@ application until we resolved these compile errors:
 12: compile_error: type_mismatch | x = y + '3';    |
 ```
 
-Perhaps the greates advantage of static (compile-time) type checking is
-that it can potential performance bottlenecks: every type check that can be
-resolved *once* at compile time removes a type check that would need to be
-invoked during *every* call of a function or method. This can remove a large
-number of calls during application run-time.
+Perhaps the greatest advantage of static (compile-time) type checking is
+that it can improve performance: every type check that can be
+resolved *once* during a compile removes a type check that would
+need to be invoked on *every* call of a function or method. This can
+remove a large number of calls when the application is run and thus
+improves performance.
 
 ### 3.1.4 Roll-your-own dynamic checking
 Static type checking does not work in all situations, especially when
@@ -175,46 +177,49 @@ built-in function fails to distinguish between an object and an array.
 
 ## 3.2. Type errors are challenging to resolve
 Type errors can be hard to identify and debug. When one routine fails to
-check for type an incorrect result can propagate up the call stack resulting 
-in a cascade of errors. The originating flaw can be hard to spot especially 
-hard if variable aren't named by their intended type, like so:
+check for type an incorrect result can propagate up the call stack resulting
+in a cascade of errors. The originating flaw can be hard to spot especially
+hard if variable aren't named to indicate their intended type:
 
 ```js
+  // Cool-kid, no-consistency convention:
   var total = watches / in_use;
 ```
 
-If we simply name our variable by intended type the  mismatches become
+If we name our variable by intended type the mismatches become
 obvious:
 
 ```js
+  // Real-developer naming convention:
   var total_str = watch_list / use_bool;
 ```
-Yes, the intended variable type **is that important**.
-We've had to maintain plenty of third-party modules which use an
-*if-it-sounds-good-use-it* convention with no hint of variable type or
-purpose in the name, and we can't count the time we've wasted trying
-to deduce the *intended* variable type for many symbols by combing through 
-multiple functions and files. There are far better ways to spend development 
-time than on this needless cognitive overhead.
+
+Yes, the intended variable type **is that important**. We've had to maintain
+plenty of third-party modules which used the *cool-kid, no-consistency*
+convention where variable names provide no hint of type or purpose.
+Sometimes they are patently misleading. For example, what genius
+decided to call a boolean flag `item_array`? Hunting down intended types
+can involve backtracking through many functions and files.
 
 ## 3.3. Type errors are often serious
 As we have shown, type errors can result in severe application failures and
 security holes. Imagine some NodeJS code that doesn't properly type-check
-its JSON API. One could implement a Denial Of Service (DOS) attack and shut 
-down an entire web farm by simply sending strings instead of numbers in API 
+its JSON API. One could implement a Denial Of Service (DOS) attack and shut
+down an entire web farm by simply sending strings instead of numbers in API
 requests. This stuff happens.
 
 # 4. How do we get type safety?
 Getting type safety in native JavaScript isn't particularly
 hard. First recognize that the values we need to worry about are inputs
-to public methods and external data. When we guarantee input types using 
+to public methods and external data. When we guarantee input types using
 typecasting and track the intended types for our variables we can nearly
 eliminate JavaScript type errors.
 
 ## 4.1 Typecasting
 Typecasting, for the purposes of this article, is the process of converting
 a value into the desired data type using a very strict set of rules. It
-is **guaranteed** to return the correct type **or** a failure failure value.
+is **guaranteed** to return the correct type **or** a failure value which
+is `undefined` if not provided.
 
 ### 4.1.1 Use typecasting
 Let's rewrite our problem function from above using typecasting:
@@ -240,6 +245,7 @@ Let's rewrite our problem function from above using typecasting:
 
   repeats('-3', reports)
 ```
+
 The function is now impervious to most type errors.
 
 ### 4.1.2 Get typecast methods
@@ -275,7 +281,7 @@ unambiguous.
 The first argument is always the value to cast; the second argument is the
 value to use if the `cast` fails. If a second argument is omitted,
 `undefined` is returned instead. Let's update our example again to use an
-argument map and a default value for the `counts` variable:
+argument map and a failure value for the `counts` variable:
 
 ```js
   function repeats(arg_map) {
@@ -367,7 +373,7 @@ Blank cells are conditions where an exception is thrown.
 | -Infinity    |       |      | -Infinity  | |      |         |
 | Infinity     |       |      |  Infinity  | |      |         |
 
-Blank cells are conditions where the default value will be returned.
+Blank cells are conditions where the failure value will be returned.
 
 Typecasting makes writing type safe functions in JavaScript a breeze.
 And they also do a great job of self-documenting the code.
@@ -384,16 +390,15 @@ a virtuous cycle that accelerates product development:
 3. Test the APIs
 
 Let's look at each of these and update our sample code as we go along.
-These are the steps we take to bring the code to the next level.
 
 ## 4.3 Name variables to indicate type
-Our first step to update our example code is to fix the awful variable names.
+Now let's improve our code again by fixing the awful variable names.
 While they might make sense to one brain, they are inconsistent and
 misleading to another. We've purposely used plural variable names to
-illustrate how bad a practice they can be. Let's fix this using our
-[JS Code Standard ][a] where we name variables by type. There's also a
+illustrate how bad a practice *that* can be. We use our
+[JS Code Standard ][a] and named our variables by type. There's also a
 handy [reference cheat sheet][b] if we want to just focus on
-the rules and not the reasons why the rules exist.
+the rules and not the reasons:
 
 ```js
   function repeatFn ( arg_map ) {
@@ -412,6 +417,7 @@ the rules and not the reasons why the rules exist.
   }
 
   function printToConsole ( idx ) { console.log( idx ); }
+
   repeatFn({ _int_ : '-3', _fn_ : printToConsole });
 ```
 
@@ -420,11 +426,11 @@ formatting (tabs, alignment, K&R indenting) and replaced the dangerous
 `while` loop with a `for` loop. This code will now pass JSLint.
 Thanks to the naming convention we can tell that tell that `fn` should be
 a function and and `idx` should be an integer *regardless if any other code
-is visible*.
+is visible*. Think about how much time can be saved by this alone.
 
 The [full code standard][a] discuss *why* a simple naming convention can
 vastly reduce the need for comments. We think it's an interesting read if
-you're itching for reason.
+you're into philosophy.
 
 ## 4.4. Write consistent API definitions
 Now that we have consistent named-by-type variables and better formatting,
@@ -470,7 +476,8 @@ Using the guide from the code standard we get the following:
 
 Remember where we suggested you shouldn't copy our first code example
 because it was "awful?" Now the code is impervious to type errors, readable,
-testable, maintainable, and well documented. Please copy it if you want!
+testable, maintainable, and well documented. If your going to copy any code,
+this is the example you want.
 
 ## 4.5 Test the Code
 We can use tools like `Istanbul` and `nodeunit` along with the in-line API
@@ -496,10 +503,10 @@ many dynamic type check calls. However, in **practice** the results may
 be surprising since the real-world overhead of `cast` methods can be
 actually quite low, and these languages introduce their own overhead.
 
-One thing to remember is don't go typcasting crazy. Use it where it makes
-sense, when processing external data and inputs of public
-methods. Private methods often don't benefit from typecasting since the
-the callers and data types will already be known.
+One thing to remember is don't go typcasting crazy. Use when processing
+external data and inputs of public methods. Private methods often don't
+benefit from typecasting since the the callers and data types are already
+known.
 
 We hope you found this useful! Please share your thoughts and experiences
 in the comments below.
