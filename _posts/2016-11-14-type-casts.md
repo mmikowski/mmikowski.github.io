@@ -316,11 +316,14 @@ article.
 
 ### 4.1.3 The Zen of typecasting
 The `cast` methods have four benefits over native JavaScript coercion:
-they are strict and predictable, explicit, and self-documenting.
+they are predictable, explicit, and self-documenting.
 Let's compare the JavaScript coercion examples with the `cast` methods
 to see how predictable they are:
 
 #### 4.1.3.1 JavaScript type coercion examples
+JavaScript tries hard to coerce everything and the results 
+are often undesirable.  Blank cells are conditions where an
+exception is thrown.
 
 | Value        | Bool  | Fn   | Num  | Ary   | Obj  | Str        |
 | :---         | :---  | :--- | :--- | :---  | :--- | :---       |
@@ -346,9 +349,12 @@ to see how predictable they are:
 | -Infinity    | t     | -Infinity  | |   |     | '-Infinity' |
 | Infinity     | t     | Infinity   | |   |     | 'Infinity'  |
 
-Blank cells are conditions where an exception is thrown.
 
-#### 4.1.4.1 hi\_score Cast method examples
+#### 4.1.4.1 hi\_score cast method examples
+The `cast` methods are very strict, and only convert the most
+unambigous values. Blank cells are conditions where the failure
+value (`undefined` by default) will be returned.
+No exceptions are thrown by these methods.
 
 | Value        | Bool  | Fn   | Num  | Ary   | Obj  | Str     |
 | :---         | :---  | :--- | :--- | :---  | :--- | :---    |
@@ -374,18 +380,15 @@ Blank cells are conditions where an exception is thrown.
 | -Infinity    |       |      | -Infinity  | |      |         |
 | Infinity     |       |      |  Infinity  | |      |         |
 
-Blank cells are conditions where the failure value will be returned.
 
-The `cast` methods are also explicit, which means we call them when we need
-them; they aren't silently implemented as with type coercion.  And finally,
-they are self documenting, which means you can read the code and not have
-to add any comments to understand why we put the methods there.
-The `castFn` call to define the `run` variable, for example, clearly
-illustrates we need a function despite the fact that `run` is an
-awful function name.
+The `cast` methods are an explicit and visible
+call unlike JavaScript's native type coercion, and they are 
+named with the intent to illustrate exactly what we are doing with
+no comments needed. We hope, for example, that it is obvious from
+the `castFn` call that we want the `run` variable to be a function.
 
 ## 4.2 Best practices with typecasting
-We feel Typecasting works best when you adopt a few additional good habits:
+Typecasting works best when you adopt a few additional good habits:
 
 1. Name variables to indicate type
 2. Write consistent API definition
@@ -422,7 +425,7 @@ illustrate how bad a practice *that* can be.  We use our handy
 ```
 
 We employed additional best practices suggested by the guide such as
-formatting (tabs, alignment, K&R indenting) and replaced the dangerous
+formatting (spacing, alignment, K&R indenting) and replaced the dangerous
 `while` loop with a `for` loop. This code will now pass JSLint.
 Thanks to the naming convention we can tell that tell that `fn` should be
 a function and and `idx` should be an integer *regardless if any other code
