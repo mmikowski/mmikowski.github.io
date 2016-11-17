@@ -178,16 +178,16 @@ built-in function fails to distinguish between an object and an array.
 ## 3.2. Type errors are challenging to resolve
 Type errors can be hard to identify and debug. When one routine fails to
 check for type an incorrect result can propagate up the call stack resulting
-in a cascade of errors. The originating flaw can be hard to spot especially
-hard if variable aren't named to indicate their intended type:
+in a cascade of errors. The originating flaw can be hard to spot
+if variable aren't named to indicate their intended type, like so:
 
 ```js
   // Cool-kid, no-consistency convention:
   var total = watches / in_use;
 ```
 
-If we name our variable by intended type the mismatches become
-obvious:
+However, if we name our variable by intended type the mismatches
+become obvious:
 
 ```js
   // Real-developer naming convention:
@@ -196,10 +196,10 @@ obvious:
 
 Yes, the intended variable type **is that important**. We've had to maintain
 plenty of third-party modules which used the *cool-kid, no-consistency*
-convention where variable names provide no hint of type or purpose.
-Sometimes they are patently misleading. For example, what genius
-decided to call a boolean flag `item_array`? Hunting down intended types
-can involve backtracking through many functions and files.
+convention where variable names provide no hint of type or purpose, or worse,
+are patently misleading. For example, what genius decided to call a boolean
+flag `item_array`? We'd rather name our variables sensibly and use the time
+saved to focus on new challenges.
 
 ## 3.3. Type errors are often serious
 As we have shown, type errors can result in severe application failures and
@@ -211,18 +211,19 @@ requests. This stuff happens.
 # 4. How do we get type safety?
 Getting type safety in native JavaScript isn't particularly
 hard. First recognize that the values we need to worry about are inputs
-to public methods and external data. When we guarantee input types using
-typecasting and track the intended types for our variables we can nearly
-eliminate JavaScript type errors.
+to public methods like arguments, external data, and context. We can use
+typecasting to guarantee these value types.
 
 ## 4.1 Typecasting
 Typecasting, for the purposes of this article, is the process of converting
-a value into the desired data type using a very strict set of rules. It
-is **guaranteed** to return the correct type **or** a failure value which
-is `undefined` if not provided.
+a value into the desired data type using a very strict set of rules.
+Our typecasting is **always** to returns the correct type **or** a 
+failure value which is `undefined` if not provided.
 
 ### 4.1.1 Use typecasting
-Let's rewrite our problem function from above using typecasting:
+Let's adjust our example function to use `castInt` and `castFn`
+to ensure the provided arguments are the correct type.  If they 
+are not, the function will return without any further processing:
 
 ```js
   function repeats(arg_counts, arg_run)
@@ -249,18 +250,16 @@ Let's rewrite our problem function from above using typecasting:
 The function is now impervious to most type errors.
 
 ### 4.1.2 Get typecast methods
-We can get typecast methods from the [hi\_score][1] project.
-Install by typing `npm install hi_score` into a terminal. If you edit the
+We can get typecast methods from the [hi\_score][1] project which is
+easy to install (type `npm install hi_score` into a terminal). If you edit the
 example application you can use all the `cast` methods from `xhi.util.js`.
 
 ```bash
   npm install hi_score;
   cd npm_modules/hi_score;
   npm install;
-  npm test;
-  npm run cover;
-  google-chrome coverage/lcov-report/index.html;
   google-chrome ./index.html;
+  # Open the JavaScript console to access xhi._util_ functions.
 ```
 
 You don't have to use the whole library; you can just crib the methods from
@@ -270,7 +269,7 @@ You don't have to use the whole library; you can just crib the methods from
 The `xhi` utility library provides the following typecast methods:
 
 ```
-  castBool, castFn, castInt, castJQ,
+  castBool, castFn,  castInt, castJQ,
   castList, castMap, castNum, castObj, castStr
 ```
 
@@ -309,15 +308,17 @@ argument map and a failure value for the `counts` variable:
 This is run-time (dynamic) type checking. There is no native static
 checking in JavaScript in any real sense (one could make arguments about the
 JIT compiler, but at best such checking is *very* incomplete). One could
-use a typecasting library like [Flow][3] or a framework like [TypeScript][4]
+use a type-safety tool like [Flow][3] or a framework like [TypeScript][4]
 which in theory can perform static type analysis. However, it is not clear
-that this provides a performance benefit worth the overhead. We will compare
-native typecasting with these solutions in an upcoming article.
+that this provides a performance benefit worth the compile overhead.
+We will compare native typecasting with these solutions in an upcoming
+article.
 
 ### 4.1.3 The Zen of typecasting
 The `cast` methods have four benefits over native JavaScript coercion:
-they are explicit, predictable, strict, and self-documenting.
-Let's compare the JavaScript coercion examples with the `cast` methods:
+they are strict and predictable, explicit, and self-documenting.
+Let's compare the JavaScript coercion examples with the `cast` methods
+to see how predictable they are:
 
 #### 4.1.3.1 JavaScript type coercion examples
 
@@ -347,7 +348,7 @@ Let's compare the JavaScript coercion examples with the `cast` methods:
 
 Blank cells are conditions where an exception is thrown.
 
-#### 4.1.4.1 hi_score Cast method examples
+#### 4.1.4.1 hi\_score Cast method examples
 
 | Value        | Bool  | Fn   | Num  | Ary   | Obj  | Str     |
 | :---         | :---  | :--- | :--- | :---  | :--- | :---    |
@@ -375,15 +376,16 @@ Blank cells are conditions where an exception is thrown.
 
 Blank cells are conditions where the failure value will be returned.
 
-Typecasting makes writing type safe functions in JavaScript a breeze.
-And they also do a great job of self-documenting the code.
+The `cast` methods are also explicit, which means we call them when we need
+them; they aren't silently implemented as with type coercion.  And finally,
+they are self documenting, which means you can read the code and not have
+to add any comments to understand why we put the methods there.
 The `castFn` call to define the `run` variable, for example, clearly
-illustrates we expect a function despite the fact that `run` is an
+illustrates we need a function despite the fact that `run` is an
 awful function name.
 
-## 4.2 Best practices that work well with typecasting
-There are a few best practices that work with typcasting to create
-a virtuous cycle that accelerates product development:
+## 4.2 Best practices with typecasting
+We feel Typecasting works best when you adopt a few additional good habits:
 
 1. Name variables to indicate type
 2. Write consistent API definition
@@ -392,13 +394,11 @@ a virtuous cycle that accelerates product development:
 Let's look at each of these and update our sample code as we go along.
 
 ## 4.3 Name variables to indicate type
-Now let's improve our code again by fixing the awful variable names.
+Let's improve our code again by changing the variable names.
 While they might make sense to one brain, they are inconsistent and
 misleading to another. We've purposely used plural variable names to
-illustrate how bad a practice *that* can be. We use our
-[JS Code Standard ][a] and named our variables by type. There's also a
-handy [reference cheat sheet][b] if we want to just focus on
-the rules and not the reasons:
+illustrate how bad a practice *that* can be.  We use our handy
+[JS Code standard cheat sheet][b] to light the way:
 
 ```js
   function repeatFn ( arg_map ) {
@@ -428,9 +428,9 @@ Thanks to the naming convention we can tell that tell that `fn` should be
 a function and and `idx` should be an integer *regardless if any other code
 is visible*. Think about how much time can be saved by this alone.
 
-The [full code standard][a] discuss *why* a simple naming convention can
-vastly reduce the need for comments. We think it's an interesting read if
-you're into philosophy.
+The [full JS Code standard][a] discusses *why* a simple naming convention can
+vastly reduce the need for comments. We think it's an interesting and 
+compelling read if you're into that kind of thing.
 
 ## 4.4. Write consistent API definitions
 Now that we have consistent named-by-type variables and better formatting,
