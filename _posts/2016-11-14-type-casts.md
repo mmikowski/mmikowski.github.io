@@ -13,9 +13,9 @@ explains what type safety is, why we want it, and how we can get it
 using native JavaScript.
 
 The good news is most **type errors** in JavaScript can be resolved using
-**typecasting**. We show you how to typecast using simple functions, and
-then we show how it integrates with other best practices such as naming
-variables by type, consistent API documentation, and testing.
+**typecasting**. In this article we demonstrate how to typecast using
+simple functions, and then we show how typecasting works with other best
+practices to improve productivity and quality.
 
 # 2. What is type safety?
 Type safety is the extent a programming language discourages or prevents
@@ -105,9 +105,9 @@ to another. Polymorphic operators are symbols like the plus sign (`+`)
 which in JavaScript either concatenates strings *or* adds two numbers
 *or* converts a string to a number.
 
-Let's look at a few examples. If you're playing along at home, you might
+Let's look at a few examples. Those playing along at home might
 want to cover the right-hand side of the table below to see if you can
-guess what the returned value will be.
+guess what the returned value will be. How'd you do?
 
 ```js
   var x, y;
@@ -127,7 +127,7 @@ guess what the returned value will be.
 ```
 
 Remember that there at least 4 major JavaScript engines on the
-market (V8, Jakarta, Nitro, and IonMonkey) and [at least another dozen minor
+market (V8, IonMonkey, Nitro, Chakra) and [at least another dozen minor
 players][5]. We wouldn't be surprised to find that the behaviors show here
 (using V8) vary from engine to engine and generation to generation.
 
@@ -388,7 +388,7 @@ no comments needed. We hope, for example, that it is obvious from
 the `castFn` call that we want the `run` variable to be a function.
 
 ## 4.2 Best practices with typecasting
-Typecasting works best when you adopt a few additional good habits:
+Typecasting works best when we adopt a few additional good habits:
 
 1. Name variables to indicate type
 2. Write consistent API definition
@@ -477,10 +477,10 @@ Using the guide from the code standard we get the following:
   repeatFn({ _int_ : '-3', _fn_ : printToConsole });
 ```
 
-Remember where we suggested you shouldn't copy our first code example
-because it was "awful?" Now the code is impervious to type errors, readable,
-testable, maintainable, and well documented. If your going to copy any code,
-this is the example you want.
+Remember where we begged not to copy our first code example?
+Now the code is impervious to most type errors, readable,
+testable, maintainable, and well documented. If you insist on
+copying some code we recommend this version.
 
 ## 4.5 Test the Code
 We can use tools like `Istanbul` and `nodeunit` along with the in-line API
@@ -494,7 +494,7 @@ function. Check out the test suite for `hi_score` to see how this is done:
   npm test;
   npm run cover;
   google-chrome coverage/lcov-info/index.html
-  vi test/xhi_level_0.js # or whatever editor you prefer
+  vi test/xhi_level_0.js # Or preferred editor
 ```
 
 # 5. What about frameworks and libraries?
@@ -506,10 +506,10 @@ many dynamic type check calls. However, in **practice** the results may
 be surprising since the real-world overhead of `cast` methods can be
 actually quite low, and these languages introduce their own overhead.
 
-One thing to remember is don't go typcasting crazy. Use when processing
+One thing to remember is don't go typcasting crazy. Use it when processing
 external data and inputs of public methods. Private methods often don't
 benefit from typecasting since the the callers and data types are already
-known.
+known, at least if we name our variables to indicate type.
 
 We hope you found this useful! Please share your thoughts and experiences
 in the comments below.
