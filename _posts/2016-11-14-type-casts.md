@@ -30,19 +30,19 @@ semantic style all the cool kids are using these days. **This is awful
 code**, so please don't copy it. We'll improve it as we go along.
 
 ```js
-    function repeats(counts, run)
-    {
-        while(counts < 0)
-        {
-            run(counts)
-            counts+=1
-        }
-    }
+  function repeats(counts, run)
+  {
+      while(counts < 0)
+      {
+          run(counts)
+          counts+=1
+      }
+  }
 
-    function reports(info)
-    {
-        console.log(info)
-    }
+  function reports(info)
+  {
+      console.log(info)
+  }
 
     repeats('-3', reports)
 ```
@@ -220,31 +220,31 @@ is **guaranteed** to return the correct type **or** a failure failure value.
 Let's rewrite our problem function from above using typecasting:
 
 ```js
-    function repeats(arg_counts, arg_run)
-    {
-        var counts = castInt(arg_counts)
-        var run = castFn(arg_run)
-        if (!(counts && run)){return}
+  function repeats(arg_counts, arg_run)
+  {
+      var counts = castInt(arg_counts)
+      var run = castFn(arg_run)
+      if (!(counts && run)){return}
 
-        while (counts < 0)
-        {
-            run(counts)
-            counts+=1
-        }
-    }
+      while (counts < 0)
+      {
+          run(counts)
+          counts+=1
+      }
+  }
 
-    function reports(info)
-    {
-        console.log(info)
-    }
+  function reports(info)
+  {
+      console.log(info)
+  }
 
-    repeats('-3', reports)
+  repeats('-3', reports)
 ```
-This is much better. The function is now impervious to type errors.
+The function is now impervious to most type errors.
 
 ### 4.1.2 Get typecast methods
-We can get typecast methods from the [hi_score][1] project.
-Installation is simple: `npm install hi_score`. If you edit the
+We can get typecast methods from the [hi\_score][1] project.
+Install by typing `npm install hi_score` into a terminal. If you edit the
 example application you can use all the `cast` methods from `xhi.util.js`.
 
 ```bash
@@ -278,26 +278,26 @@ value to use if the `cast` fails. If a second argument is omitted,
 argument map and a default value for the `counts` variable:
 
 ```js
-    function repeats(arg_map) {
-        var map = castMap(arg_map, {})
-        var counts = castInt(map.counts, 0)
-        var run = castFn(map.run)
+  function repeats(arg_map) {
+      var map = castMap(arg_map, {})
+      var counts = castInt(map.counts, 0)
+      var run = castFn(map.run)
 
-        if (run)
-        {
-            while (counts < 0)
-            {
-                run(counts)
-                counts+=1
-            }
-        }
-    }
+      if (run)
+      {
+          while (counts < 0)
+          {
+              run(counts)
+              counts+=1
+          }
+      }
+  }
 
-    function reports (info)
-    {
-        console.log(info)
-    }
-    repeats({counts:'-3',run:reports});
+  function reports (info)
+  {
+      console.log(info)
+  }
+  repeats({counts:'-3',run:reports});
 ```
 
 This is run-time (dynamic) type checking. There is no native static
