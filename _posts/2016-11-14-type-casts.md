@@ -255,10 +255,11 @@ easy to install (type `npm install hi_score` into a terminal). If you edit the
 example application you can use all the `cast` methods from `xhi.util.js`.
 
 ```bash
-  npm install hi_score;
-  cd npm_modules/hi_score;
-  npm install;
-  google-chrome ./index.html;
+  npm install hi_score
+  cd npm_modules/hi_score
+  npm install
+  npm run prep-libs
+  google-chrome ./index.html
   # Open the JavaScript console to access xhi._util_ functions.
 ```
 
@@ -487,11 +488,13 @@ documentation to test our our shiny new type-safe `repeatFn`
 function. Check out the test suite for `hi_score` to see how this is done:
 
 ```bash
-  npm install hi_score;
-  cd npm_modules/hi_score;
-  npm install;
-  npm test;
-  npm run cover;
+  npm install hi_score
+  cd npm_modules/hi_score
+  npm install
+  npm run prep-libs
+  npm test
+  npm run cover
+  google-chrome index.html
   google-chrome coverage/lcov-info/index.html
   vi test/xhi_level_0.js # Or preferred editor
 ```
