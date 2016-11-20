@@ -124,8 +124,8 @@ well on larger projects too.
 | Touch        | [Unified events][16] | Unified desktop and touch events  |
 | WebSockets   | [Socket io][17]      | The WebSockets protocol is faster and more flexible than AJAX for most applications. Consider using [pure websockets][18] client with a [websocket][19] server on a NodeJs with modern browsers (IE10+) |
 
-# But I want the comfort of a Framework [Updated 2016-11-20]**
- The npm package **hi\_score** is moving along nicely.
+# But I want the comfort of a Framework [Updated 2016-11-20]
+The npm package [hi\_score][21] is moving along nicely.
 It includes all the tools needed to deploy a modern, well packaged SPA for
 production. It includes architecture diagrams, example code, and dynamic 
 installation and linking to best-in-class libraries with **no**
@@ -141,17 +141,18 @@ and test procedures like so:
   npm run prep-libs
   npm test
   npm run cover
-  google-chrome coverage/lcov-reports/index.html
+  google-chrome coverage/lcov-report/index.html
   google-chome index.html
 ```
 
-All core libs are type-safe using [this technique](type-casts).
-Watch this blog for future **hi\_score** announcements!
+All core libs are type-safe using [typecasting][22].
+Watch this blog for future [hi\_score][21] announcements.
+You can check out the [code coverage][23] on coveralls.
 
 Some final thoughts
 -------------------
-I recently saw [this article on AngularJS][20] which echoes many of the issues
-discussed above.
+I recently saw [this article on AngularJS][20] which echoes many of
+the issues discussed above.
 
 Cheers, Mike
 
@@ -178,3 +179,6 @@ END
 [18]:https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API/Writing_WebSocket_client_applications
 [19]:https://www.npmjs.com/package/websocket
 [20]:https://medium.com/@mnemon1ck/why-you-should-not-use-angularjs-1df5ddf6fc99#.wivhdcf4g
+[21]:https://github.com/mmikowski/hi_score
+[22]:../type-casts
+[23]:https://coveralls.io/github/mmikowski/hi_score
