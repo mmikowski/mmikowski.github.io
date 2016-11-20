@@ -4,8 +4,7 @@ title: Do you really want an SPA framework?
 ---
 *First, sell your soul to the framework maintainer...*
 
-What's wrong with an SPA Framework?
------------------------------------
+# What's wrong with an SPA Framework?
 I author and maintain quite a bit of software.  Much of my code is available
 in commercial applications (SnapLogic, Qualaroo), personal demonstration
 applications like [typebomb](http://michaelmikowski.com/typebomb/), [OSS libraries
@@ -21,8 +20,7 @@ by definition, opinionated and limited.  An SPA framework, [like all
 frameworks](http://martinfowler.com/bliki/InversionOfControl.html),
 hinders our ability to innovate and build quality software. Let's see why.
 
-Frameworks and the inversion of control
----------------------------------------
+# Frameworks and the inversion of control
 When we use the framework-of-the-month, the quality and capabilities of
 our application are [strongly limited by it][4]. This [inversion of
 control](http://martinfowler.com/bliki/InversionOfControl.html) is
@@ -38,8 +36,7 @@ for example, should one bother *overriding* the mediocre mechanisms of
 a framework when just removing the framework can results in simpler
 and easier to maintain code?
 
-Does this mean we need to write everything from scratch?
---------------------------------------------------------
+# Does this mean we need to write everything from scratch?
 **Absolutely not.**  jQuery and other best-in-class libraries can provide a
 more capable and complete foundation for building a modern SPA compared
 to the framework-of-the-month.  We can start with a simple and clean
@@ -50,8 +47,7 @@ are best suited to our application.  We can **leverage** jQuery's maturity,
 performance, excellent tools, and vast ecosystem instead of **competing**
 with it.  We also avoid ceding control of our application to a Framework.
 
-Frameworks and complexity === insanely long cycle times
--------------------------------------------------------
+# Frameworks and complexity === insanely long cycle times
 Frameworks these days are approaching or exceeding the complexity of
 [JavaScript-to-X compilers](http://mmikowski.github.io/the_kraken/)
 with sadly similar results.  If we want to go all-in, we can get a "two-fer"
@@ -83,8 +79,7 @@ it?  Maybe one is better at learning HTML5, CSS3, JS really well and taking
 all the noise about these "silver bullets" with a grain of salt.  See [The fog
 of SPA](https://github.com/mmikowski/spa/raw/master/slides/2013-04-02-the_fog_of_spa.pdf).
 
-Been there, got the T-shirt, bombed the airport
------------------------------------------------
+# Been there, got the T-shirt, bombed the airport
 I once used a framework (not my choice) and had to wait months for a new
 version to support a desired feature. Once the framework was updated,
 I discovered excruciating pain of trying to find and fix all the regressions.
@@ -93,8 +88,7 @@ within the framework itself, and (b) frameworks tend to intermingle display
 and business logic, so testing was tedious and difficult.  Which, of course,
 brings us to our next subject...
 
-What about testing?
--------------------
+# What about testing?
 Testing a Single Page Framework Web Applications (SPFWA?) often requires
 an **additional** framework for testing the simplest of logic. Selenium,
 ZombieJS, and other intricate solutions are often employed to test the most
@@ -111,16 +105,8 @@ code *at-will* because only the most obscure bugs could sneak past the
 regression tests.  The architecture and method of testing scales very
 well on larger projects too.
 
-But I want the comfort of a Framework
---------------------------------------
-Fear not, Padawan, I plan to release an `npm` module that includes an
-architecture diagram, some example code, and dependencies to all the
-libraries I currently favor so anyone can get started on a modern SPA
-without the constraints of the framework-of-the-month.  If you are interested,
-**let me know** and I'll move faster.  And remember, if you don't like a
-library I've chosen, **you can always swap it out!**
-
-Here is my current preferred list:
+# What are your preferred libraries
+**Updated 2016-11-20**.  Here are libraries we recommend:
 
 | Capability   | Library              | Notes                             |
 | :----------- | :------------------- | :-------------------------------- |
@@ -137,6 +123,30 @@ Here is my current preferred list:
 | Testing      | [Nodeunit-b][15]     | Create a lightening fast regression test suite and use it as a commit hook |
 | Touch        | [Unified events][16] | Unified desktop and touch events  |
 | WebSockets   | [Socket io][17]      | The WebSockets protocol is faster and more flexible than AJAX for most applications. Consider using [pure websockets][18] client with a [websocket][19] server on a NodeJs with modern browsers (IE10+) |
+
+# But I want the comfort of a Framework [Updated 2016-11-20]**
+ The npm package **hi\_score** is moving along nicely.
+It includes all the tools needed to deploy a modern, well packaged SPA for
+production. It includes architecture diagrams, example code, and dynamic 
+installation and linking to best-in-class libraries with **no**
+*inversion of control* frameworks. While its still in development - for
+example, the release-prep code is in-place but it still needs to be
+hooked up - we it's quite impressive already.  Check out the installation
+and test procedures like so:
+
+```bash
+  npm install hi_score
+  cd node_modules/hi_score
+  npm install
+  npm run prep-libs
+  npm test
+  npm run cover
+  google-chrome coverage/lcov-reports/index.html
+  google-chome index.html
+```
+
+All core libs are type-safe using [this technique](type-casts).
+Watch this blog for future **hi\_score** announcements!
 
 Some final thoughts
 -------------------
