@@ -6,26 +6,26 @@ title: Do you really want an SPA framework?
 
 # What's wrong with an SPA Framework?
 I author and maintain quite a bit of software.  Much of my code is available
-in commercial applications (SnapLogic, Qualaroo), personal demonstration
-applications like [typebomb](http://michaelmikowski.com/typebomb/), [OSS libraries
-](https://www.npmjs.com/~mikem), or [other shared repos
-](//https://github.com/mmikowski).  I am the co-author of the book that
-Dr. Dobb's Journal calls the [Master Handbook
-](http://www.drdobbs.com/joltawards/jolt-awards-the-best-books/240169070?pgno=5)
+in commercial applications (SnapLogic, Qualaroo), demonstration
+applications like [typebomb][24], [OSS libraries][25], and [Github][26].
+I am the co-author of the book that Dr. Dobb's Journal named as one of the
+best developer books of 2014 and called it the "[Master Handbook][27]"
 for SPAs.  Yet I have never published an **SPA framework** despite numerous
 requests.
 
 Why? Because I don't want to lock developers into a platform that must be,
-by definition, opinionated and limited.  An SPA framework, [like all
-frameworks](http://martinfowler.com/bliki/InversionOfControl.html),
-hinders our ability to innovate and build quality software. Let's see why.
+by definition, opinionated and limited. An SPA framework provides safety
+at the cost of an investment into their platform and a loss of flexibility
+and control. They can hinder our ability to innovate and build quality
+software.  For these reasons, I advocate developers focus on JavaScript 
+language mastery and SPA architecture rather than the promise of a **silver 
+bullet** SPA framework.
 
 # Frameworks and the inversion of control
 When we use the framework-of-the-month, the quality and capabilities of
 our application are [strongly limited by it][4]. This [inversion of
-control](http://martinfowler.com/bliki/InversionOfControl.html) is
-a major impediment in building a a nimble, flexible, testable, and
-maintainable application that can stand the test of time.
+control][28] is a major impediment in building a a nimble, flexible,
+testable, and maintainable application that can stand the test of time.
 
 When we use a sound architecture and libraries instead, however, we can
 swap libraries out when they are updated or better one becomes available.
@@ -49,11 +49,10 @@ with it.  We also avoid ceding control of our application to a Framework.
 
 # Frameworks and complexity === insanely long cycle times
 Frameworks these days are approaching or exceeding the complexity of
-[JavaScript-to-X compilers](http://mmikowski.github.io/the_kraken/)
-with sadly similar results.  If we want to go all-in, we can get a "two-fer"
-by selecting Angular 2 + TypeScript.  That way we can shoot ourselves in
-**both** feet instead of one and greatly increase our cycle times.
-Who needs short cycle times anyway?
+[JavaScript-to-X compilers][29] with sadly similar results.  If we want to
+go all-in, we can get a "two-fer" by selecting Angular 2 + TypeScript.
+That way we can shoot ourselves in **both** feet instead of one and greatly
+increase our cycle times. Who needs short cycle times anyway?
 
 Well, actually, **we** do.  If our overhead for producing working development
 code is greater than say, oh, 5 seconds, then somebody out there is
@@ -70,14 +69,14 @@ because only so many solutions can be tried within any given period of time.
 The key to success is to learning how to fail really fast.
 
 Oh, and don't forget, Frameworks DSLs **aren't** the most portable of life skills,
-just like [JavaScript-to-X compilers](http://mmikowski.github.io/the_kraken/)
+just like [JavaScript-to-X compilers][29]
 DSLs. How many developers have moved from GWT to YUI to Dojo to Ext to Backbone
 to Closure to Knockout to Knockback to Ember to Angular?  How about sprinkling
 some Bootstrap, Sass, TypeScript, CoffeeScipt,
 Cappuccino, HAML, and a few more compile steps in there just for the fun of
 it?  Maybe one is better at learning HTML5, CSS3, JS really well and taking
 all the noise about these "silver bullets" with a grain of salt.  See [The fog
-of SPA](https://github.com/mmikowski/spa/raw/master/slides/2013-04-02-the_fog_of_spa.pdf).
+of SPA][30]
 
 # Been there, got the T-shirt, bombed the airport
 I once used a framework (not my choice) and had to wait months for a new
@@ -128,11 +127,9 @@ well on larger projects too.
 The npm package [hi\_score][21] is moving along nicely.
 It includes all the tools needed to deploy a modern, well packaged SPA for
 production. It includes architecture diagrams, example code, and dynamic 
-installation and linking to best-in-class libraries with **no**
-*inversion of control* frameworks. While its still in development - for
-example, the release-prep code is in-place but it still needs to be
-hooked up - we it's quite impressive already.  Check out the installation
-and test procedures like so:
+installation and linking of best-in-class libraries with **no
+inversion of control** frameworks. Let's install it and inspect code
+coverage in about a minute:
 
 ```bash
   npm install hi_score
@@ -145,20 +142,23 @@ and test procedures like so:
   google-chome index.html
 ```
 
-All core libs are type-safe using [typecasting][22].
-Watch this blog for future [hi\_score][21] announcements.
-You can check out the [code coverage][23] on coveralls.
+**hi\_score** continues to evolve, and there are a few bits that still need
+to be hooked up.  For example, the `buildify` and `superpack` scripts
+are in place but not yet used.  Yet we think its pretty impressive already,
+and it's all libraries.
 
-Some final thoughts
--------------------
+All `xhi` libraries are type-safe using [typecasting][22].
+Check out the [code coverage][23] on coveralls, and watch this blog for 
+future [hi\_score][21] announcements.
+
+# Some final thoughts
 I recently saw [this article on AngularJS][20] which echoes many of
 the issues discussed above.
 
 Cheers, Mike
 
+# END
 
-END
----
 [1]:https://github.com/mmikowski/spa/blob/master/slides/2013-10-22-make_it_rock.pdf
 [2]:http://www.amazon.com/dp/1617290750
 [3]:http://manning.com/mikowski
@@ -182,3 +182,11 @@ END
 [21]:https://github.com/mmikowski/hi_score
 [22]:../type-casts
 [23]:https://coveralls.io/github/mmikowski/hi_score
+[24]:http://michaelmikowski.com/typebomb
+[25]:https://www.npmjs.com/~mikem
+[26]:https://github.com/mmikowski
+[27]:http://www.drdobbs.com/joltawards/jolt-awards-the-best-books/240169070?pgno=5
+[28]:http://martinfowler.com/bliki/InversionOfControl.html
+[29]:http://mmikowski.github.io/the_kraken/
+[30]:https://github.com/mmikowski/spa/raw/master/slides/2013-04-02-the_fog_of_spa.pdf
+
