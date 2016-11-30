@@ -4,30 +4,28 @@ title: Do you really want an SPA framework?
 ---
 *First, sell your soul to the framework maintainer...*
 
-What's wrong with an SPA Framework?
------------------------------------
+# What's wrong with an SPA Framework?
 I author and maintain quite a bit of software.  Much of my code is available
-in commercial applications (SnapLogic, Qualaroo), personal demonstration
-applications like [typebomb](http://michaelmikowski.com/typebomb/), [OSS libraries
-](https://www.npmjs.com/~mikem), or [other shared repos
-](//https://github.com/mmikowski).  I am the co-author of the book that
-Dr. Dobb's Journal calls the [Master Handbook
-](http://www.drdobbs.com/joltawards/jolt-awards-the-best-books/240169070?pgno=5)
+in commercial applications (SnapLogic, Qualaroo), demonstration
+applications like [typebomb][24], [OSS libraries][25], and [Github][26].
+I am the co-author of the book that Dr. Dobb's Journal named as one of the
+best developer books of 2014 and called it the "[Master Handbook][27]"
 for SPAs.  Yet I have never published an **SPA framework** despite numerous
 requests.
 
 Why? Because I don't want to lock developers into a platform that must be,
-by definition, opinionated and limited.  An SPA framework, [like all
-frameworks](http://martinfowler.com/bliki/InversionOfControl.html),
-hinders our ability to innovate and build quality software. Let's see why.
+by definition, opinionated and limited. An SPA framework provides safety
+at the cost of an investment into their platform and a loss of flexibility
+and control. They can hinder our ability to innovate and build quality
+software.  For these reasons, I advocate developers focus on JavaScript 
+language mastery and SPA architecture rather than the promise of a **silver 
+bullet** SPA framework.
 
-Frameworks and the inversion of control
----------------------------------------
+# Frameworks and the inversion of control
 When we use the framework-of-the-month, the quality and capabilities of
 our application are [strongly limited by it][4]. This [inversion of
-control](http://martinfowler.com/bliki/InversionOfControl.html) is
-a major impediment in building a a nimble, flexible, testable, and
-maintainable application that can stand the test of time.
+control][28] is a major impediment in building a a nimble, flexible,
+testable, and maintainable application that can stand the test of time.
 
 When we use a sound architecture and libraries instead, however, we can
 swap libraries out when they are updated or better one becomes available.
@@ -38,8 +36,7 @@ for example, should one bother *overriding* the mediocre mechanisms of
 a framework when just removing the framework can results in simpler
 and easier to maintain code?
 
-Does this mean we need to write everything from scratch?
---------------------------------------------------------
+# Does this mean we need to write everything from scratch?
 **Absolutely not.**  jQuery and other best-in-class libraries can provide a
 more capable and complete foundation for building a modern SPA compared
 to the framework-of-the-month.  We can start with a simple and clean
@@ -50,14 +47,12 @@ are best suited to our application.  We can **leverage** jQuery's maturity,
 performance, excellent tools, and vast ecosystem instead of **competing**
 with it.  We also avoid ceding control of our application to a Framework.
 
-Frameworks and complexity === insanely long cycle times
--------------------------------------------------------
+# Frameworks and complexity === insanely long cycle times
 Frameworks these days are approaching or exceeding the complexity of
-[JavaScript-to-X compilers](http://mmikowski.github.io/the_kraken/)
-with sadly similar results.  If we want to go all-in, we can get a "two-fer"
-by selecting Angular 2 + TypeScript.  That way we can shoot ourselves in
-**both** feet instead of one and greatly increase our cycle times.
-Who needs short cycle times anyway?
+[JavaScript-to-X compilers][29] with sadly similar results.  If we want to
+go all-in, we can get a "two-fer" by selecting Angular 2 + TypeScript.
+That way we can shoot ourselves in **both** feet instead of one and greatly
+increase our cycle times. Who needs short cycle times anyway?
 
 Well, actually, **we** do.  If our overhead for producing working development
 code is greater than say, oh, 5 seconds, then somebody out there is
@@ -65,7 +60,7 @@ definitely kicking our ass on cycle times.  That developer can fail 300 times
 in an hour.  If it takes 200 failures before success, it will take a *miniumum*
 of 40 minutes to resolve an issue with a 5s cycle time.  If *our* cycle time
 is 5 minutes because of all the multi-compile overhead, our minimum time
-for success will be 72 *times* longer, or over two full work-day.  So we can
+for success will be 72 *times* longer, or over two full work-days.  So we can
 pick 40 minutes or 2.1 days to resolve an issue to the same level of
 completeness.  You make the call.
 
@@ -74,17 +69,16 @@ because only so many solutions can be tried within any given period of time.
 The key to success is to learning how to fail really fast.
 
 Oh, and don't forget, Frameworks DSLs **aren't** the most portable of life skills,
-just like [JavaScript-to-X compilers](http://mmikowski.github.io/the_kraken/)
+just like [JavaScript-to-X compilers][29]
 DSLs. How many developers have moved from GWT to YUI to Dojo to Ext to Backbone
 to Closure to Knockout to Knockback to Ember to Angular?  How about sprinkling
 some Bootstrap, Sass, TypeScript, CoffeeScipt,
 Cappuccino, HAML, and a few more compile steps in there just for the fun of
 it?  Maybe one is better at learning HTML5, CSS3, JS really well and taking
 all the noise about these "silver bullets" with a grain of salt.  See [The fog
-of SPA](https://github.com/mmikowski/spa/raw/master/slides/2013-04-02-the_fog_of_spa.pdf).
+of SPA][30]
 
-Been there, got the T-shirt, bombed the airport
------------------------------------------------
+# Been there, got the T-shirt, bombed the airport
 I once used a framework (not my choice) and had to wait months for a new
 version to support a desired feature. Once the framework was updated,
 I discovered excruciating pain of trying to find and fix all the regressions.
@@ -93,8 +87,7 @@ within the framework itself, and (b) frameworks tend to intermingle display
 and business logic, so testing was tedious and difficult.  Which, of course,
 brings us to our next subject...
 
-What about testing?
--------------------
+# What about testing?
 Testing a Single Page Framework Web Applications (SPFWA?) often requires
 an **additional** framework for testing the simplest of logic. Selenium,
 ZombieJS, and other intricate solutions are often employed to test the most
@@ -111,16 +104,8 @@ code *at-will* because only the most obscure bugs could sneak past the
 regression tests.  The architecture and method of testing scales very
 well on larger projects too.
 
-But I want the comfort of a Framework
---------------------------------------
-Fear not, Padawan, I plan to release an `npm` module that includes an
-architecture diagram, some example code, and dependencies to all the
-libraries I currently favor so anyone can get started on a modern SPA
-without the constraints of the framework-of-the-month.  If you are interested,
-**let me know** and I'll move faster.  And remember, if you don't like a
-library I've chosen, **you can always swap it out!**
-
-Here is my current preferred list:
+# What are your preferred libraries
+**Updated 2016-11-20**.  Here are libraries we recommend:
 
 | Capability   | Library              | Notes                             |
 | :----------- | :------------------- | :-------------------------------- |
@@ -138,16 +123,42 @@ Here is my current preferred list:
 | Touch        | [Unified events][16] | Unified desktop and touch events  |
 | WebSockets   | [Socket io][17]      | The WebSockets protocol is faster and more flexible than AJAX for most applications. Consider using [pure websockets][18] client with a [websocket][19] server on a NodeJs with modern browsers (IE10+) |
 
-Some final thoughts
--------------------
-I recently saw [this article on AngularJS][20] which echo's many of the issues
-discussed above.
+# But I want the comfort of a Framework [Updated 2016-11-20]
+The npm package [hi\_score][21] is moving along nicely.
+It includes all the tools needed to deploy a modern, well packaged SPA for
+production. It includes architecture diagrams, example code, and dynamic 
+installation and linking of best-in-class libraries with **no
+inversion of control** frameworks. Let's install it and inspect code
+coverage in about a minute:
+
+```bash
+  npm install hi_score
+  cd node_modules/hi_score
+  npm install
+  npm run prep-libs
+  npm test
+  npm run cover
+  google-chrome coverage/lcov-report/index.html
+  google-chome index.html
+```
+
+**hi\_score** continues to evolve, and there are a few bits that still need
+to be hooked up.  For example, the `buildify` and `superpack` scripts
+are in place but not yet used.  Yet we think its pretty impressive already,
+and it's all libraries.
+
+All `xhi` libraries are type-safe using [typecasting][22].
+Check out the [code coverage][23] on coveralls, and watch this blog for 
+future [hi\_score][21] announcements.
+
+# Some final thoughts
+I recently saw [this article on AngularJS][20] which echoes many of
+the issues discussed above.
 
 Cheers, Mike
 
+# END
 
-END
----
 [1]:https://github.com/mmikowski/spa/blob/master/slides/2013-10-22-make_it_rock.pdf
 [2]:http://www.amazon.com/dp/1617290750
 [3]:http://manning.com/mikowski
@@ -168,3 +179,14 @@ END
 [18]:https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API/Writing_WebSocket_client_applications
 [19]:https://www.npmjs.com/package/websocket
 [20]:https://medium.com/@mnemon1ck/why-you-should-not-use-angularjs-1df5ddf6fc99#.wivhdcf4g
+[21]:https://github.com/mmikowski/hi_score
+[22]:../type-casts
+[23]:https://coveralls.io/github/mmikowski/hi_score
+[24]:http://michaelmikowski.com/typebomb
+[25]:https://www.npmjs.com/~mikem
+[26]:https://github.com/mmikowski
+[27]:http://www.drdobbs.com/joltawards/jolt-awards-the-best-books/240169070?pgno=5
+[28]:http://martinfowler.com/bliki/InversionOfControl.html
+[29]:http://mmikowski.github.io/the_kraken/
+[30]:https://github.com/mmikowski/spa/raw/master/slides/2013-04-02-the_fog_of_spa.pdf
+
