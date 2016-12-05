@@ -191,8 +191,12 @@ tbody tr:nth-child(odd) {
   }
 
   img {
-    border-radius: 5px;
+    box-shadow : 0 0 0.5rem 0 #a99;
   }
+}
+
+.entry img {
+  box-shadow : 0 0 0.5rem 0 #a99;
 }
 
 .site-info {
