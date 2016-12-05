@@ -12,7 +12,6 @@
 /**************/
 /* BASE RULES */
 /**************/
-
 html {
   font-size: 100%;
 }
@@ -34,7 +33,6 @@ h1, h2, h3, h4, h5, h6 {
   font-family: $helveticaNeue;
   color: $darkerGray;
   font-weight: bold;
-
   line-height: 1.7;
   margin: 1em 0 15px;
   padding: 0;
@@ -111,38 +109,21 @@ img {
 }
 
 table {
-  box-shadow : 0 0 1rem 0 #aaa;
-  border-radius : 1rem;
-  background : #fff;
+  box-shadow: 0 0 0.5rem 0 #a99;
+  border-radius: 1rem;
+  background: #fff;
   font-family : courier, courier new, monospace;
 }
 thead {
-  font-weight:800;
+  font-weight: 800;
 }
-td,th {
+
+td, th {
   padding: 0.2rem 0.5rem;
-  border : 1px solid #ccc;
+  border: 1px solid #ccc;
 }
-tbody tr:nth-child(odd){
+tbody tr:nth-child(odd) {
   background : #eee;
-}
-tbody tr:last-child td:first-child {
-  border-bottom : 0;
-  border-left   : 0;
-  padding-left  : 1rem;
-}
-tbody tr:last-child td:last-child {
-  border-bottom : 0;
-  border-right  : 0;
-}
-thead tr:first-child th:first-child {
-  border-top   : 0;
-  border-left  : 0;
-  padding-left : 1rem;
-}
-thead tr:first-child th:last-child {
-  border-top   : 0;
-  border-right : 0;
 }
 
 // Fixes images in popup boxes from Google Translate
