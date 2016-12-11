@@ -443,12 +443,15 @@ Using the guide from the code standard we get the following:
 ```js
   // BEGIN utility method /repeatFn/
   // Summary   : repeatFn({ _int_ : <integer>, _fn_ : <function> )
-  // Purpose   : Repeats a call to a function as long as the index (idx) is < 0
+  // Purpose   : Repeatedly call to a function as long as then integer
+  //             ( _int_ ) is < 0.  After each call, _int_ is 
+  //             incremented by 1.  If the initial value of _int_ is
+  //             not < 0, then the function ( _fn_ ) is not called.
   // Example   : repeatFn({
   //               _int_ : -3,
-  //               _fn_ : function (idx ) { console.log( idx )
+  //               _fn_ : function (idx ) { console.log( idx ) }
   //             });
-  // Arguments  : (named)
+  // Arguments  : ( named )
   //   _fn_     : The function to execute. The current value of the
   //              index (idx) is provided as its sole argument.
   //   _int_    : The initial value of idx. Idx is incremented after
@@ -477,10 +480,10 @@ Using the guide from the code standard we get the following:
   repeatFn({ _int_ : '-3', _fn_ : printToConsole });
 ```
 
-Remember where we begged not to copy our first code example?
+Remember where we begged you not to copy our first code example?
 Now the code is impervious to most type errors, readable,
 testable, maintainable, and well documented. If you insist on
-copying some code we recommend this version.
+copying some code, we recommend this version!
 
 ## 4.5 Test the Code
 We can use tools like `Istanbul` and `nodeunit` along with the in-line API
