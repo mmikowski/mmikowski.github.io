@@ -9,7 +9,7 @@ name: Michael S. Mikowski
 description: SPA (UI/UX/server) architect and author
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
-avatar: http://michaelmikowski.com/img/closeup_2012.jpg
+avatar: /images/portrait.jpg
 
 #
 # Flags below are optional
@@ -23,14 +23,13 @@ footer-links:
   flickr:
   github: mmikowski
   instagram:
-  linkedin:
+  linkedin: https://www.linkedin.com/in/michael-mikowski-7601393
   pinterest:
   rss: # just type anything here for a working RSS icon, make sure you set the "url" above!
   twitter: z_mikowski
-  stackoverflow: # your stackoverflow profile, e.g. "users/50476/bart-kiers"
+  stackoverflow: http://stackoverflow.com/users/135116/michael-mikowski
   youtube: # channel/<your_long_string> or user/<user-name>
-  googleplus: # anything in your profile username that comes after plus.google.com/
-
+  googleplus: https://plus.google.com/+MikeMikowski
 
 # Enter your Disqus shortname (not your username) to enable commenting on posts
 # You can find your shortname on the Settings page of your Disqus account
