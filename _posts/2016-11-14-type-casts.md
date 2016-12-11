@@ -443,10 +443,10 @@ Using the guide from the code standard we get the following:
 ```js
   // BEGIN utility method /repeatFn/
   // Summary   : repeatFn({ _int_ : <integer>, _fn_ : <function> )
-  // Purpose   : Repeatedly call to a function as long as then integer
-  //             ( _int_ ) is < 0.  After each call, _int_ is 
-  //             incremented by 1.  If the initial value of _int_ is
-  //             not < 0, then the function ( _fn_ ) is not called.
+  // Purpose   : Repeatedly call a function 'fn' as long as the
+  //             counter 'int' is < 0.  After each call, 'int' is
+  //             incremented by 1.  If the initial value of 'int'
+  //             is not < 0 the function 'fn' is not called.
   // Example   : repeatFn({
   //               _int_ : -3,
   //               _fn_ : function (idx ) { console.log( idx ) }
@@ -469,7 +469,6 @@ Using the guide from the code standard we get the following:
       ;
 
     if ( ! fn ) { return; }
-
     for ( idx = int; idx < 0; idx++ ) {
       fn( idx );
     }
