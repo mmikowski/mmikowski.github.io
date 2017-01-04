@@ -5,24 +5,32 @@ title: Do you really want an SPA framework?
 *First, sell your soul to the framework maintainer...*
 
 # What's wrong with an SPA Framework?
-I author and maintain quite a bit of software.  Much of my code is available
-in commercial applications (SnapLogic, Qualaroo), demonstration
-applications like [typebomb][24], [OSS libraries][25], and [Github][26].
+I author and maintain quite a bit of software. Much of my code is available
+in commercial applications (SnapLogic, Qualaroo), OSS libraries on [Github][26]
+and [NPM][25], or demonstration applications like [Typebomb][24].
 I am the co-author of the book that Dr. Dobb's Journal named as one of the
 best developer books of 2014 and called it the "[Master Handbook][27]"
-for SPAs.  Yet I have never published an **SPA framework** despite numerous
-requests.
+for SPAs. I more years of experience **developing** commercial web
+applications than the average Angualar maintainer has **breathing**. Yet
+I have never published an **SPA framework** despite numerous requests.
 
 Why? Because I don't want to lock developers into a platform that must be,
 by definition, opinionated and limited. An SPA framework provides safety
 at the cost of an investment into their platform and a loss of flexibility
 and control. They can hinder our ability to innovate and build quality
-software.  For these reasons, I advocate developers focus on JavaScript 
-language mastery and SPA architecture rather than the promise of a **silver 
+software. For these reasons, I advocate developers focus on JavaScript
+language mastery and SPA architecture rather than the promise of a **silver
 bullet** SPA framework.
 
+Before we proceed please note that everything has its place. SPA frameworks
+can be useful to new or casual developers who don't know or care how an SPA
+works. But before you hitch your star to Ext, Angular, Ember, Aurelia, Meteor,
+Backbone, Knockout, Vue, or Mercury or dozens of others, please consider that
+every shiny new tool has its cost. Here are some precautions you might want
+to consider before you dive in.
+
 # Frameworks and the inversion of control
-When we use the framework-of-the-month, the quality and capabilities of
+When we use an SPA framework, the quality and capabilities of
 our application are [strongly limited by it][4]. This [inversion of
 control][28] is a major impediment in building a a nimble, flexible,
 testable, and maintainable application that can stand the test of time.
@@ -31,7 +39,7 @@ When we use a sound architecture and libraries instead, however, we can
 swap libraries out when they are updated or better one becomes available.
 **Or we can decide not to change a thing** if an update doesn't suit our
 needs. We can mix and match the **best-for-our-purpose** libraries instead
-of using a framework's mishmash of solutions of varying quality.  Why,
+of using a framework's mishmash of solutions of varying quality. Why,
 for example, should one bother *overriding* the mediocre mechanisms of
 a framework when just removing the framework can results in simpler
 and easier to maintain code?
@@ -39,43 +47,44 @@ and easier to maintain code?
 # Does this mean we need to write everything from scratch?
 **Absolutely not.**  jQuery and other best-in-class libraries can provide a
 more capable and complete foundation for building a modern SPA compared
-to the framework-of-the-month.  We can start with a simple and clean
+to many frameworks. We can start with a simple and clean
 [SPA architecture, p10][1] as detailed in
 [Single page web applications, JavaScript end-to-end][2]
 (also available directly from [Manning][3]), and then add libraries that
-are best suited to our application.  We can **leverage** jQuery's maturity,
+are best suited to our application. We can **leverage** jQuery's maturity,
 performance, excellent tools, and vast ecosystem instead of **competing**
-with it.  We also avoid ceding control of our application to a Framework.
+with it. We also avoid ceding control of our application to an SPA framework.
 
 # Frameworks and complexity === insanely long cycle times
-Frameworks these days are approaching or exceeding the complexity of
-[JavaScript-to-X compilers][29] with sadly similar results.  If we want to
+SPA frameworks these days are approaching or exceeding the complexity of
+[JavaScript-to-X compilers][29] with sadly similar results. If we want to
 go all-in, we can get a "two-fer" by selecting Angular 2 + TypeScript.
 That way we can shoot ourselves in **both** feet instead of one and greatly
 increase our cycle times. Who needs short cycle times anyway?
 
-Well, actually, **we** do.  If our overhead for producing working development
+Well, actually, **we** do. If our overhead for producing working development
 code is greater than say, oh, 5 seconds, then somebody out there is
-definitely kicking our ass on cycle times.  That developer can fail 300 times
-in an hour.  If it takes 200 failures before success, it will take a *miniumum*
-of 40 minutes to resolve an issue with a 5s cycle time.  If *our* cycle time
-is 5 minutes because of all the multi-compile overhead, our minimum time
-for success will be 72 *times* longer, or over two full work-days.  So we can
-pick 40 minutes or 2.1 days to resolve an issue to the same level of
-completeness.  You make the call.
+definitely kicking our ass on cycle times. We can fail 300 times an hour with
+a 5 second cycle time. In other words, if it takes 200 failures before success,
+we will need a minimum of 40 minutes to resolve an issue. However, if our
+cycle time is 5 minutes because of the multi-compile overhead of an SPA
+framework, our minimum time before success will be 72 *times* longer, or over
+two full work-days. You make the call.
 
 Long cycle times not only kill productivity, but they also stifle innovation
 because only so many solutions can be tried within any given period of time.
-The key to success is to learning how to fail really fast.
+To paraphrase Thomas Edison, the key to innovation is to learning how to fail
+really fast.
 
-Oh, and don't forget, Frameworks DSLs **aren't** the most portable of life skills,
-just like [JavaScript-to-X compilers][29]
-DSLs. How many developers have moved from GWT to YUI to Dojo to Ext to Backbone
+# Frameworks DSLs aren't portable
+SPA frameworks DSLs **aren't** the most portable of
+life skills, just like [JavaScript-to-X compilers][29] DSLs.
+How many developers have moved from GWT to YUI to Dojo to Ext to Backbone
 to Closure to Knockout to Knockback to Ember to Angular?  How about sprinkling
 some Bootstrap, Sass, TypeScript, CoffeeScipt,
 Cappuccino, HAML, and a few more compile steps in there just for the fun of
 it?  Maybe one is better at learning HTML5, CSS3, JS really well and taking
-all the noise about these "silver bullets" with a grain of salt.  See [The fog
+all the noise about these "silver bullets" with a grain of salt. See [The fog
 of SPA][30]
 
 # Been there, got the T-shirt, bombed the airport
@@ -84,7 +93,7 @@ version to support a desired feature. Once the framework was updated,
 I discovered excruciating pain of trying to find and fix all the regressions.
 It wasn't easy, of course, because (a) some of the most dastardly bugs were
 within the framework itself, and (b) frameworks tend to intermingle display
-and business logic, so testing was tedious and difficult.  Which, of course,
+and business logic, so testing was tedious and difficult. Which, of course,
 brings us to our next subject...
 
 # What about testing?
@@ -99,13 +108,13 @@ easily decouple display and business logic so we can
 [regression test our application in less than a second][5].
 My commit hook for the above application eventually ran the full regression
 suite *and* JSLint for all changed files in less than 4 seconds with over
-600 assertions and ~95% coverage.  We could refactor and reorganize the
+600 assertions and ~95% coverage. We could refactor and reorganize the
 code *at-will* because only the most obscure bugs could sneak past the
-regression tests.  The architecture and method of testing scales very
+regression tests. The architecture and method of testing scales very
 well on larger projects too.
 
 # What are your preferred libraries
-**Updated 2016-11-20**.  Here are libraries we recommend:
+**Updated 2016-11-20**. Here are libraries we recommend:
 
 | Capability   | Library              | Notes                             |
 | :----------- | :------------------- | :-------------------------------- |
@@ -124,12 +133,11 @@ well on larger projects too.
 | WebSockets   | [Socket io][17]      | The WebSockets protocol is faster and more flexible than AJAX for most applications. Consider using [pure websockets][18] client with a [websocket][19] server on a NodeJs with modern browsers (IE10+) |
 
 # But I want the comfort of a Framework [Updated 2016-11-20]
-The npm package [hi\_score][21] is moving along nicely.
+The NPM package [hi\_score][21] is moving along nicely.
 It includes all the tools needed to deploy a modern, well packaged SPA for
-production. It includes architecture diagrams, example code, and dynamic 
-installation and linking of best-in-class libraries with **no
-inversion of control** frameworks. Let's install it and inspect code
-coverage in about a minute:
+production. It includes architecture diagrams, example code, code compression
+and obsfucation, and dynamic installation and linking of best-in-class libraries
+You can install and inspect the cod in about a minute:
 
 ```bash
   npm install hi_score
@@ -143,16 +151,16 @@ coverage in about a minute:
 ```
 
 **hi\_score** continues to evolve, and there are a few bits that still need
-to be hooked up.  For example, the `buildify` and `superpack` scripts
-are in place but not yet used.  Yet we think its pretty impressive already,
-and it's all libraries.
+to be hooked up.  For example, the compression routines need a little more
+polish.  However,  we think it is already quite valuable and usable.  And it's
+all libraries.
 
-All `xhi` libraries are type-safe using [typecasting][22].
-Check out the [code coverage][23] on coveralls, and watch this blog for 
+All `xhi` code uses [typecasting][22] to minimize type errors.
+Check out the [code coverage][23] on coveralls, and watch this blog for
 future [hi\_score][21] announcements.
 
-# Some final thoughts
-I recently saw [this article on AngularJS][20] which echoes many of
+# A parting thought
+I recently saw [this article on Angular][20] which echoes many of
 the issues discussed above.
 
 Cheers, Mike
@@ -189,4 +197,5 @@ Cheers, Mike
 [28]:http://martinfowler.com/bliki/InversionOfControl.html
 [29]:http://mmikowski.github.io/the_kraken/
 [30]:https://github.com/mmikowski/spa/raw/master/slides/2013-04-02-the_fog_of_spa.pdf
+[31]:
 
