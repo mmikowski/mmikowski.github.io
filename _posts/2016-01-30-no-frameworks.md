@@ -10,9 +10,8 @@ in commercial applications (SnapLogic, Qualaroo), OSS libraries on [Github][26]
 and [NPM][25], or demonstration applications like [Typebomb][24].
 I am the co-author of the book that Dr. Dobb's Journal named as one of the
 best developer books of 2014 and called it the "[Master Handbook][27]"
-for SPAs. I have more years experience **developing commercial web
-applications** than most Angular maintainers have **breathing**. Yet
-I have not published an **SPA framework** despite numerous requests.
+for SPAs. Yet despite numerous requests I have not published 
+an **SPA framework**.
 
 Why? Because I don't want to lock developers into a platform that must be,
 by definition, opinionated and limited. An SPA framework provides safety
@@ -197,5 +196,4 @@ Cheers, Mike
 [28]:http://martinfowler.com/bliki/InversionOfControl.html
 [29]:http://mmikowski.github.io/the_kraken/
 [30]:https://github.com/mmikowski/spa/raw/master/slides/2013-04-02-the_fog_of_spa.pdf
-[31]:
 
