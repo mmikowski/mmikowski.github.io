@@ -10,8 +10,8 @@ in commercial applications (SnapLogic, Qualaroo), OSS libraries on [Github][26]
 and [NPM][25], or demonstration applications like [Typebomb][24].
 I am the co-author of the book that Dr. Dobb's Journal named as one of the
 best developer books of 2014 and called it the "[Master Handbook][27]"
-for SPAs. I have more years of experience **developing** commercial web
-applications than the average Angualar maintainer has **breathing**. Yet
+for SPAs. I have more years experience **developing commercial web
+applications** than the typical Angualar maintainer has **breathing**. Yet
 I have not published an **SPA framework** despite numerous requests.
 
 Why? Because I don't want to lock developers into a platform that must be,
