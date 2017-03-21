@@ -113,54 +113,65 @@ regression tests. The architecture and method of testing scales very
 well on larger projects too.
 
 # What are your preferred libraries
-**Updated 2016-11-20**. Here are libraries we recommend:
+Please see [hi\_score][21] for the most up-to-date list of libraries.
+Eventually this list will be moved there.
 
 | Capability   | Library              | Notes                             |
 | :----------- | :------------------- | :-------------------------------- |
 | DOM + Util   | [jQuery][6]          | A powerful, stable, tight library |
 | AJAX         | [jQuery][6]          | ... but prefer WebSockets, see below |
 | Client Data  | [TaffyDB][7]         | A powerful and flexible SQL-like client data management tool |
+| Coverage     | Istanbul             | The best JS code coverage tool I have found |
 | DynamicCSS   | [PowerCSS][8]        | Insanely fast and efficient JS-CSS engine |
 | Linting      | [JSLint][9]          | Avoid stupid mistakes with a commit hook |
 | Events, promises | [Global Events][10] | Use the same event and promise methods for both logical and browser events |
+| Reporting    | Coveralls            | See Coveralls.io                  |
 | Routing      | [uriAnchor][11]      | A jQuery plugin for robust routing that includes support for dependent and independent query arguments |
 | SVG          | [D3][12]             | Easy graphs and charts            |
 |              | [SVG][13]            | Low-level jQuery plugin           |
 | Templates    | [Dust][14]           | Uses a powerful template DSL that minimizes the temptation to intermingle  business and display logic |
-| Testing      | [Nodeunit-b][15]     | Create a lightening fast regression test suite and use it as a commit hook |
+| Testing      | [Nodeunit][15]     | Create a lightening fast regression test suite and use it as a commit hook |
 | Touch        | [Unified events][16] | Unified desktop and touch events  |
 | WebSockets   | [Socket io][17]      | The WebSockets protocol is faster and more flexible than AJAX for most applications. Consider using [pure websockets][18] client with a [websocket][19] server on a NodeJs with modern browsers (IE10+) |
 
-# But I want the comfort of a Framework [Updated 2016-11-20]
-The NPM package [hi\_score][21] is moving along nicely.
+# But I want the comfort of a Framework
+We can clone [hi\_score][21] to get a great starter project.
 It includes all the tools needed to deploy a modern, well packaged SPA for
-production. It includes architecture diagrams, example code, code compression
-and obsfucation, and dynamic installation and linking of best-in-class libraries
-You can install and inspect the cod in about a minute:
+production.  On Linux (Ubuntu 16.10/16.04) first ensure we have to ensure
+system prerequesites are met, although a professional JS developer will
+typically have these already installed:
 
 ```bash
-  npm install hi_score
-  cd node_modules/hi_score
-  npm install
-  npm run prep-libs
-  npm test
-  npm run cover
-  google-chrome coverage/lcov-report/index.html
-  google-chome index.html
+  sudo apt-get install build-essential openssh-server git pandoc
+  curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+  sudo apt-get install -y nodejs
+```
+Then we can then install, test, assess coverage, and build a distribution all
+in under a minute:
+
+```bash
+  git clone git@github.com:mmikowski/hi_score.git
+  cd hi_score && npm install   # install dev libs
+  npm run setup                # link    dev libs
+
+  npm test                     # run regression tests
+  npm run cover                # generate coverage report
+
+  google-chrome coverage/lcov-report/index.html # view coverage
+  google-chrome index.html                      # view examples
+  google-chrome build/dist/ex*.html             # view distribution
 ```
 
-**hi\_score** continues to evolve, and there are a few bits that still need
-to be hooked up.  For example, the compression routines need a little more
-polish.  However,  we think it is already quite valuable and usable.  And it's
-all libraries.
-
-All `xhi` code uses [typecasting][22] to minimize type errors.
-Check out the [code coverage][23] on coveralls, and watch this blog for
-future [hi\_score][21] announcements.
+[hi_\_score][21] includes automatic download and linking of best-in-class
+libraries, code standards, architecture diagrams, example code,
+and code compression and obsfucation.  It employs [typecasting][22] to
+minimize type errors.  Check out the [code coverage][23] on coveralls,
+and watch this blog for future [hi\_score][21] announcements.
 
 # A parting thought
-I recently saw [this article on Angular][20] which echoes many of
-the issues discussed above.
+Please see [this article on Angular][20] which echoes many of
+the issues discussed above. Perhaps it should have been called
+"Angular JS: the ColdFusion of the next-generation"??
 
 Cheers, Mike
 
