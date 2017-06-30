@@ -217,8 +217,22 @@ typecasting to guarantee these value types.
 ## 4.1 Typecasting
 Typecasting, for the purposes of this article, is the process of converting
 a value into the desired data type using a very strict set of rules.
-Our typecasting is **always** to returns the correct type **or** a 
-failure value which is `undefined` if not provided.
+Our typecasting functions either return **the requested value type** or 
+**a failure value** which is `undefined` by default. Consider the examples below:
+
+```js
+  // return_data = castInt( <value-to-cast> [, <failure-value>] );
+
+  return_data = castInt( 0      ); // 0
+  return_data = castInt( '0'    ); // 0
+  return_data = castInt( 'a'    ); // undefined
+  return_data = castInt( []     ); // undefined
+  return_data = castInt( 'a', 0 ); // 0
+  return_data = castInt( [],  0 ); // 0
+```
+
+`castInt`:
+
 
 ### 4.1.1 Use typecasting
 Let's adjust our example function to use `castInt` and `castFn`
@@ -258,7 +272,8 @@ example application you can use all the `cast` methods from `xhi.util.js`.
   npm install hi_score
   cd npm_modules/hi_score
   npm install
-  npm run prep-libs
+  npm run setup
+  npm test
   google-chrome ./index.html
   # Open the JavaScript console to access xhi._util_ functions.
 ```
@@ -493,9 +508,9 @@ function. Check out the test suite for `hi_score` to see how this is done:
   npm install hi_score
   cd npm_modules/hi_score
   npm install
-  npm run prep-libs
+  npm run setup
   npm test
-  npm run cover
+  npm run coverage
   google-chrome index.html
   google-chrome coverage/lcov-info/index.html
   vi test/xhi_level_0.js # Or preferred editor
