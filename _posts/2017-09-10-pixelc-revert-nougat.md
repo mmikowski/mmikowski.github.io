@@ -4,10 +4,10 @@ title: Revert the Pixel C from Oreo to Nougat
 ---
 *The bleeding edge is where you bleed*
 
-I was pleasantly surprised to find Oreo (Android 8) ready to install on my Pixel C tablet a few days ago. The OTA update went smoothly but it had one unacceptable flaw: Oreo broke the one game I play regularly (War Robots, if you must know). Here's how I fixed it.
+I was pleasantly surprised to find Oreo (Android 8) ready to install on my Pixel C tablet a few days ago. The OTA update went smoothly but it had one unacceptable flaw: Oreo broke the only action game I play regularly (War Robots, if you must know). Here's how I fixed it.
 
 ## Download platform tools
-This step was precautionary. One could probably use the `fastboot` and `adb` tools already installed on Ubuntu 17.04. Oh well, this worked. One can find these tools for Linux, Mac, and PC on the [Android Studio site][_01]. After download, I opened a terminal and set up the tools.
+This step was precautionary. One could probably use the `fastboot` and `adb` tools already installed on Ubuntu 17.04. Oh well, this worked. I downloaded the Linux tools from the [Android Studio site][_01]. After download, I opened a terminal and configured the software.
 
 ```bash
   mkdir PixelC
@@ -30,7 +30,7 @@ I downloaded the latest [ryu build for the Pixel C][_03] release August 2017 fro
 ## Prepare the tablet
 **Warning: The following procedure erases all your data. Do not proceed without a backup!**
 
-First I enabled developer options by vistiting `Settings` > `About Tablet` and tapping on the `Build` seven times. A message on the bottom confirms that I'm now a "developer" - thanks Google! Next selected `Settings` > `Developer options` and enabled `USB debugging` and `OEM unlock`. I attached the tablet to the computer using USB C cable and unlocked its bootloader.
+First I enabled developer options by vistiting `Settings` > `About Tablet` and tapping on the `Build` seven times. A message on the bottom confirms that I'm now a "developer" - thanks Google! Next selected `Settings` > `Developer options` and enabled `USB debugging` and `OEM unlock`. I then attached the tablet to the computer using USB C cable and unlocked its bootloader as shown below.
 
 ```bash
   sudo adb start-server
@@ -73,7 +73,7 @@ After this the device warned the the bootloader was unlocked and that I would ha
 In retrospect, I *should* have relocked the bootloader before rebooting as shown above since it re-erases all user data. I set up the like-new tablet from a backup and patiently wait for all the apps to reinstall - around 30 minutes.
 
 ## Relock bootloader
-If you're playing along at home and still haven't relocked your boot loader, well you're in trouble because doing so is going to completely delete your data again. I had to again enabled developer options and USB debugging [as before](#prepare-the-tablet). With the tablet still atached to the computer via USB C, I re-locked the bootloader again and rebooted as shown below.
+If you're playing along at home and still haven't relocked your boot loader, well you're in trouble because doing so is going to completely delete your data again. I had to again enabled developer options and USB debugging [as before](#prepare-the-tablet). With the tablet still atached to the computer via USB C, I re-locked the bootloader again and rebooted as shown below ... and then I got to install my apps and data all over again.
 
 ```bash
   sudo adb start-server
@@ -88,7 +88,7 @@ If you're playing along at home and still haven't relocked your boot loader, wel
   sudo fastboot reboot
 ```
 
-... And then I got to install my apps and data all over again.
+I hope someone finds this useful!
 
 Cheers, Mike
 
