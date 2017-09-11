@@ -71,10 +71,8 @@ Here is were things got tricky. The *official* means to flash failed because the
 
 After this the device warned the the bootloader was unlocked and that I would have to wait 30s for a reboot.  In retrospect, I *should* have relocked the bootloader before rebooting as shown above. *Instead* I set up the like-factory-new tablet from a backup and patiently wait for all the apps to reinstall - around 45 minutes.
 
-## Relock bootloader
-If you're playing along at home and still haven't relocked your boot loader you're in trouble now. That's because fixing this is going to completely delete all your data again.
-
-I had to again enabled developer options and USB debugging [as before](#prepare-the-tablet). With the tablet still atached to the computer via USB C, I re-locked the bootloader again and rebooted as shown below ... and then I got to install my apps and data all over again.
+## Relock the bootloader
+If you're playing along at home and still haven't relocked your boot loader you're in trouble now. That's because fixing this is going to completely delete all user data again. I had to re-enabled developer options and USB debugging [as before](#prepare-the-tablet) and attach the tablet to the computer via USB C and executed these commands in the terminal:
 
 ```bash
   sudo adb start-server
@@ -90,6 +88,8 @@ I had to again enabled developer options and USB debugging [as before](#prepare-
   sudo fastboot reboot
 
 ```
+
+Then I had to install my apps and data all over again.
 
 I hope someone finds this useful!
 
