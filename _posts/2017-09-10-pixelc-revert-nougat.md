@@ -42,7 +42,7 @@ First I enabled developer options by vistiting `Settings` > `About Tablet` and t
 The last step took about 5 minute and **erased all user data on the tablet**. The tablet then rebooted and presented me with plain "Waiting for fastboot command" message.
 
 ## Flash the image
-Here is were things got tricky. The *official* means to flash failed because the archive does not contain `boot.sig`, `recovery.sig`, or `system.sig` files. But an Android Central [forum post][_04] a [Nexus 7 article][_05] from five years ago saved the day. Back to our trusty terminal to work the magic.
+Here is were things got tricky. The *official* means to flash failed because the archive does not contain `boot.sig`, `recovery.sig`, or `system.sig` files. But an Android Central [forum post][_04] and a [Nexus 7 article][_05] from five years ago saved the day. Back to our trusty terminal to work the magic.
 
 ```bash
   cd ryu-n2g48c
@@ -69,11 +69,12 @@ Here is were things got tricky. The *official* means to flash failed because the
   sudo fastboot reboot
 ```
 
-After this the device warned the the bootloader was unlocked and that I would have to wait 30s for a reboot.
-In retrospect, I *should* have relocked the bootloader before rebooting as shown above since it re-erases all user data. I set up the like-new tablet from a backup and patiently wait for all the apps to reinstall - around 30 minutes.
+After this the device warned the the bootloader was unlocked and that I would have to wait 30s for a reboot.  In retrospect, I *should* have relocked the bootloader before rebooting as shown above. *Instead* I set up the like-factory-new tablet from a backup and patiently wait for all the apps to reinstall - around 45 minutes.
 
 ## Relock bootloader
-If you're playing along at home and still haven't relocked your boot loader, well you're in trouble because doing so is going to completely delete your data again. I had to again enabled developer options and USB debugging [as before](#prepare-the-tablet). With the tablet still atached to the computer via USB C, I re-locked the bootloader again and rebooted as shown below ... and then I got to install my apps and data all over again.
+If you're playing along at home and still haven't relocked your boot loader you're in trouble now. That's because fixing this is going to completely delete all your data again.
+
+I had to again enabled developer options and USB debugging [as before](#prepare-the-tablet). With the tablet still atached to the computer via USB C, I re-locked the bootloader again and rebooted as shown below ... and then I got to install my apps and data all over again.
 
 ```bash
   sudo adb start-server
@@ -83,9 +84,11 @@ If you're playing along at home and still haven't relocked your boot loader, wel
 
   # This will again erase all user apps and data
   # and requires confirmation on the tablet
-
   sudo fastboot oem lock
+
+  # And now to reinstall everything...
   sudo fastboot reboot
+
 ```
 
 I hope someone finds this useful!
