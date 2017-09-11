@@ -80,11 +80,15 @@ If you're playing along at home and still haven't relocked your boot loader, wel
   sudo adb devices # should show tablet, if not, fix before proceeding
 
   sudo adb reboot-bootloader
+
+  # This will again erase all user apps and data
+  # and requires confirmation on the tablet
+
   sudo fastboot oem lock
   sudo fastboot reboot
 ```
 
-The relocking of the bootloader forced an erased all user data again and required confirmation on the tablet. After installing all my apps and account again works again. Word to the wise: relock your bootloader *before* rebooting.
+... And then I got to install my apps and data all over again.
 
 Cheers, Mike
 
