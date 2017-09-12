@@ -137,35 +137,14 @@ Eventually this list will be moved there.
 # But I want the comfort of a Framework
 We can clone [hi\_score][21] to get a great starter project.
 It includes all the tools needed to deploy a modern, well packaged SPA for
-production.  On Linux (Ubuntu 16.10/16.04) first ensure we have to ensure
+production. On Linux (Ubuntu 16.10/16.04) first ensure we have to ensure
 system prerequesites are met, although a professional JS developer will
 typically have these already installed:
 
-```bash
-  sudo apt-get install build-essential openssh-server git pandoc
-  curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
-  sudo apt-get install -y nodejs
-```
-Then we can then install, test, assess coverage, and build a distribution all
-in under a minute:
-
-```bash
-  git clone git@github.com:mmikowski/hi_score.git
-  cd hi_score && npm install   # install dev libs
-  npm run setup                # link    dev libs
-
-  npm test                     # run regression tests
-  npm run cover                # generate coverage report
-
-  google-chrome coverage/lcov-report/index.html # view coverage
-  google-chrome index.html                      # view examples
-  google-chrome build/dist/ex*.html             # view distribution
-```
-
 [hi_\_score][21] includes automatic download and linking of best-in-class
 libraries, code standards, architecture diagrams, example code,
-and code compression and obsfucation.  It employs [typecasting][22] to
-minimize type errors.  Check out the [code coverage][23] on coveralls,
+and code compression and obsfucation. It employs [typecasting][22] to
+minimize type errors. Check out the [code coverage][23] on coveralls,
 and watch this blog for future [hi\_score][21] announcements.
 
 # A parting thought

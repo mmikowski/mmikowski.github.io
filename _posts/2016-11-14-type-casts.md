@@ -147,7 +147,7 @@ types and a special syntax to identify 'wild-card' references.
 Many languages provide some level of static type checking.
 **Java**, for example, resolves most variable types during compilation.
 If JavaScript had a similar mechanism we wouldn't be able to run our
-application until we resolved the compile errors.  In this imaginary world,
+application until we resolved the compile errors. In this imaginary world,
 our JavaScript compile output might look like this:
 
 ```
@@ -275,12 +275,10 @@ example application you can use all the `cast` methods from `xhi.util.js`.
 
 ```bash
   npm install hi_score
-  cd npm_modules/hi_score
-  npm install
-  npm run setup
-  npm test
+  cd hi_score
+  bin/xhi setup
   google-chrome ./index.html
-  # Open the JavaScript console to access xhi._util_ functions.
+  # Open the JavaScript console to access xhi._util_ functions
 ```
 
 You don't have to use the whole library; you can just crib the methods from
@@ -511,13 +509,9 @@ function. Check out the test suite for `hi_score` to see how this is done:
 
 ```bash
   npm install hi_score
-  cd npm_modules/hi_score
-  npm install
-  npm run setup
-  npm test
-  npm run coverage
-  google-chrome index.html
-  google-chrome coverage/lcov-info/index.html
+  cd hi_score
+  bin/xhi dev_cover
+  google-chrome build/latest/coverage/lcov-report/index.html
   vi test/xhi_level_0.js # Or preferred editor
 ```
 
