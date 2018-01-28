@@ -121,6 +121,7 @@ Eventually this list will be moved there.
 | DOM + Util   | [jQuery][6]          | A powerful, stable, tight library |
 | AJAX         | [jQuery][6]          | ... but prefer WebSockets, see below |
 | Client Data  | [TaffyDB][7]         | A powerful and flexible SQL-like client data management tool |
+|              | [NeDB][31]           | MongoDB-like alternative with indexing and testing, much faster find, update, and remove ops |
 | Coverage     | Istanbul             | The best JS code coverage tool I have found |
 | DynamicCSS   | [PowerCSS][8]        | Insanely fast and efficient JS-CSS engine |
 | Linting      | [JSLint][9]          | Avoid stupid mistakes with a commit hook |
@@ -186,4 +187,5 @@ Cheers, Mike
 [28]:http://martinfowler.com/bliki/InversionOfControl.html
 [29]:http://mmikowski.github.io/the_kraken/
 [30]:https://github.com/mmikowski/spa/raw/master/slides/2013-04-02-the_fog_of_spa.pdf
+[31]:https://github.com/louischatriot/taffydb-benchmark
 
