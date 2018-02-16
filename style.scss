@@ -12,6 +12,7 @@
 /**************/
 /* BASE RULES */
 /**************/
+
 html {
   font-size: 100%;
 }
@@ -33,6 +34,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: $helveticaNeue;
   color: $darkerGray;
   font-weight: bold;
+
   line-height: 1.7;
   margin: 1em 0 15px;
   padding: 0;
@@ -191,13 +193,8 @@ tbody tr:nth-child(odd) {
   }
 
   img {
-    box-shadow : 0 0 0.5rem 0 #a99;
+    border-radius: 5px;
   }
-}
-
-.entry img {
-  /* TODO 2017-03-02 mikem warn: consider removing to reduce clutter
-   * box-shadow : 0 0 0.5rem 0 #a99; */
 }
 
 .site-info {
