@@ -9,7 +9,7 @@
 		ga('create', '{{ site.google_analytics }}', 'auto');
 		ga('require','linkid','linkid.js'); // Enhanced link reporting
 		ga('send', 'pageview', {
-		  'page': '{{ page.url }}',
+		  'page': '{{ site.baseurl }}{{ page.url }}',
 		  'title': '{{ page.title | replace: "'", "\\'" }}'
 		});
 	</script>
