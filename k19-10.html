@@ -1,0 +1,1859 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Install and Configure Kubuntu 19.10 for Web Development</title>
+  <link rel="icon" type="image/png" href="img/favicon.png">
+  <!-- see http://www.html5rocks.com/en/mobile/touch.html
+   Use user-scalable=no to prevent native zooming -->
+  <meta name="viewport" content="width=device-width,
+    initial-scale=1, minimum-scale=0.5, maximum-scale=4">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <!-- ie9+ rendering support for latest standards -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description"
+    content="Kubuntu 19.10 OS + Apps Install for Web Dev" >
+  <meta name="keywords" content="Kubuntu, 19.10, Web, Apps, Dev, Development">
+  <!-- see https://developers.google.com/web/tools/
+    lighthouse/audits/noopener -->
+  <style>
+    html {
+      font-family : OpenSans, FreeSans, sans-serif;
+      font-size   : 16px;
+      background  : #a0a4a8;
+      color       : #456;
+    }
+    body {
+      max-width  : 64rem;
+      margin     : 0 auto;
+      background : #fff;
+      padding    : 2rem;
+      box-shadow : rgba(12, 67, 32, 0.2) 0 0 1rem 0.5rem;
+    }
+    img {
+      display : block;
+      box-shadow : rgba(12, 67, 32, 0.2) 0 0 1rem 0.5rem;
+      margin     : 2rem auto;
+      max-width  : calc( 100% - 2rem );
+    }
+    img.noshaw {
+      box-shadow: none;
+    }
+    h2 .toc {
+      text-decoration: none;
+      color: inherit;
+      font-size: 1rem;
+    }
+    table {
+      font-size       : .75rem;
+      border-collapse : collapse;
+      border          : 1px solid #abc;
+      background      : #eee;
+    }
+    tr:nth-child(even) {
+      background: #ddd;
+    }
+    td {
+      padding : .25rem;
+      border  : 1px solid #fff;
+    }
+    td.s2 {
+      text-align  :center;
+      font-weight : 800;
+      font-size   : 1rem;
+    }
+    td.s3, td.s8, td.s19 {
+      text-align  : center;
+      white-space : nowrap;
+    }
+    td.s3, td.s8 {
+      background : #9ed9a4;
+    }
+    td.s16 {
+      text-align : center;
+    }
+    td.s19 {
+      background : #a1d6b3;
+    }
+    .code_block {
+      margin: 1rem 2rem;
+      padding: 0 1.5rem;
+      font-family: courier, "Courier New", "Courier 10 Pitch", monospace;
+      font-size: .875rem;
+      line-height:1rem;
+      background: #eee;
+      white-space: pre;
+      color: #0c4320;
+    }
+  </style>
+</head>
+<body>
+  <h1>Install and Configure Kubuntu 19.10 for Web Development</h1>
+  <h2>Purpose</h2>
+  <p>Provide a start-to-finish guide to install and configure Kubuntu 19.10
+    (K-19) and web development tools.</p>
+  <ul>
+    <li>Ensure answers are thorough and well-researched.</li>
+    <li>Show screen shots from install through configuration.</li>
+    <li>Provide an explanation above every screenshot.</li>
+    <li>Add links to external resources when beneficial.</li>
+  </ul>
+
+  <h2>About the Author</h2>
+  <p>The author has Kubuntu from Web App development since 2006. His primary OS
+    from 1993-1998 was Unix (Irix, HP-IX, AIX, Solaris) and Linux (Redhat,
+    Mandriva, Kubuntu) from then on. He is the co-author of <b>Single Page Web
+    Applications</b> (2013) and created the
+    <a href="https://docs.google.com/spreadsheets/d/1kLIYKYRsan_nvqGSZF-xJNxMkivH7uNdd6F-xY0hAUM"
+     >Kubuntu Preferred Apps Spreadsheet</a> in 2014. He has been a web
+    app architect since 2003.</p>
+
+  <h2 id="toc">Table of Contents</h2>
+  <ol>
+    <li><a href="#section1">Review Selected Apps</a></li>
+    <li><a href="#section2">Prepare a VirtualBox computer</a></li>
+    <li><a href="#section3">Install Kubuntu 19.10 Beta</a></li>
+    <li><a href="#section4">Apply updates</a></li>
+    <li><a href="#section5">Integrate with Virtual Box</a></li>
+    <li><a href="#section6">Configure Plasma</a></li>
+    <li><a href="#section7">Set-up Repositories and Install Apps</a></li>
+    <li><a href="#section8">Install Addon Apps</a></li>
+    <li><a href="#section9">Optimize Apps</a></li>
+    <li><a href="#apdx-a">Appendix A</a></li>
+  </ol>
+
+  <h2 id="section1">Review Selected Apps
+    <a href="#toc" class="toc">(top)</a></h2>
+  <p>Review the K19-10 Selected Apps chart below. These apps are installed or
+    optional in the steps below. Adjust as needed.</p>
+  <table>
+    <tr>
+      <td class="s2" colspan="7">K19-10 Selected Apps</td>
+    </tr>
+    <tr>
+      <td class="s16" colspan="7">Source key: repo = standard repo;
+        crepo = custom (added) repo, custom = custom installation;
+        addon = added after repo install
+      </td>
+    </tr>
+    <tr>
+      <td class="s17">Role</td>
+      <td class="s17">Name</td>
+      <td class="s17">Source</td>
+      <td class="s17">Notes</td>
+      <td class="s17">Tags</td>
+      <td class="s3">Updated</td>
+      <td class="s3">Inc.</td>
+    </tr>
+    <tr>
+      <td class="s1">Audio control</td>
+      <td class="s1">pavucontrol</td>
+      <td class="s18">repo</td>
+      <td class="s1">Pulse audio volume and other settings.</td>
+      <td class="s1">audio, volume, mix, gstreamer, pulse audio</td>
+      <td class="s8">2019-10-04</td>
+      <td class="s8">Yes</td>
+    </tr>
+    <tr>
+      <td class="s1">Android Files</td>
+      <td class="s1">kde-connect, mtp-tools</td>
+      <td class="s18">repo</td>
+      <td class="s1">Android connection. Browser extensions for
+        kde-connect are highly recommended.</td>
+      <td class="s1">mtp, android</td>
+      <td class="s8">2019-10-04</td>
+      <td class="s8">Yes</td>
+    </tr>
+    <tr>
+      <td class="s1">Audio Editing</td>
+      <td class="s1">audacity</td>
+      <td class="s18">repo</td>
+      <td class="s1">Audio editor</td>
+      <td class="s1">audio, wav, mp3, ogg</td>
+      <td class="s8">2019-10-04</td>
+      <td class="s8">Yes</td>
+    </tr>
+    <tr>
+      <td class="s1">Benchmark</td>
+      <td class="s1">sysbench</td>
+      <td class="s18">repo</td>
+      <td class="s1">Benchmark CPU, Disk, MySQL</td>
+      <td class="s1">benchmark</td>
+      <td class="s8">2019-10-04</td>
+      <td class="s8">Yes</td>
+    </tr>
+    <tr>
+      <td class="s1">Browser</td>
+      <td class="s1">google chrome</td>
+      <td class="s18">crepo</td>
+      <td class="s1">Best debugger, android integraction chrome://inspect</td>
+      <td class="s1">browser, v8, html, javascript, css, web</td>
+      <td class="s8">2019-10-04</td>
+      <td class="s8">Yes</td>
+    </tr>
+    <tr>
+      <td class="s1">Browser</td>
+      <td class="s1">firefox, firefox-locale-en</td>
+      <td class="s18">repo</td>
+      <td class="s1">Firefox browser</td>
+      <td class="s1">browser, tracemonkey, spidermonkey, html, javascript,
+        css, web</td>
+      <td class="s8">2019-10-04</td>
+      <td class="s8">Yes</td>
+    </tr>
+    <tr>
+      <td class="s1">Clean custom repos</td>
+      <td class="s1">ppa-purge</td>
+      <td class="s18">repo</td>
+      <td class="s1">Useful for removing repos and reverting to stock packages.
+        For example, xorg-edgers can be trouble. See note [Q].</td>
+      <td class="s1">ppa,purge,repository,remove</td>
+      <td class="s8">2019-10-04</td>
+      <td class="s8">Yes</td>
+    </tr>
+    <tr>
+      <td class="s1">Clipboard</td>
+      <td class="s1">--</td>
+      <td class="s18">--</td>
+      <td class="s1">Multi-register clipboard is now a core capability of
+        Plasma. Remember to use it!</td>
+      <td class="s1">clipboard</td>
+      <td class="s8">2019-10-04</td>
+      <td class="s8">Yes</td>
+    </tr>
+    <tr>
+      <td class="s1">Codecs</td>
+      <td class="s1">codecs</td>
+      <td class="s18">repo</td>
+      <td class="s1">proprietary codecs kubuntu-restricted-extras, kubuntu-restricted-addons</td>
+      <td class="s1">flash, codec, movies, mp3</td>
+      <td class="s8">2019-10-04</td>
+      <td class="s8">Yes</td>
+    </tr>
+    <tr>
+      <td class="s1">Compression</td>
+      <td class="s1">optipng</td>
+      <td class="s18">repo</td>
+      <td class="s1">Optimize PNG compression</td>
+      <td class="s1">png, compress</td>
+      <td class="s8">2019-10-04</td>
+      <td class="s8">Yes</td>
+    </tr>
+    <tr>
+      <td class="s1">Compression</td>
+      <td class="s1">rar</td>
+      <td class="s18">repo</td>
+      <td class="s1">RAR compression utilities</td>
+      <td class="s1"></td>
+      <td class="s8">2019-10-04</td>
+      <td class="s8">Yes</td>
+    </tr>
+    <tr>
+      <td class="s1">Compression</td>
+      <td class="s1">shrinkpdf</td>
+      <td class="s18">script</td>
+      <td class="s1">I used this to reduce a 5.2MB pdf to .18MB. Amazing.</td>
+      <td class="s1">pdf, compression, script</td>
+      <td class="s8">2019-10-04</td>
+      <td class="s19">Addon<br></td>
+    </tr>
+    <tr>
+      <td class="s1">Database</td>
+      <td class="s1">mysql, mysql-server</td>
+      <td class="s18">repo</td>
+      <td class="s1">A fantastic OSS option. Others include PostGreSQL, Mongo (better as a JSON cache, IMO),
+        SQLite, etc.
+      </td>
+      <td class="s1">sql</td>
+      <td class="s8">2019-10-08</td>
+      <td class="s8">Yes</td>
+    </tr>
+    <tr>
+      <td class="s1">Dev - IDE</td>
+      <td class="s1">intellij ultimate</td>
+      <td class="s18">custom</td>
+      <td class="s1">Web application development IDE, best-in-class ease of use and feature. I now use this
+        instead of Webstorm as I need support for more languages. Webstorm, RubyMine, Pycharm, et. al. are subsets.
+      </td>
+      <td class="s1">java,python,javascript,css,html,bash,perl,xml,json</td>
+      <td class="s8">2019-10-04</td>
+      <td class="s19">Addon</td>
+    </tr>
+    <tr>
+      <td class="s1">Dev - Standard</td>
+      <td class="s1">build-essential<br>openssh-server wajig</td>
+      <td class="s18">repo</td>
+      <td class="s1">Install these for app dev env. Rember ssh -X does X11 forwarding (very, very handy!).
+        Make sure this is enabled by the openssh server first though. See this guide:
+        https://unix.stackexchange.com/questions/12755
+      </td>
+      <td class="s1">tool chain, ssh, X11</td>
+      <td class="s8">2019-10-04</td>
+      <td class="s8">Yes</td>
+    </tr>
+    <tr>
+      <td class="s1">Disk bench</td>
+      <td class="s1">bonnie++</td>
+      <td class="s18">repo</td>
+      <td class="s1">Benchmark disk performance.</td>
+      <td class="s1">benchmark, disk, performance, read, write</td>
+      <td class="s8">2019-10-08</td>
+      <td class="s8">Yes</td>
+    </tr>
+    <tr>
+      <td class="s1">Disk bench</td>
+      <td class="s1">hdparm</td>
+      <td class="s18">repo</td>
+      <td class="s1">A simpler test: hdparm -t /dev/&lt;disk&gt; and hdparm -T /dev/&lt;disk&gt;. Use sdparm
+        or hdparm -I /dev/sda to identify.
+      </td>
+      <td class="s1">benchmark, disk, performance, read, write</td>
+      <td class="s8">2019-10-04</td>
+      <td class="s8">Yes</td>
+    </tr>
+    <tr>
+      <td class="s1">Doc Conversion</td>
+      <td class="s1">pandoc</td>
+      <td class="s18">repo</td>
+      <td class="s1">Useful to convert markdown -&gt; pdf or other formats. One must install pandoc
+        pandoc-citeproc texlive haskell-platform
+      </td>
+      <td class="s1">pdf, html, ODT, RTF, Textile, text, AsciiDoc, Epub</td>
+      <td class="s8">2019-10-04</td>
+      <td class="s8">Yes</td>
+    </tr>
+    <tr>
+      <td class="s1">Docker</td>
+      <td class="s1">docker-ce</td>
+      <td class="s18">crepo</td>
+      <td class="s1">Industry standard containers.</td>
+      <td class="s1">containers, docker</td>
+      <td class="s8">2019-10-04</td>
+      <td class="s19">Addon</td>
+    </tr>
+    <tr>
+      <td class="s1">Dropbox</td>
+      <td class="s1">dropbox</td>
+      <td class="s18">crepo</td>
+      <td class="s1">Fastest shared file solution</td>
+      <td class="s1">dropbox, share, shared, files</td>
+      <td class="s8">2019-10-04</td>
+      <td class="s19">Addon</td>
+    </tr>
+    <tr>
+      <td class="s1">DVD Rip</td>
+      <td class="s1">k3b</td>
+      <td class="s18">repo</td>
+      <td class="s1">CD and DVD ripper and burner</td>
+      <td class="s1">dvd, cd, burn, rip</td>
+      <td class="s8">2019-10-04</td>
+      <td class="s8">Yes</td>
+    </tr>
+    <tr>
+      <td class="s1">Encode</td>
+      <td class="s1">ffmpeg</td>
+      <td class="s18">repo</td>
+      <td class="s1">Encoding to mp3, video codecs. Was formerly replaced with a fork of ffmpeg called &#39;lib-avtools&#39;.
+        Use &#39;avconv&#39; and &#39;avplay&#39;
+      </td>
+      <td class="s1">mp3, mp4, ffmpeg, avconv, avplay</td>
+      <td class="s8">2019-10-08</td>
+      <td class="s8">Yes</td>
+    </tr>
+    <tr>
+      <td class="s1">Fonts</td>
+      <td class="s1">ttf-mscorefonts-installer</td>
+      <td class="s18">repo [YE]</td>
+      <td class="s1">Install to get Arial, Courier new, and other standard MS fonts.</td>
+      <td class="s1">fonts, truetype</td>
+      <td class="s8">2019-10-04</td>
+      <td class="s8">Yes</td>
+    </tr>
+    <tr>
+      <td class="s1">Hardware Info</td>
+      <td class="s1">hwinfo, lshw, lspci, lsusb, dmidecode</td>
+      <td class="s18">repo</td>
+      <td class="s1">List motherboard, peripherials, etc. Also try &#39;cat /proc/cpuinfo&#39;</td>
+      <td class="s1">hardware, peripherals, usb, pci</td>
+      <td class="s8">2019-10-04</td>
+      <td class="s8">Yes</td>
+    </tr>
+    <tr>
+      <td class="s1">Image Edit</td>
+      <td class="s1">gimp, gimp-data-extras,gimp-help-en</td>
+      <td class="s18">repo, crepo</td>
+      <td class="s1">Very photoshop like and quite compatible with adobe tools. Use `dbus-launch gimp` if
+        screen capture isn&#39;t working.
+      </td>
+      <td class="s1">graphics, photoshop, red eye. CMYK plugin:
+        http://cue.yellowmagic.info/softwares/separate-plus/index.html
+      </td>
+      <td class="s8">2019-10-04</td>
+      <td class="s8">Yes</td>
+    </tr>
+    <tr>
+      <td class="s1">Image SVG</td>
+      <td class="s1">inkscape</td>
+      <td class="s18">crepo [S]</td>
+      <td class="s1">A very good SVG editor</td>
+      <td class="s1">graphics, SVG</td>
+      <td class="s8">2019-10-04</td>
+      <td class="s8">Yes</td>
+    </tr>
+    <tr>
+      <td class="s1">Java</td>
+      <td class="s1">openjdk</td>
+      <td class="s18">repo</td>
+      <td class="s1">OpenJDK has become defacto; if Oracle is needed, see notes install notes below.</td>
+      <td class="s1">java, java 8, jdk, jre, oracle</td>
+      <td class="s8">2019-10-04</td>
+      <td class="s8">Yes</td>
+    </tr>
+    <tr>
+      <td class="s1">JSON prettyprint</td>
+      <td class="s1">python</td>
+      <td class="s18">--</td>
+      <td class="s1">$ python -m json.tool my_json.json<br>For convenience do this in ~/.bashrc: alias
+        prettyjson=&#39;python -m json.tool&#39;
+      </td>
+      <td class="s1">See JSON.stirngify(obj, null, 2) for a faster alternative.</td>
+      <td class="s8">2019-10-04</td>
+      <td class="s8">Yes</td>
+    </tr>
+    <tr>
+      <td class="s1">Music Player</td>
+      <td class="s1">Cantana</td>
+      <td class="s18">repo</td>
+      <td class="s1">Looks interesting, but I have not used it.</td>
+      <td class="s1">mp3, music, album</td>
+      <td class="s8">2019-10-04</td>
+      <td class="s8">Yes</td>
+    </tr>
+    <tr>
+      <td class="s1">Network Files</td>
+      <td class="s1">nfs-common</td>
+      <td class="s18">repo</td>
+      <td class="s1">NFSv4 Network files system.</td>
+      <td class="s1">nfs, nfsv4, filesystem</td>
+      <td class="s8">2019-10-04</td>
+      <td class="s8">Yes</td>
+    </tr>
+    <tr>
+      <td class="s1">NodeJS</td>
+      <td class="s1">nodejs</td>
+      <td class="s18">crepo</td>
+      <td class="s1">JavaScript web server</td>
+      <td class="s1">nodejs, node.js, npm</td>
+      <td class="s8">2019-10-04</td>
+      <td class="s8">Yes</td>
+    </tr>
+    <tr>
+      <td class="s1">Office Suite</td>
+      <td class="s1">LibreOffice</td>
+      <td class="s18">repo</td>
+      <td class="s1">Version 6.3</td>
+      <td class="s1">Word, Excel, Access, Base, Sheets, Presents, Keynote, Powerpoint</td>
+      <td class="s8">2019-10-04</td>
+      <td class="s8">Yes</td>
+    </tr>
+    <tr>
+      <td class="s1">Package mgmt</td>
+      <td class="s1">apt, dpkg,<br>muon, wajig</td>
+      <td class="s18">repo</td>
+      <td class="s1">See Notes [W] and [X]</td>
+      <td class="s1">apt, apt-cache, apt-get, hold, pin, Discover</td>
+      <td class="s8">2019-10-04</td>
+      <td class="s8">Yes</td>
+    </tr>
+    <tr>
+      <td class="s1">PDF annotate</td>
+      <td class="s1">okular</td>
+      <td class="s18">repo</td>
+      <td class="s1">Best PDF view/annotator for linux</td>
+      <td class="s1">view, annotate, PDF</td>
+      <td class="s8">2019-10-04</td>
+      <td class="s8">Yes</td>
+    </tr>
+    <tr>
+      <td class="s1">PDF diff</td>
+      <td class="s1">diffpdf</td>
+      <td class="s18">repo</td>
+      <td class="s1">Compare PDF content or visuals</td>
+      <td class="s1">diff, compare, PDF</td>
+      <td class="s8">2019-10-08</td>
+      <td class="s8">Yes</td>
+    </tr>
+    <tr>
+      <td class="s1">PDF Edit</td>
+      <td class="s1">pdfshuffler</td>
+      <td class="s18">repo</td>
+      <td class="s1">See all pdf tools, type pdf&lt;tab&gt;</td>
+      <td class="s1">concatenate, rearrange, delete, PDF</td>
+      <td class="s8">2019-10-08</td>
+      <td class="s8">Yes</td>
+    </tr>
+    <tr>
+      <td class="s1">Power Control</td>
+      <td class="s1">upower</td>
+      <td class="s18">repo</td>
+      <td class="s1">Use &#39;upower -e&#39; to show devices and upower -i &#39;device&#39; to inspect. Should
+        be installed by default. See http://askubuntu.com/questions/69556
+      </td>
+      <td class="s1">power,laptop,battery,command line,cli</td>
+      <td class="s8">2019-10-08</td>
+      <td class="s8">Yes</td>
+    </tr>
+    <tr>
+      <td class="s1">Screen recording</td>
+      <td class="s1">simplescreen\<br>recorder,<br>obs-studio</td>
+      <td class="s18">repo</td>
+      <td class="s1">The first (simplescreenrecorder) is easiest to use, the last (obs-studio) is more
+        powerful, complex, and not as stable.
+      </td>
+      <td class="s1">screencast, recorder, audio, video, capture</td>
+      <td class="s8">2019-10-08</td>
+      <td class="s8">Yes</td>
+    </tr>
+    <tr>
+      <td class="s1">Slack</td>
+      <td class="s1">slack-desktop</td>
+      <td class="s18">repo</td>
+      <td class="s1">Available in Multiverse as slack-desktop</td>
+      <td class="s1"></td>
+      <td class="s8">2019-10-08</td>
+      <td class="s8">Addon</td>
+    </tr>
+    <tr>
+      <td class="s1">Steam</td>
+      <td class="s1">steam</td>
+      <td class="s18">repo</td>
+      <td class="s1">Available in Multiverse as steam-installer</td>
+      <td class="s1"></td>
+      <td class="s8">2019-10-08</td>
+      <td class="s8">Yes</td>
+    </tr>
+    <tr>
+      <td class="s1">Source Control</td>
+      <td class="s1">git, subversion, gitolite3</td>
+      <td class="s18">repo</td>
+      <td class="s1">Use GitoLite as a git repository. Setup is 5 minutes. See
+        https://help.ubuntu.com/lts/serverguide/git.html and
+        http://blog.aplikacja.info/2010/08/switch-origin-of-your-git-repository/
+      </td>
+      <td class="s1">scms,git,svn,subersion</td>
+      <td class="s8">2019-10-08</td>
+      <td class="s8">Yes</td>
+    </tr>
+    <tr>
+      <td class="s1">Telegram</td>
+      <td class="s1">telegram, telegram-cli, telegram-desktop, telegram-purple</td>
+      <td class="s18">repo</td>
+      <td class="s1">Emerson Pardo recommended Telegram.
+      </td>
+      <td class="s1">telegram, messaging, whatsapp</td>
+      <td class="s8">2019-10-08</td>
+      <td class="s19">Addon</td>
+    </tr>
+    <tr>
+      <td class="s1">Text editor</td>
+      <td class="s1">vim or neovim</td>
+      <td class="s18">repo</td>
+      <td class="s1">I switch between the two.</td>
+      <td class="s1">vim, neovim</td>
+      <td class="s8">2019-10-08</td>
+      <td class="s8">Yes</td>
+    </tr>
+    <tr>
+      <td class="s1">Virtual terminal resolution</td>
+      <td class="s1">grub</td>
+      <td class="s18">repo[U]</td>
+      <td class="s1">See notes</td>
+      <td class="s1">grub, grub2, vbeinfo,vga</td>
+      <td class="s8">2019-10-08</td>
+      <td class="s8">Yes</td>
+    </tr>
+    <tr>
+      <td class="s1">Video Acceleration</td>
+      <td class="s1">vdpau</td>
+      <td class="s18">repo</td>
+      <td class="s1">Provides hardware encoding and decoding</td>
+      <td class="s1">gpu, Nvidia, vdpau, encode, decode, hardware</td>
+      <td class="s8">2019-10-08</td>
+      <td class="s8">Yes</td>
+    </tr>
+    <tr>
+      <td class="s1">Video Chat (1)</td>
+      <td class="s1">Hangouts</td>
+      <td class="s18"></td>
+      <td class="s1">Use Google Hangoouts in Google Chrome</td>
+      <td class="s1">talk, voice, voip</td>
+      <td class="s8">2019-10-08</td>
+      <td class="s8">n/a</td>
+    </tr>
+    <tr>
+      <td class="s1">Video Encode</td>
+      <td class="s1">handbrake</td>
+      <td class="s18">crepo</td>
+      <td class="s1">Usually better at backing up encrypted content. Previously
+        the Handbrake in the repo had mp4 support disabled. Have not confirmed
+        for 19.10.
+      </td>
+      <td class="s1">dvd, burn, rip</td>
+      <td class="s8">2019-10-04</td>
+      <td class="s8">Yes</td>
+    </tr>
+    <tr>
+      <td class="s1">Video Player</td>
+      <td class="s1">vlc</td>
+      <td class="s18">repo</td>
+      <td class="s1">VLC plays just about all formats. Handy to have around</td>
+      <td class="s1">video, movie, playback</td>
+      <td class="s8">2019-10-08</td>
+      <td class="s8">Yes</td>
+    </tr>
+    <tr>
+      <td class="s1">Visual Diff</td>
+      <td class="s1">meld, kdiff3</td>
+      <td class="s18">repo</td>
+      <td class="s1">Compare 3 sources across directory trees. Much better than Github when trying understand
+        how things have changed. Meld has a nicer interface, but sometimes Kdiff3 is faster.
+      </td>
+      <td class="s1">diff, visual diff, meld, kdiff3</td>
+      <td class="s8">2019-10-08</td>
+      <td class="s8">Yes</td>
+    </tr>
+    <tr>
+      <td class="s1">Wallpapers</td>
+      <td class="s1">backgrounds</td>
+      <td class="s18">repo</td>
+      <td class="s1">Various backgrounds are found in /usr/share/backgrounds and /usr/share/wallpapers.</td>
+      <td class="s1">ubuntu-wallpapers<br>ubuntu-wallpapers-&lt;release&gt;<br>plasma-workspace-wallpapers
+      </td>
+      <td class="s8">2019-10-08</td>
+      <td class="s8">Yes</td>
+    </tr>
+    <tr>
+      <td class="s1">Webcam control</td>
+      <td class="s1">guvcview</td>
+      <td class="s18">repo</td>
+      <td class="s1">Great tools for tesing webcam</td>
+      <td class="s1">webcam, cam</td>
+      <td class="s8">2019-10-08</td>
+      <td class="s8">Yes</td>
+    </tr>
+    <tr>
+      <td class="s1">Wireframes</td>
+      <td class="s1">Balsamiq Mockups</td>
+      <td class="s18">custom</td>
+      <td class="s1">An easy-to-use wireframe tool. Version 3 provides symbols so that engineering drawing
+        change control is now feasible.
+      </td>
+      <td class="s1">wireframes, mockups</td>
+      <td class="s8">2019-10-08</td>
+      <td class="s19">Addon</td>
+    </tr>
+    <tr>
+      <td class="s1">X select</td>
+      <td class="s1">xsel</td>
+      <td class="s18">repo</td>
+      <td class="s1">X selection utility, useful for cut-n-paste for vim</td>
+      <td class="s1">xsel, X select</td>
+      <td class="s8">2019-10-08</td>
+      <td class="s8">Yes</td>
+    </tr>
+  </table>
+
+  <h2 id="section2">2. Prepare a VirtualBox computer
+    <a href="#toc" class="toc">(top)</a></h2>
+  <p>Skip this section when installing on a physical computer.</p>
+
+  <h3>2.1. Why a virtual computer?</h3>
+  <p>We recommend using a virtual computer to test Kubuntu 19.10 and apps
+    before Beta is complete. We use Kubuntu 19.04 as the <b>Host OS</b> and
+    install these packages.</p>
+  <div class="code_block">
+sudo install virtualbox virtualbox-ext-pack virtualbox-guest-additions-iso
+  </div>
+  <p>The extension pack is used by VirtualBox to enable USB2+ and other features.
+    The guest additions are used by the <b>Guest OS</b> to improve integration
+    with the <b>Host OS</b>. VirtualBox will instruct the user to enable DKMS in
+    the BIOS if needed.
+
+  <h3>2.2. Mount The guest additions image</h3>
+  <p>The <b>Guest OS</b> is prone to graphics artifacts and
+    integration limitations with the Kubuntu 19.04 <b>Host OS</b> until these
+    additions are installed. A virtual CD image must be mounted proceed.
+  </p>
+  <h3>2.2.1. Select the instance and click settings</h3>
+  <img src="img/k19-10/20191009_203135.png"
+    alt="k19-10 Virtualbox - Click Settings"
+    title="k19-10 Virtualbox - Click Settings"
+  >
+  <h3>2.2.2 Visit the tabs on the left</h3>
+  <img src="img/k19-10/20191009_203206.png" class="noshaw"
+    alt="k19-10 Virtualbox - Visit tabs"
+    title="k19-10 Virtualbox - Visit tabs"
+  >
+  <h3>2.2.3. Click on Storage and click the plus button</h3>
+  <img src="img/k19-10/20191009_203315.png" class="noshaw"
+    alt="k19-10 Virtualbox - Click on plus"
+    title="k19-10 Virtualbox - Click on plus"
+  >
+  <h3>2.2.4. Click to add an optical drive</h3>
+  <img src="img/k19-10/20191009_203537.png" class="noshaw"
+    alt="k19-10 Virtualbox - Add optical drive"
+    title="k19-10 Virtualbox - Add optical drive"
+  >
+  <h3>2.2.5. Click on &apos;Choose Disk&apos;</h3>
+  <img src="img/k19-10/20191009_203555.png" class="noshaw"
+    alt="k19-10 Virtualbox - Click on Choose disk"
+    title="k19-10 Virtualbox - Click on Choose disk"
+  >
+  <h3>2.2.6 Click on &apos;Add disk image&apos;</h3>
+  <img src="img/k19-10/20191009_203642.png" class="noshaw"
+    alt="k19-10 Virtualbox - Click on Add disk image"
+    title="k19-10 Virtualbox - Click on Add disk image"
+  >
+  <h3>2.2.7 Select /usr/share/virtualbox/VBoxGuestAdditions.iso</h3>
+  <img src="img/k19-10/20191009_203709.png" class="noshaw"
+    alt="k19-10 Virtualbox - Select /usr/share/virtualbox/VBoxGuestAdditions.iso"
+    title="k19-10 Virtualbox - Select /usr/share/virtualbox/VBoxGuestAdditions.iso"
+  >
+  <h3>2.2.8. Verify ISO image has been added</h3>
+  <img src="img/k19-10/20191009_203830.png" class="noshaw"
+    alt="k19-10 Virtualbox - Verify ISO image has been added"
+    title="k19-10 Virtualbox - Verify ISO image has been added"
+  >
+  <h3>2.2.9. Click OK</h3>
+  <img src="img/k19-10/20191009_203911.png" class="noshaw"
+    alt="k19-10 Virtualbox - Click OK"
+    title="k19-10 Virtualbox - Click OK"
+  >
+  <h3>2.2.10. Power-on the virtual computer</h3>
+  <img src="img/k19-10/20191009_203954.png" class="noshaw"
+    alt="k19-10 Virtualbox - Power-on the virtual computer"
+    title="k19-10 Virtualbox - Power-on the virtual computer"
+  >
+
+  <h2 id="section3">3. Install Kubuntu 19.10 Beta
+    <a href="#toc" class="toc">(top)</a></h2>
+  <h3>3.1 Download the ISO Image</h3>
+  <p>Download the
+    <a href="https://kubuntu.org/news/kubuntu-eoan-ermine-19-10-beta-released/"
+    >19.10 Beta ISO bootable Image</a> directly from Kubuntu.
+    This release remains in Beta until at least 2019-10-17, and is not
+    recommended for daily use. The image will be moved <a
+    href="https://kubuntu.org/getkubuntu/">here</a> when it becomes available
+    as a general release. Our testing to date has shown all apps working well
+    with just some config adjustments which have been updated in this document.
+    The bootable ISO name should look like
+    <code>kubuntu-19.10-beta-desktop-amd64.iso</code>.
+  </p>
+
+  <h3>3.2. Create a Bootable USB Drive</h3>
+
+  <h4>3.2.1. VirtualBox</h4>
+  <p>Skip this step. VirtualBox uses the ISO file directly.</p>
+
+  <h4>3.2.2 Physical Computer</h4>
+  <p>Insert a small (4-8GB) USB drive into the computer with the downloaded
+    ISO image. If needed, install the 'Start Disk Creator' using
+    <code>sudo apt install -y usb-creator-kde</code> and then run it from
+    the K-menu or enter <code>usb-creator-kde</code> in the terminal.
+    Select the ISO image and select the USB drive and the click
+    on 'Make Startup Disk'. All content of the USB drive will be replaced in
+    this operation.</p>
+  <img src="img/k19-10/20191011_173827.png"
+    alt="K19-10 Startup Disk Creator"
+    title="K19-10 Startup Disk Creator"
+  >
+
+  <p>To use the CLI instead, see this
+    <a href="https://askubuntu.com/questions/372607">Ask Ubuntu answer</a>.
+
+  <h3>3.3. Boot from the Bootable USB Drive</h3>
+  <h4>3.3.1. VirtualBox</h4>
+  <p>VirtualBox will prompt for the ISO file to boot from when a new
+    virtual computer is started. Provide the ISO file previously
+    downloaded, e.g. <code>kubuntu-19.10-beta-desktop-amd64.iso</code>.
+  </p>
+  <h4>3.3.2. Physical computer</h4>
+  <p>Power-off the target computer and insert the Bootable USB Drive into
+    a USB port and then power-on. One may need to select the boot device
+    (typically using the F12 key) if the installer does not appear and try
+    again. Once the installer is present, click on <b>Install Kubuntu</b>
+    to begin.</p>
+  <img src="img/k19-10/20191003_102037.png"
+    alt="K19-10 Live USB First Screen"
+    title="K19-10 Live USB First Screen"
+  >
+
+  <h3>3.4. Select keyboard</h3>
+  <p>This typically requires no changes.</p>
+  <img src="img/k19-10/20191003_102050.png"
+    alt="K19-10 Select keyboard"
+    title="K19-10 Select keyboard"
+  >
+
+  <h3>3.5. Select default install</h3>
+  <p>Select the default install. Skimping on tools to save perhaps a GB or two
+  of diskspace is hardly worth it.</p>
+  <img src="img/k19-10/20191003_102104.png"
+    alt="K19-10 Select default install"
+    title="K19-10 Select default install"
+  >
+
+  <h3>3.6. Elect to edit partitions</h3>
+  <p>Select &quot;Manual&quot; and click &quot;Continue&quot; to partition
+    disk.</p>
+  <img src="img/k19-10/20191003_102217.png"
+    alt="K19-10 Elect to edit partitions"
+    title="K19-10 Elect to edit partitions"
+  >
+
+  <h3>3.7. Specify partitions sizes</h3>
+  <p>Use a minimum of 32GB disk with 8GB reserved for a swap partition.
+    The swap <i>partition</i> is useful to provide computer-suspend support.
+  </p>
+  <img src="img/k19-10/20191003_102322.png"
+    alt="K19-10 Specify parition sizes"
+    title="K19-10 Specify parition sizes"
+  >
+
+  <h3>3.8. Commit partition changes</h3>
+  <p>This <b>will remove</b> any prior content in the partitions. Click on
+    <b>Install Now</b> to proceed.</p>
+  <img src="img/k19-10/20191003_102333.png"
+    alt="K19-10 Commit partition changes"
+    title="K19-10 Commit partition changes"
+  >
+
+  <h3>3.9. Select time zone</h3>
+  <p>Select a time soon an click <b>Continue</b></p>
+  <img src="img/k19-10/20191003_102346.png"
+    alt="K19-10 Select time zone"
+    title="K19-10 Select time zone"
+  >
+
+  <h3>3.10. Create admin user</h3>
+  <p>This user will have admin (sudo) rights.</p>
+  <img src="img/k19-10/20191003_102821.png"
+    alt="K19-10 Create admin user"
+    title="K19-10 Create admin user"
+  >
+
+  <h3>3.11. Watch the slide show</h3>
+  <p>Installation will take a minimum of about 5 minutes, but could take quite
+    a bit longer if the hard drive is slow (i.e. not an SSD) or the internet
+    connection or CPU is slow.</p>
+  <img src="img/k19-10/20191003_102829.png"
+    alt="K19-10 Watch the slide show"
+    title="K19-10 Watch the slide show"
+  >
+
+  <h3>3.12. Keep watching</h3>
+  <p>More slides will appear. Do not be alarmed.</p>
+  <img src="img/k19-10/20191003_103135.png"
+    alt="K19-10 Keep watching"
+    title="K19-10 Keep watching"
+  >
+
+  <h3>3.13. Complete install and reboot</h3>
+  <p>After the installation is complete restart elect to reboot the system.
+    On the virtual box, power-off the virtual computer and then ensure the ISO
+    image is no longer used for boot. On a physical computer, power-off the
+    computer and unplug the Bootable USB Drive. Then reboot.</p>
+  <img src="img/k19-10/20191003_103756.png"
+    alt="K19-10 Complete install and reboot"
+    title="K19-10 Complete install and reboot"
+  >
+
+  <h2 id="section4">4. Apply Updates
+    <a href="#toc" class="toc">(top)</a></h2>
+  <h3>4.1. First sign-in</h3>
+  <p>This sign-in screen should appear 20-30s after boot.
+    Enter the username and password provided earlier.</p>
+  <img src="img/k19-10/20191003_103835.png"
+    alt="K19-10 First sign-in"
+    title="K19-10 First sign-in"
+  >
+
+  <h3>4.2. Enjoy the splash screen</h3>
+  <p>Plasma has a splash screen which looks like this. On modern hardware, it
+  appears for less than 5 seconds, and often less than one second. We disable
+  it in the steps below.</p>
+  <img src="img/k19-10/20191003_103900.png"
+    alt="K19-10 Splash screen"
+    title="K19-10 Splash screen"
+  >
+
+  <h3>4.3. Review desktop</h3>
+  <p>This is the default desktop.</p>
+  <img src="img/k19-10/20191003_103907.png"
+    alt="K19-10 Default desktop"
+    title="K19-10 Default desktop"
+  >
+
+  <h3>4.4. Open Discover app</h3>
+  <p>The user is notified of updates on sign-in. As a habit, it is best to do
+    install updates right after install and at the beginning of every work day.
+    Click on <b>Update</b> in the notification to open the
+    Discover software package management app. Once can also start Discover
+    from the K-menu at the Bottom Left. Once open, click on <b>Updates</b>
+    at the bottom left of the app to see all updates.
+  </p>
+  <img src="img/k19-10/20191003_103919.png"
+    alt="K19-10 Open Discovery app"
+    title="K19-10 Open Discovery app"
+  >
+
+  <h3>4.5. Initiate updates</h3>
+  <p>There are over one hundred updates available. Click on
+    <b>Update All</b> at the top right.</p>
+  <img src="img/k19-10/20191003_104008.png"
+    alt="K19-10 Initiate updates"
+    title="K19-10 Initiate updates"
+  >
+
+  <h3>4.6. Authorize updates</h3>
+  <p>Provide the user password to proceed.</p>
+  <img src="img/k19-10/20191003_104035.png"
+    alt="K19-10 Authorize updates"
+    title="K19-10 Authorize updates"
+  >
+
+  <h3>4.7 Watch update progress</h3>
+  <p>The task bar indicator shows percentage completion which is a nice touch.
+    Our 71 updates took around 5 minutes.</p>
+  <img src="img/k19-10/20191003_104141.png"
+    alt="K19-10 Watch update progress"
+    title="K19-10 Watch update progress"
+  >
+
+  <h3>4.8. Complete updates and power-off</h3>
+  <p>Successful completion of updates should look like the following
+    screenshot. After this is finished, use the menu to power-off the
+    computer.</p>
+  <img src="img/k19-10/20191003_104314.png"
+    alt="K19-10 Complete updates and power-off"
+    title="K19-10 Complete updates and power-off"
+  >
+
+  <h2 id="section5">5. Integrate with Virtual Box
+    <a href="#toc" class="toc">(top)</a></h2>
+  <p>Skip this section when installing on a physical computer.</p>
+
+  <h3>5.1. Open the guest additions disk</h3>
+  <p>The guest additions appear as an optical disk. Click on the USB icon
+  to access this disk and open it with the file manager.</p>
+  <img src="img/k19-10/20191003_104351.png"
+    alt="K19-10 VirtualBox - Open guest addition disk "
+    title="K19-10 VirtualBox - Open guest addition disk "
+  >
+
+  <h3>5.2. Open a terminal</h3>
+  <p>Right click on the file view and select <b>Actions
+    &gt; Open Terminal Here</b>.</p>
+  <img src="img/k19-10/20191003_104416.png"
+    alt="K19-10 VirtualBox - Open terminal"
+    title="K19-10 VirtualBox - Open terminal"
+  >
+
+  <h3>5.5. Install additions</h3>
+  <p>Install these packages on the host OS</p>
+  <div class="code_block">
+# Install prerequisites
+sudo apt install build-essential gcc make perl dkms;
+
+# Install additions
+sudo sh ./VBoxLinuxAdditions.run
+  </div>
+  <p>Once installation is complete, reboot the computer. One may then adjust
+    copy-n-paste and drag-n-drop under
+    the VirtualBox <b>Devices</b> menu. The display may now also be resized.</p>
+  <img src="img/k19-10/20191003_110128.png"
+    alt="K19-10 VirtualBox - Install addons"
+    title="K19-10 VirtualBox - Install addons"
+  >
+
+  <h2 id="section6">6. Configure Plasma
+    <a href="#toc" class="toc">(top)</a></h2>
+
+  <h3>6.1. Configure panel</h3>
+  <p>We prefer the panel on the right side to maximize vertical space.
+    Right click on the panel and select <b>Panel Options &gt;
+    Configure Pannel</b></p>
+  <img src="img/k19-10/20191003_110437.png"
+    alt="K19-10 Configure panel"
+    title="K19-10 Configure panel"
+  >
+
+  <h3>6.2. Move panel to right edge</h3>
+  <p>Click on the screen edge button to move the panel.</p>
+  <img src="img/k19-10/20191003_110506.png"
+    alt="K19-10 Move panel to right edge"
+    title="K19-10 Move panel to right edge"
+  >
+
+  <h3>6.3. Widen the panel</h3>
+  <p>We widen the panel a bit.</p>
+  <img src="img/k19-10/20191003_110525.png"
+    alt="K19-10 Widen the panel"
+    title="K19-10 Widen the panel"
+  >
+
+  <h3>6.4. Configure desktop</h3>
+  <p>Right-click on the desktop and select <b>Configure Desktop</b></p>
+  <img src="img/k19-10/20191003_110545.png"
+    alt="K19-10 Configure desktop"
+    title="K19-10 Configure desktop"
+  >
+
+  <h3>6.5. Change background</h3>
+  <p>We like the picture of the day. Adjust as desired</p>
+  <img src="img/k19-10/20191003_110617.png"
+    alt="K19-10 Change background"
+    title="K19-10 Change background"
+  >
+
+  <h3>6.6. Hide toolbox</h3>
+  <p>The toolbox can get in the way. After hiding, click <b>OK</b>.</p>
+  <img src="img/k19-10/20191003_110648.png"
+    alt="K19-10 Hide toolbox"
+    title="K19-10 Hide toolbox"
+  >
+
+  <h3>6.7. Open system settings</h3>
+  <p>Open system settings from the K menu and then pin to the task manager.</p>
+  <img src="img/k19-10/20191003_110757.png"
+    alt="K19-10 Open system settings"
+    title="K19-10 Open system settings"
+  >
+
+  <h3>6.8. Change theme</h3>
+  <p>Select Breeze Dark theme.</p>
+  <img src="img/k19-10/20191003_111533.png"
+    alt="K19-10 Change theme"
+    title="K19-10 Change theme"
+  >
+
+  <h3>6.9. Change cursor size</h3>
+  <p>We prefer larger cursors for demonstration purposes. Change this in
+  the <b>Size</b> field.</p>
+  <img src="img/k19-10/20191003_111605.png"
+    alt="K19-10 Change cursor size"
+    title="K19-10 Change cursor size"
+  >
+
+  <h3>6.10. Disable splash screen</h3>
+  <p>The splash screen only shows for a second or so on modern hardware.
+    Disabling removes visual noise.
+  </p>
+  <img src="img/k19-10/20191003_111817.png"
+    alt="K19-10 Disable splash screen"
+    title="K19-10 Disable splash screen"
+  >
+
+  <h3>6.11 Set Colors</h3>
+  <p>This should already be set to <b>Breeze Dark</b>.</p>
+  <img src="img/k19-10/20191003_111957.png"
+    alt="K19-10 Set Colors"
+    title="K19-10 Set Colors"
+  >
+
+  <h3>6.12 Set Fonts</h3>
+  <p>Those with 4K monitors may wish to scale their interface. The best method
+    we have found is to adjust the DPI value under fonts and leave the
+    &quot;fractional scaling&quot; setting alone. In this case, we leave the
+    DPI alone.
+  </p>
+  <img src="img/k19-10/20191003_112042.png"
+    alt="K19-10 Set Fonts"
+    title="K19-10 Set Fonts"
+  >
+
+  <h3>6.13 Set Icons</h3>
+  <p>This should already be set to <b>Breeze Dark</b>.</p>
+  <img src="img/k19-10/20191003_112243.png"
+    alt="K19-10 Set Icons"
+    title="K19-10 Set Icons"
+  >
+
+  <h3>6.14 Set Window Decorations</h3>
+  <p>Click on <b>Application Style &gt; Window Decorations</b>.
+    This should already be set to <b>Breeze</b>. We do not change the title
+    bar buttons.</p>
+  <img src="img/k19-10/20191003_112658.png"
+    alt="K19-10 Set Window Decorations"
+    title="K19-10 Set Window Decorations"
+  >
+
+  <h3>6.15 Set GTK style</h3>
+  <p>Click on <b>Application Style &gt; GNOME/GTK Application Style</b>.
+    Set to <b>Breeze Dark</b> as shown. This is required to ensure GTK apps
+    such as Firefox or LibreOffice use a dark theme.
+  </p>
+  <img src="img/k19-10/20191013_213633.png"
+    alt="K19-10 Set GTK style"
+    title="K19-10 Set GTK style"
+  >
+
+  <h3>6.16 Use Workspace defaults</h3>
+  <p>Click on <b>Desktop Behavior</b>. Preserve defaults for Workspace.</p>
+  <img src="img/k19-10/20191003_112734.png"
+    alt="K19-10 Use Workspace defaults"
+    title="K19-10 Use Workspace defaults"
+  >
+
+  <h3>6.17 Adjust window edges</h3>
+  <p>In <b>Desktop Behavior &gt; Screen Edges</b> turn off maximize features.
+    Instead, prefer to use <b>meta + leftarrow</b> or <b>meta +
+    rightarrow</b> to tile windows. One can also click with the middle or right
+    mouse button on the maximize-window control to toggle a window vertically
+    or horizontally.</p>
+  <img src="img/k19-10/20191003_113000.png"
+    alt="K19-10 Adjust window edges"
+    title="K19-10 Adjust window edges"
+  >
+
+  <h3>6.18. Set screen lock</h3>
+  <p>In <b>Desktop Behavior &gt; Screen Locking</b> set the background
+    to match the desktop.</p>
+  <img src="img/k19-10/20191003_185645.png"
+    alt="K19-10 Set screen lock"
+    title="K19-10 Set screen lock"
+  >
+
+  <h3>6.19 Add virtual desktops</h3>
+  <p>In <b>Desktop Behavior &gt; Virtual Desktops</b> add three rows and use
+    slide animation.</p>
+  <img src="img/k19-10/20191003_185746.png"
+    alt="K19-10 Add virtual desktops"
+    title="K19-10 Add virtual desktops"
+  >
+
+  <h3>6.22 Test sound</h3>
+  <p>In <b>Multimedia &gt; Autia and Video</b> click on the <b>Test</b>
+    button to ensure audio is working.</p>
+  <img src="img/k19-10/20191003_201853.png"
+    alt="K19-10 Test sound"
+    title="K19-10 Test sound"
+  >
+
+  <h3>6.23 Enable virtual desktops</h3>
+  <p>Right click on the virtual desktop and select <b>Configure virtual
+    desktops</b> to ensure all three desktops are shown one per row.</p>
+  <img src="img/k19-10/20191003_202024.png"
+    alt="K19-10 Enable virtual desktops"
+    title="K19-10 Enable virtual desktops"
+  >
+
+  <h3>6.24. Move virtual desktops</h3>
+  <p>Right click on the panel and select <b>Configure Panel</b> and then
+    drag the virtual desktop widget to the desired location on the panel.</p>
+  <img src="img/k19-10/20191003_202100.png"
+    alt="K19-10 Move virtual desktops"
+    title="K19-10 Move virtual desktops"
+  >
+
+  <h3>6.25. Admire the desktop</h3>
+  <p>Virtual desktops are now at the bottom.</p>
+  <img src="img/k19-10/20191003_202125.png"
+    alt="K19-10 Admire the desktop"
+    title="K19-10 Admire the desktop"
+  >
+
+  <h2 id="section7">7. Set-up Repositories and Install Apps
+    <a href="#toc" class="toc">(top)</a></h2>
+
+  <h3>7.1. Open Konsole</h3>
+  <p>The KDE terminal is called Konsole and it is very good. Pressed
+    <b>alt + space</b> and type <b>konsole</b> to quickly find the app and
+    pressed return to launch it.</p>
+  <img src="img/k19-10/20191003_202335.png"
+    alt="K19-10 Open Konsole"
+    title="K19-10 Open Konsole"
+  >
+
+  <h3>7.2. Pin Konsole to Panel</h3>
+  <p>We use the terminal frequently.</p>
+  <img src="img/k19-10/20191003_202405.png"
+    alt="K19-10 Pin Konsole to Panel"
+    title="K19-10 Pin Konsole to Panel"
+  >
+
+  <h3>7.3 Ensure repositories are up-to-date</h3>
+  <p>Use <code>sudo apt update && sudo apt upgrade && sudo apt
+    dist-upgrade</code> to ensure all packages are up to date.</p>
+  <img src="img/k19-10/20191003_202716.png"
+    alt="K19-10 Ensure repositories are up-to-date"
+    title="K19-10 Ensure repositories are up-to-date"
+  >
+
+  <h3>7.4. Add repositories</h3>
+    <p>Run the code below in the terminal to generate the file
+      <code>vi ~/ag.txt</code>. Each repository file destined for
+      /etc/apt/sources.list.d us marked by the <code>#_</code> prefix.
+      subsequent lines are placed in the file. Empty lines and those
+      prefixed by <code>#x</code> are ignored.
+  </p>
+  <img src="img/k19-10/20191003_202809.png"
+    alt="K19-10 Add repositories"
+    title="K19-10 Add repositories"
+  >
+
+  <div class="code_block">
+echo '#x Last update 2019-10-02
+#x REMOVED
+#x - repo.steampowered.com/steam replaced by using multiverse `steam-installer`
+#x - ppa.launchpad.net/webupd8team/java/ubuntu was empty and apparently defunct
+#x
+#x [arch=amd64] is used to avoid warnings on some repos.
+#x
+#x Oracle Java license has changed. If needed, see linixhint.com/install_jdk12_ubuntu_1904
+#x and `sudo add-apt-repository ppa:linuxuprising/java`
+#x
+
+#_ chrome-remote-desktop.list
+deb [arch=amd64] http://dl.google.com/linux/chrome-remote-desktop/deb/ stable main
+
+#_ docker.list
+# 2019-10-02 Eoan, Disco not available
+deb [arch=amd64] https://download.docker.com/linux/ubuntu cosmic stable
+
+#_ dropbox.list
+# 2019-10-02 Eoan, Disco not available
+deb [arch=amd64] http://linux.dropbox.com/ubuntu cosmic main
+
+#_ gimp.list
+deb http://ppa.launchpad.net/otto-kesselgulasch/gimp/ubuntu eoan main
+
+#_ google-chrome.list
+deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
+
+#_ google-talk.list
+# 2019-10-02 Disabled until I know I need it
+# deb [arch=amd64] http://dl.google.com/linux/talkplugin/deb/ stable main
+
+#_ graphics-drivers-ppa.list
+deb http://ppa.launchpad.net/graphics-drivers/ppa/ubuntu eoan main
+
+#_ inkscape_dev-stable.list
+# 2019-10-02 Disabled until eoan available (use default inkscape)
+# deb http://ppa.launchpad.net/inkscape.dev/stable/ubuntu disco main
+
+#_ insync.list
+# 2019-10-02 Eoan not yet available
+deb http://apt.insynchq.com/ubuntu disco non-free contrib
+
+#_ kubuntu-ppa-backports.list
+# 2019-10-02 Disabled until Eoan is available
+# deb http://ppa.launchpad.net/kubuntu-ppa/backports/ubuntu eoan main
+
+#_ neovim-stable-ppa.list
+# 2019-10-02 Enable if desired, Eoan not yet available
+# deb-src http://ppa.launchpad.net/neovim-ppa/stable/ubuntu disco main
+
+#_ nodesource.list
+# 2019-10-02 Eoan not yet available
+deb https://deb.nodesource.com/node_10.x disco main
+
+#_ skype-stable.list
+deb [arch=amd64] https://repo.skype.com/deb stable main
+
+#_ slack.list
+deb https://packagecloud.io/slacktechnologies/slack/debian/ jessie main
+
+#_ steam.list
+# 2019-10-02 Disabled in favor of multiverse steam-installer
+
+#_ stebbins-handbrake.list
+# 2019-10-02 Eoan, Disco not available
+deb http://ppa.launchpad.net/stebbins/handbrake-releases/ubuntu cosmic main
+
+#_ teejee2008-ubuntu-ppa.list
+# Provides TimeShift (see var/lib/apt/lists/, wajig detail timeshift)
+# which looks useful
+deb http://ppa.launchpad.net/teejee2008/ppa/ubuntu eoan main
+' > ~/ag.txt
+  </div>
+
+  <h3>7.5. Install the repositories</h3>
+  <p>We run a little script to convert <code>~/ag.txt</code> to repository
+  definitions.</p>
+  <div class="code_block">
+if ( sudo mv /etc/apt/sources.list.d /etc/apt/sources.list.d.O ); then
+  sudo mkdir /etc/apt/sources.list.d;
+  pushd /etc/apt/sources.list.d
+
+  grep -Ev '^#x|^\s*$' ~/ag.txt | \
+  while read line; do
+    if ( echo "${line}" | grep -q '^#_' );
+      then _tgt=$(echo "${line}"|cut -f2 -d' ');
+    else echo "${line}" | sudo tee "${_tgt}" >> /dev/null
+    fi;
+  done
+  popd
+fi
+  </div>
+  <img src="img/k19-10/20191003_203103.png"
+    alt="K19-10 Install repositories"
+    title="K19-10 Install repositories"
+  >
+
+  <h3>7.6. Update repository keys</h3>
+  <p>This will find and install all the keys for the added repositories.
+  Please check these against verified sources.</p>
+  <div class="code_block">
+sudo apt update 2>&1 |\
+grep NO_PUBKEY |\
+sed -e 's?^.*NO_PUBKEY ??' |\
+while read _hash; do \
+wget -O- "http://keyserver.ubuntu.com/pks/lookup?op=get&search=0x${_hash}" |\
+sudo apt-key add -;
+done
+
+sudo apt update
+sudo apt upgrade
+  </div>
+
+  <img src="img/k19-10/20191003_203238.png"
+    alt="K19-10 Update repository keys"
+    title="K19-10 Update repository keys"
+  >
+
+  <img src="img/k19-10/20191003_203354.png"
+    alt="K19-10 Update in-progress"
+    title="K19-10 Update in-progress"
+  >
+
+  <h3>7.7. Generate ssh keys</h3>
+  <p>This is required for gitolite3 installation.</p>
+  <div class="code_block">
+mkdir .ssh
+chmod 700 .ssh
+ssh-keygen -t rsa
+  </div>
+  <img src="img/k19-10/20191008_202826.png"
+    alt="K19-10 Generate ssh keys"
+    title="K19-10 Generate ssh keys"
+  >
+
+  <h3>7.8. Install repo packages</h3>
+  <h4>7.8.1 Update packages</h4>
+  <div class="code_block">
+sudo apt update && sudo apt upgrade && sudo apt dist-upgrade
+  </div>
+  <img src="img/k19-10/20191003_203535.png"
+    alt="K19-10 Install repo packages"
+    title="K19-10 Install repo packages"
+  >
+
+  <h4>7.8.2. Install apps from repos</h4>
+  <p>Do not copy the screenshot. Copy the code-block below as it is more
+    up-to-date.</p>
+  <div class="code_block">
+sudo apt install apt-file audacity build-essential diffpdf dmidecode ffmpeg \
+  gimp gimp-data-extras gimp-help-en git google-chrome-stable guvcview      \
+  handbrake haskell-platform htop hwinfo kdiff3 kubuntu-restricted-extras   \
+  meld mesa-utils mlocate mtp-tools mysql-client mysql-server net-tools     \
+  nfs-common openssh-server p7zip-full p7zip-rar pandoc pandoc-citeproc     \
+  pavucontrol pdfshuffler ppa-purge rar sdparm sysstat texlive tree         \
+  ttf-mscorefonts-installer ubuntu-wallpapers vim-gtk vim-nox               \
+  vim-syntax-gtk wajig xsel inkscape xserver-xorg-input-evdev;
+  </div>
+  <img src="img/k19-10/20191003_204427.png"
+    alt="K19-10 Install apps from repos"
+    title="K19-10 Install apps from repos"
+  >
+
+  <h4>7.8.3. Confirm install</h4>
+  <img src="img/k19-10/20191003_204446.png"
+    alt="K19-10 Confirm install"
+    title="K19-10 Confirm install"
+  >
+
+  <h4>7.8.4. Download apps</h4>
+  <p>Installation will take 5-10 minutes.</p>
+  <img src="img/k19-10/20191003_204505.png"
+    alt="K19-10 Download apps"
+    title="K19-10 Download apps"
+  >
+
+  <h4>7.8.5. Approve font install</h4>
+  <p>After downloads some packages require the admin to assist in
+    configuration. The MS Font install requires approvals as shown.</p>
+  <img src="img/k19-10/20191003_204730.png"
+    alt="K19-10 Approve font install"
+    title="K19-10 Approve font install"
+  >
+
+  <img src="img/k19-10/20191003_204809.png"
+    alt="K19-10 Approve font install"
+    title="K19-10 Approve font install"
+  >
+
+  <h4>7.8.6 Configure Gitolite3</h4>
+  <p>After downloads some packages require the admin to assist in
+    configuration. GitoLite3 requests three details.</p>
+  <p>This is the default. Do not change.</p>
+  <img src="img/k19-10/20191008_202348.png"
+    alt="K19-10 Gitolite Config 1"
+    title="K19-10 Gitolite Config 1"
+  >
+
+  <p>This is also the default. Do not change.</p>
+  <img src="img/k19-10/20191008_202410.png"
+    alt="K19-10 Gitolite Config 2"
+    title="K19-10 Gitolite Config 2"
+  >
+
+  <p>Specify the <code>id_rsa.pub</code> file generated earlier.</p>
+  <img src="img/k19-10/20191008_202847.png"
+    alt="K19-10 Gitolite Config 3"
+    title="K19-10 Gitolite Config 3"
+  >
+
+  <h4>7.8.6 Watch installation progress</h4>
+  <p>Packages installation progress is as shown.</p>
+  <img src="img/k19-10/20191003_204834.png"
+    alt="K19-10 Watch installation progress"
+    title="K19-10 Watch installation progress"
+  >
+
+  <h3>7.9. Reboot after installation</h3>
+  <p>Reboot the system once all packages are installed</p>
+  <div class="code_block">
+# Reboot after the install finished
+reboot
+  </div>
+
+  <h2 id="section8">8. Install addon apps
+    <a href="#toc" class="toc">(top)</a></h2>
+  <h3>8.1. Dropbox</h3>
+  <div class="code_block">
+# Dropbox repo is added to sources above
+sudo apt install -y dropbox
+dropbox start -i
+  </div>
+
+  <h3>8.2. Docker</h3>
+  <div class="code_block">
+# Docker repo is added to sources above
+sudo apt -y install docker-ce
+  </div>
+
+  <h3>8.3 Balsamiq</h3>
+  <h4>8.3.1. Install wine packages</h4>
+  <div class="code_block">
+# http://deshack.net/install-balsamiq-mockups-in-debianubuntu/
+# 1. Install wine
+sudo apt install -y wine-stable winetricks
+  </div>
+  <img src="img/k19-10/20191004_155410.png"
+    alt="K19-10 Balsamiq - Install wine packages"
+    title="K19-10 Balsamiq - Install wine packages"
+  >
+
+  <h4>8.3.2. Accept wine packages</h4>
+  <p>Wine requires many i386 packages.</p>
+  <img src="img/k19-10/20191004_155442.png"
+    alt="K19-10 Balsamiq - Accept wine packages"
+    title="K19-10 Balsamiq - Accept wine packages"
+  >
+
+  <h4>8.3.3. Download Balsamiq bundle</h4>
+  <p>Bundled with Adobe Air from https://balsamiq.com/wireframes/desktop/</p>
+  <img src="img/k19-10/20191004_160855.png"
+    alt="K19-10 Balsamiq - Download bundle"
+    title="K19-10 Balsamiq - Download bundle"
+  >
+
+  <h4>8.3.4. Install to /opt</h4>
+  <div class="code_block">
+pushd /opt
+sudo unzip ~/Downloads/Balsamiq_Mockups_3.5.17_bundled.zip
+sudo ln -s Balsamiq_Mockups_3 balsamiq_3_5_17
+sudo ln -s Balsamiq_Mockups_3 balsamiq
+pushd /opt/balsamiq
+sudo ln -s 'Balsamiq Mockups 3.exe' balsamiq.exe
+popd && popd
+  </div>
+
+  <h4>8.3.5. Add a desktop file</h4>
+  <p>This allows the user to easily access the app from the K-menu.</p>
+  <div class="code_block">
+echo '[Desktop Entry]
+Encoding=UTF-8
+Name=Balsamiq Mockups
+Icon=/opt/balsamiq/icons/mockups_ico_48.png
+Exec=wine '/opt/balsamiq/Balsamiq Mockups 3.exe'
+Type=Application
+Categories=Graphics;
+MimeType=application/x-xdg-protocol-tg;x-scheme-handler/tg;g;' \
+  | sudo tee /usr/share/applications/balsamiq.desktop
+  </div>
+  <img src="img/k19-10/20191004_161255.png"
+    alt="K19-10 Balsamic - Add desktop file"
+    title="K19-10 Balsamic - Add desktop file"
+  >
+
+  <h4>8.3.6. Start Balsamiq</h4>
+  <p>Start Balsamiq with the K-menu (shown) or by typing
+    <b>alt + space</b> followed by <b>bals + enter</b> or
+    enter <code>balsamiq</code> in the terminal.</p>
+  <img src="img/k19-10/20191004_161318.png"
+    alt="K19-10 Balsamic - Start 1"
+    title="K19-10 Balsamic - Start  1"
+  >
+
+  <img src="img/k19-10/20191004_161038.png"
+    alt="K19-10 Balsamic - Start 2"
+    title="K19-10 Balsamic - Start 2"
+  >
+
+  <h3>8.4. IntelliJ</h3>
+  <h4>8.4.1. Download IntelliJ Ultimate</h4>
+  <p>Find the download here.
+    <a href="https://www.jetbrains.com/idea/download/download#section=linux"
+    >here</a>.</p>
+  <img src="img/k19-10/20191004_161753.png"
+    alt="K19-10 IntelliJ - Download"
+    title="K19-10 IntelliJ - Download"
+  >
+
+  <p>Save as file.</p>
+  <img src="img/k19-10/20191004_161812.png"
+    alt="K19-10 IntelliJ - Save as file"
+    title="K19-10 IntelliJ - Save as file"
+  >
+
+  <h4>8.4.2. Install to /usr/local/lib</h4>
+  <div class="code_block">
+sudo tar xvzf ~/Downloads/ideaIU-2019.2.3.tar.gz -C /usr/local/lib
+  </div>
+  <img src="img/k19-10/20191004_162012.png"
+    alt="K19-10 IntelliJ - Install to /usr/local/lib"
+    title="K19-10 IntelliJ - Install to /usr/local/lib"
+  >
+
+  <img src="img/k19-10/20191004_162034.png"
+    alt="K19-10 IntelliJ - Install output"
+    title="K19-10 IntelliJ - Install output"
+  >
+
+  <h4>8.4.3. Create symbolic links</h4>
+  <p>Symbolic links ensures the paths used by the desktop do not change.
+    We update the link to new pointers when we upgrade IntelliJ.</p>
+
+  <div class="code_block">
+cd /usr/local/lib; sudo ln -s idea-IU-192.5728.98 intellij
+cd /usr/local/bin; sudo ln -s ../lib/intellij/bin/idea.sh intellij
+sudo mkdir -p /usr/local/img; cd /usr/local/img;
+sudo ln -s ../lib/intellij/bin/idea.svg ./intellij.svg
+  </div>
+  <img src="img/k19-10/20191004_162541.png"
+    alt="K19-10 IntelliJ - Create symbolic links"
+    title="K19-10 IntelliJ - Create symbolic links"
+  >
+
+  <h4>8.4.4. Add desktop file</h4>
+  <p>This allows the user to easily access the app from the K-menu.</p>
+  <div class="code_block">
+echo '[Desktop Entry]
+Version=1.0
+Type=Application
+Name=intellij
+Icon=/usr/local/img/intellij.svg
+Exec="/usr/local/bin/intellij" %f
+Comment=Develop with pleasure!
+Categories=Development;IDE;
+Terminal=false
+StartupWMClass=jetbrains-intellij' \
+  | sudo tee /usr/share/applications/jetbrains-intellij.desktop
+  </div>
+  <img src="img/k19-10/20191004_162904.png"
+    alt="K19-10 IntelliJ - Add desktop file"
+    title="K19-10 IntelliJ - Add desktop file"
+  >
+
+  <h4>8.4.5. Start IntelliJ</h4>
+  <p>Start IntelliJ with the K-menu (shown) or by typing
+    <b>alt + space</b> followed by <b>intellij + enter</b> or
+    enter <code>intellij</code> in the terminal.</p>
+  <img src="img/k19-10/20191004_164122.png"
+    alt="K19-10 IntelliJ - Start IntelliJ"
+    title="K19-10 IntelliJ - Start IntelliJ"
+  >
+
+  <h3>8.5. Google Drive (Insync)</h3>
+  <p>Insync is better than the native client and supports multiple concurrent
+    accounts. However, GDrive is about 20 times slower than DropBox across all
+    platforms. Use Dropbox for copious files instead of GDrive to save time.</p>
+  <div class="code_block">
+sudo apt install -y insync insync-dolphin
+  </div>
+
+  <h3>8.6 MongoDB</h3>
+  <p>Sources have been included in the installation shown above.
+    See https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/.
+    Read the documentation on <b>ulimit</b> to improve performance</p>
+  <div class="code_block"></div>
+
+  <h3>8.7. Slack</h3>
+  <p>A reliable Electron app. Go crazy.</p>
+  <div class="code_block">
+sudo apt install -y slack-desktop
+  </div>
+  <img src="img/k19-10/20191009_194722.png"
+    alt="K19-10 Slack"
+    title="K19-10 Slack"
+  >
+
+  <h3>8.8 shrinkpdf</h3>
+  <p>Reduce PDF size substantially. Copy the contents of Appendix A into
+    <code>~/bin/shrinkpdf</code>.</p>
+  <div class="code_block">
+mkdir -p ~/bin && touch ~/bin/shrinkpdf && chmod 755 ~/bin/shrinkpdf
+kate ~/bin/shrinkpdf
+  </div>
+
+  <h3>8.9 Telegram</h3>
+  <div class="code_block">
+sudo apt install -y telegram-desktop
+  </div>
+  <img src="img/k19-10/20191008_204741.png"
+    alt="K19-10 Telegram"
+    title="K19-10 Telegram"
+  >
+
+  <h2 id="section9">9. Configure and Optimise
+    <a href="#toc" class="toc">(top)</a></h2>
+  <h3>9.1 MarbleMouse - Config</h3>
+  <p>Useful for making the most out of a MarbleMouse Trackball.</p>
+  <div class="code_block">
+# https://help.ubuntu.com/community/Logitech_Marblemouse_USB.
+# https://forums.linuxmint.com/viewtopic.php?t=276808 for increasing acceleration.
+# Ensure the evdev extension for Xorg is installed
+sudo apt install -y xserver-xorg-input-evdev
+
+# 2. Add the following to /usr/share/X11/xorg.conf.d/50-marblemouse.conf
+echo 'Section "InputClass"
+        Identifier  "Marble Mouse"
+        MatchProduct "Logitech USB Trackball"
+        MatchIsPointer "on"
+        MatchDevicePath "/dev/input/event*"
+        Driver "evdev"
+        Option "ButtonMapping" "1 8 3 4 5 6 7 2 2"
+        Option "EmulateWheel" "true"
+        Option "EmulateWheelButton" "8"
+        Option "ZAxisMapping" "4 5"
+        Option "XAxisMapping" "6 7" # Disable for vertical-only scrolling
+        Option "Emulate3Buttons" "false"
+EndSection
+' | sudo tee /usr/share/X11/xorg.conf.d/50-marblemouse.conf
+  </div>
+  <img src="img/k19-10/20191004_155343.png"
+    alt="K19-10 MarbleMouse - Config"
+    title="K19-10 MarbleMouse - Config"
+  >
+
+  <h3>9.2 Link config files</h3>
+  <p>We link our config files from Dropbox.  This helps minimize variance from
+  one environment to another.</p>
+  <div class="code_block">
+ Link to config files stored in Dropbox
+cd;
+for _i in bashrc gitconfig ideavimrc vimrc;
+  do _tgt=".${_i}";
+  if [ -e "${_tgt}" ] && ! [ -L "${_tgt}" ]; then mv "${_tgt}" "${_tgt}.O"; fi
+  rm -f "${_tgt}"; ln -s "Dropbox/01_SharedConfig/${_i}" "${_tgt}";
+done
+
+# Merge *.O files to the linked files and merge over enhancements using
+# meld or kdiff3. Delete the *.O files after testing updates.
+  </div>
+
+  <h3>9.3 IntelliJ - Set Darcula theme</h3>
+  <p>Choose File &gt; Settings &gt; Editor &gt; Color Scheme &gt; Darcula</p>
+  <img src="img/k19-10/20191004_164454.png"
+    alt="K19-10 IntelliJ - Set Darcula Theme"
+    title="K19-10 IntelliJ - Set Darcula Theme"
+  >
+
+  <h3>9.4 NFS - Add Network Disks</h3>
+  <p>The automounter will wait until the network is available before
+    attempting to mount any disk marked with a '_netdev' flag in /etc/fstab.
+    This is needed for NFS and other network file systems.</p>
+
+  <div class="code_block">
+# https://help.ubuntu.com/community/NFSv4Howto
+# http://thenubbyadmin.com/2013/04/10/solving-nfs-mounts-at-boot-time/
+# http://askubuntu.com/questions/221293/why-is-chkconfig-no-longer-available-in-ubuntu
+
+# 1. Install the nfsv4 client
+sudo apt-get install nfs-common
+
+# 2. Add entries to /etc/fstab file like so:
+# &lt;nfs-server&gt;:/&lt;export_dir&gt; /&lt;mount_dir&gt; nfs _netdev,auto 0 0
+  </div>
+
+  <h3>9.4. Maximize Chrome GPU</h3>
+  <div class="code_block">
+# Nvidia Official Drivers
+# 1. Ensure VDPAU drivers are installed
+sudo apt install -y vdpau-driver-all vdpauinfo
+
+# 2. Enable all GFX acceleration in Chrome.  Check GPU status with chrome://gpu.
+# Adjust flags to enable GPU capabilities in chrome://flags and enable the
+# following (these names are exact as of Chome 77):
+#   x GPU Rasterization
+#   x Native client
+#   x Out of ordered rasterization
+#   x Override software rendering list
+#   x Skia API for OOP-D compositing
+#   x Zero-copy rasterizer
+
+# 3. Update all Exec lines in /usr/share/applications/google-chrome.desktop.
+#    There are three locations.
+#
+#   Replace: Exec=/usr/bin/google-chrome-stable %U
+#   With   : Exec=/usr/bin/google-chrome-stable \
+#      --enable-native-gpu-memory-buffers --enable-zero-copy %U
+
+# 4. Delete any local copies of google-chrome.desktop that can override
+#    this system file. Use sudo locate google-chrome.desktop to find them.
+
+# Other GPUs (Intel, AMD, Nouveau)
+# Its been years since I have tweaked other GPUs. Any details welcome
+  </div>
+  <img src="img/k19-10/20191004_200050.png"
+    alt="K19-10 Maximize Chrome GPU"
+    title="K19-10 Maximize Chrome GPU"
+  >
+
+  <div class="code_block">
+# RESULTS: chrome://gpu list with flags updated using NVidia GPU.
+
+# Canvas                           : Hardware accelerated
+# Flash                            : Hardware accelerated
+# Flash Stage3D                    : Hardware accelerated
+# Flash Stage3D Baseline profile   : Hardware accelerated
+# Compositing                      : Hardware accelerated
+# Multiple Raster Threads          : Enabled
+# Out-of-process Rasterization     : Hardware accelerated
+# Hardware Protected Video Decode  : Hardware accelerated
+# Rasterization                    : Hardware accelerated
+# Skia Renderer                    : Enabled
+# Video Decode                     : Hardware accelerated
+# Viz Display Compositor           : Enabled
+# Viz Hit-test Surface Layer       : Enabled
+# WebGL                            : Hardware accelerated
+# WebGL2                           : Hardware accelerated
+
+# DISABLE desktop compositing (shift-alt-f12) to maximize OGL/Vulcan perf.
+# Frame rates can increase by 10x in some cases.
+  </div>
+  <img src="img/k19-10/20191004_192059.png"
+    alt="K19-10 Maximize Chrome GPU"
+    title="K19-10 Maximize Chrome GPU"
+  >
+
+  <img src="img/k19-10/20191004_204356.png"
+    alt="K19-10 Maximize Chrome GPU"
+    title="K19-10 Maximize Chrome GPU"
+  >
+
+  <h2 id="apdx-a">Appendix A
+    <a href="#toc" class="toc">(top)</a></h2>
+  <div class="code_block">
+#!/bin/sh
+# http://www.alfredklomp.com/programming/shrinkpdf
+# Licensed under the 3-clause BSD license:
+#
+# Copyright (c) 2014, Alfred Klomp
+# All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+# 1. Redistributions of source code must retain the above copyright notice,
+#    this list of conditions and the following disclaimer.
+# 2. Redistributions in binary form must reproduce the above copyright notice,
+#    this list of conditions and the following disclaimer in the documentation
+#    and/or other materials provided with the distribution.
+# 3. Neither the name of the copyright holder nor the names of its contributors
+#    may be used to endorse or promote products derived from this software
+#    without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+# ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+# LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+# SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+# INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+# CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+# ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+# POSSIBILITY OF SUCH DAMAGE.
+
+# Low dpi (72) = better compression. High (300) = better quality
+_dpi=72;
+
+shrink () {
+  gs \
+    -q -dNOPAUSE -dBATCH -dSAFER        \
+    -sDEVICE=pdfwrite                   \
+    -dCompatibilityLevel=1.3            \
+    -dPDFSETTINGS=/screen               \
+    -dEmbedAllFonts=true                \
+    -dSubsetFonts=true                  \
+    -dColorImageDownsampleType=/Bicubic \
+    -dColorImageResolution="${_dpi}"    \
+    -dGrayImageDownsampleType=/Bicubic  \
+    -dGrayImageResolution="${_dpi}"     \
+    -dMonoImageDownsampleType=/Bicubic  \
+    -dMonoImageResolution="${_dpi}"     \
+    -sOutputFile="${2}"                 \
+    "${1}";
+}
+
+check_smaller () {
+  # If $1 and $2 are regular files, we can compare file sizes to
+  # see if we succeeded in shrinking. If not, we copy $1 over $2:
+  if [ ! -f "${1}" -o ! -f "${2}" ]; then
+    return 0;
+  fi
+  ISIZE="$(echo $(wc -c "${1}") | cut -f1 -d\ )";
+  OSIZE="$(echo $(wc -c "${2}") | cut -f1 -d\ )";
+  if [ "${ISIZE}" -lt "${OSIZE}" ]; then
+    echo "Input smaller than output, doing straight copy" >&2
+    cp "${1}" "${2}";
+  fi
+}
+
+usage () {
+  echo "Reduces PDF filesize by lossy recompressing with Ghostscript.";
+  echo "Not guaranteed to succeed, but usually works.";
+  echo "  Usage: ${1} infile [outfile]";
+}
+
+IFILE="${1}";
+
+# Set input file name
+if [ -z "${IFILE}" ]; then
+  usage "${0}";
+  exit 1;
+fi
+
+# Default output filename to - (stdout) unless given
+if [ ! -z "${2}" ]; then
+  OFILE="${2}";
+else
+  OFILE="-";
+fi
+
+shrink "${IFILE}" "${OFILE}" || exit $?;
+check_smaller "${IFILE}" "${OFILE}";
+</div>
+</body>
+</html>
