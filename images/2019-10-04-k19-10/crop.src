@@ -1,0 +1,4 @@
+for _i in k19-10/*.png; 
+  do _bname=$(basename "${_i}" .png); 
+  convert "${_i}" -crop 800x600+4+65 "crop/${_bname}.png";
+done
