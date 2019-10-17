@@ -19,7 +19,7 @@ html {
 
 body {
 	background: $white;
-  font: 18px/1.4 $helvetica;
+  font: 16px/1.4 $helvetica;
   color: $darkGray;
 }
 
@@ -111,8 +111,8 @@ img {
 }
 
 table {
-  box-shadow: 0 0 0.5rem 0 #a99;
-  background: #fff;
+  box-shadow  : rgba(12, 67, 32, 0.1) 0 0 16px 0;
+  background  : #fff;
   font-family : courier, courier new, monospace;
 }
 thead {
@@ -124,7 +124,7 @@ td, th {
   border: 1px solid #ccc;
 }
 tbody tr:nth-child(odd) {
-  background : #eee;
+  background : #e8eaef;
 }
 
 // Fixes images in popup boxes from Google Translate
